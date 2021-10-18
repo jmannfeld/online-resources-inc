@@ -3,8 +3,8 @@ import React from 'react'
 import MailchimpForm from 'react-mailchimp-form'
 import styles from './Mailchimp.module.css'
 
-export default function Mailchimp (props) {
-  const {heading, subtitle, actionUrl} = props
+export default function Mailchimp(props) {
+  const { heading, subtitle, actionUrl } = props
 
   return (
     <section className={styles.root}>
@@ -20,7 +20,8 @@ export default function Mailchimp (props) {
                 placeholder: 'Email',
                 type: 'email',
                 className: styles.email,
-                required: true
+                required: true,
+                title: 'email'
               }
             ]}
             buttonClassName={styles.button}

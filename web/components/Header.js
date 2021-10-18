@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import {withRouter} from 'next/router'
+import { withRouter } from 'next/router'
 import SVG from 'react-inlinesvg'
 import styles from './Header.module.css'
 import HamburgerIcon from './icons/Hamburger'
 
 class Header extends Component {
-  state = {showNav: false}
+  state = { showNav: false }
 
   static propTypes = {
     router: PropTypes.shape({
@@ -34,22 +34,22 @@ class Header extends Component {
     })
   }
 
-  componentDidMount () {
-    const {router} = this.props
+  componentDidMount() {
+    const { router } = this.props
     router.events.on('routeChangeComplete', this.hideMenu)
   }
 
-  componentWillUnmount () {
-    const {router} = this.props
+  componentWillUnmount() {
+    const { router } = this.props
     router.events.off('routeChangeComplete', this.hideMenu)
   }
 
   hideMenu = () => {
-    this.setState({showNav: false})
+    this.setState({ showNav: false })
   }
 
   handleMenuToggle = () => {
-    const {showNav} = this.state
+    const { showNav } = this.state
     this.setState({
       showNav: !showNav
     })
@@ -61,15 +61,15 @@ class Header extends Component {
     }
 
     if (logo.asset.extension === 'svg') {
-      return <SVG src={logo.asset.url} className={styles.logo} />
+      return <SVG src={logo.asset.url} aria-label='Online Resouces Inc. logo' className={styles.logo} />
     }
 
     return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />
   }
 
-  render () {
-    const {title = 'Missing title', navItems, router, logo} = this.props
-    const {showNav} = this.state
+  render() {
+    const { title = 'Missing title', navItems, router, logo } = this.props
+    const { showNav } = this.state
 
     return (
       <div className={styles.root} data-show-nav={showNav}>
@@ -91,7 +91,7 @@ class Header extends Component {
           <ul className={styles.navItems}>
             {navItems &&
               navItems.map(item => {
-                const {slug, title, _id} = item
+                const { slug, title, _id } = item
                 const isActive =
                   router.pathname === '/LandingPage' && router.query.slug === slug.current
                 return (
@@ -99,7 +99,7 @@ class Header extends Component {
                     <Link
                       href={{
                         pathname: '/LandingPage',
-                        query: {slug: slug.current}
+                        query: { slug: slug.current }
                       }}
                       as={`/${slug.current}`}
                       prefetch
@@ -110,7 +110,7 @@ class Header extends Component {
                 )
               })}
           </ul>
-          <button className={styles.showNavButton} onClick={this.handleMenuToggle}>
+          <button className={styles.showNavButton} onClick={this.handleMenuToggle} title="Open menu">
             <HamburgerIcon className={styles.hamburgerIcon} />
           </button>
         </nav>
