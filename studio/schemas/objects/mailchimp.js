@@ -4,19 +4,19 @@ export default {
   title: 'Mailchimp newsletter signup',
   fields: [
     {
+      title: 'Heading',
       name: 'heading',
       type: 'string',
-      title: 'Heading',
     },
     {
+      title: 'Subheading',
       name: 'subtitle',
       type: 'string',
-      title: 'Subheading',
     },
     {
+      title: 'URL to Mailchimp signup',
       name: 'actionUrl',
       type: 'url',
-      title: 'URL to Mailchimp signup',
       description:
         'URL for the Mailchimp signup form. Remember to add your domain in your mailchimp settings to avoid CORS errors.',
     },

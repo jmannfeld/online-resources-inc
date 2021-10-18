@@ -1,32 +1,32 @@
 export default {
-  type: 'object',
-  name: 'imageSection',
   title: 'Image with text',
+  name: 'imageSection',
+  type: 'object',
   fields: [
     {
+      title: 'Heading',
       name: 'heading',
       type: 'string',
-      title: 'Heading',
     },
     {
+      title: 'Label',
       name: 'label',
       type: 'string',
-      title: 'Label',
     },
     {
+      title: 'Text',
       name: 'text',
       type: 'simplePortableText',
-      title: 'Text',
     },
     {
+      title: 'Image',
       name: 'image',
       type: 'figure',
-      title: 'Image',
     },
     {
+      title: 'Call to action',
       name: 'cta',
       type: 'cta',
-      title: 'Call to action',
     },
   ],
   preview: {

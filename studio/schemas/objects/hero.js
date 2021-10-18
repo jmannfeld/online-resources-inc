@@ -4,27 +4,27 @@ export default {
   title: 'Hero',
   fields: [
     {
+      title: 'Heading',
       name: 'heading',
       type: 'string',
-      title: 'Heading',
     },
     {
+      title: 'Tagline',
       name: 'tagline',
       type: 'simplePortableText',
-      title: 'Tagline',
     },
     {
+      title: 'Background image',
       name: 'backgroundImage',
       type: 'image',
-      title: 'Background image',
       options: {
         hotspot: true,
       },
     },
     {
+      title: 'Call to actions',
       name: 'ctas',
       type: 'array',
-      title: 'Call to actions',
       of: [
         {
           title: 'Call to action',

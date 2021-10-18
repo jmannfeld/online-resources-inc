@@ -6,13 +6,13 @@ const HTMLpreview = ({ value }) => (
 );
 
 export default {
-  name: 'embedHTML',
   title: 'Embed HTML',
+  name: 'embedHTML',
   type: 'object',
   fields: [
     {
-      name: 'html',
       title: 'HTML',
+      name: 'html',
       type: 'text',
       description:
         'You usually want to avoid storing freeform HTML, but for embed codes it can be useful.',

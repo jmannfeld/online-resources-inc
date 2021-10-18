@@ -1,6 +1,6 @@
 export default {
-  name: 'figure',
   title: 'Image',
+  name: 'figure',
   type: 'image',
   options: {
     hotspot: true,
@@ -15,9 +15,9 @@ export default {
       },
     },
     {
+      title: 'Alternative text',
       name: 'alt',
       type: 'string',
-      title: 'Alternative text',
       description: 'Important for SEO and accessiblity.',
       options: {
         isHighlighted: true,

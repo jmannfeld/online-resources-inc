@@ -1,22 +1,22 @@
 export default {
-  type: 'object',
-  name: 'textSection',
   title: 'Text',
+  name: 'textSection',
+  type: 'object',
   fields: [
     {
+      title: 'Label',
       name: 'label',
       type: 'string',
-      title: 'Label',
     },
     {
+      title: 'Heading',
       name: 'heading',
       type: 'string',
-      title: 'Heading',
     },
     {
+      title: 'Text',
       name: 'text',
       type: 'portableText',
-      title: 'Text',
     },
   ],
   preview: {
