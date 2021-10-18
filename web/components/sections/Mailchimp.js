@@ -20,8 +20,7 @@ export default function Mailchimp(props) {
                 placeholder: 'Email',
                 type: 'email',
                 className: styles.email,
-                required: true,
-                title: 'email'
+                required: true
               }
             ]}
             buttonClassName={styles.button}
