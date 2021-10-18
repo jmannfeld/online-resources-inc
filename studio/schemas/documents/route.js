@@ -1,15 +1,15 @@
 import { MdLink } from "react-icons/md";
 
 export default {
+  title: 'Route',
   name: 'route',
   type: 'document',
-  title: 'Route',
   icon: MdLink,
   fields: [
     {
+      title: 'Slug',
       name: 'slug',
       type: 'slug',
-      title: 'Slug',
     },
     {
       name: 'page',
@@ -22,15 +22,15 @@ export default {
       ],
     },
     {
+      title: 'Include page in sitemap',
       name: 'includeInSitemap',
       type: 'boolean',
-      title: 'Include page in sitemap',
       description: 'For search engines. Will be added to /sitemap.xml',
     },
     {
+      title: 'Disallow in robots.txt',
       name: 'disallowRobots',
       type: 'boolean',
-      title: 'Disallow in robots.txt',
       description: 'Hide this route for search engines',
     },
   ],

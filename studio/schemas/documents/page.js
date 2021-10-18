@@ -1,7 +1,7 @@
 export default {
+  title: 'Page',
   name: 'page',
   type: 'document',
-  title: 'Page',
   fieldsets: [
     {
       title: 'SEO & metadata',
@@ -10,14 +10,14 @@ export default {
   ],
   fields: [
     {
+      title: 'Title',
       name: 'title',
       type: 'string',
-      title: 'Title',
     },
     {
+      title: 'Page sections',
       name: 'content',
       type: 'array',
-      title: 'Page sections',
       of: [
         { type: 'hero' },
         { type: 'imageSection' },
@@ -26,16 +26,16 @@ export default {
       ],
     },
     {
+      title: 'Description',
       name: 'description',
       type: 'text',
-      title: 'Description',
       description: 'This description populates meta-tags on the webpage',
       fieldset: 'metadata',
     },
     {
+      title: 'Open Graph Image',
       name: 'openGraphImage',
       type: 'image',
-      title: 'Open Graph Image',
       description: 'Image for sharing previews on Facebook, Twitter etc.',
       fieldset: 'metadata',
     },
