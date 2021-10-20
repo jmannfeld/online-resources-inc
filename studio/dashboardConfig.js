@@ -1,12 +1,5 @@
 export default {
   widgets: [
-    // {
-    //   name: 'sanity-tutorials',
-    //   options: {
-    //     templateRepoId: 'sanity-io/sanity-template-nextjs-landing-pages',
-    //     _type: 'starterTemplate'
-    //   },
-    // },
     { name: 'structure-menu' },
     {
       name: 'project-info',
@@ -47,7 +40,7 @@ export default {
     { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',
-      options: { title: 'Recently edited', order: '_updatedAt desc', limit: 10, types: ['page'] },
+      options: { title: 'Recently edited', order: '_updatedAt desc', limit: 10, types: ['page', 'product'] },
       layout: { width: 'medium' }
     }
   ]
