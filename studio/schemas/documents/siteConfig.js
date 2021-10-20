@@ -39,20 +39,7 @@ export default {
     {
       title: 'Brand logo',
       name: 'logo',
-      type: 'image',
-      description:
-        'Best choice is to use an SVG where the color are set with currentColor',
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessiblity.',
-          options: {
-            isHighlighted: true
-          }
-        }
-      ]
+      type: 'logoImageBlock',
     },
     {
       title: 'Main navigation',

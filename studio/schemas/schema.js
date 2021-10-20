@@ -6,6 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
 import page from './documents/page';
+import product from './documents/product';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 
@@ -15,6 +16,7 @@ import embedHTML from './objects/embedHTML';
 import figure from './objects/figure';
 import internalLink from './objects/internalLink';
 import link from './objects/link';
+import logoImageBlock from './objects/logoImageBlock';
 import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 
@@ -37,8 +39,10 @@ export default createSchema({
     imageSection,
     internalLink,
     link,
+    logoImageBlock,
     mailchimp,
     page,
+    product,
     portableText,
     route,
     simplePortableText,
