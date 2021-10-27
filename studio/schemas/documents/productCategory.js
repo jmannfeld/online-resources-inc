@@ -10,7 +10,12 @@ export default {
     {
       title: 'Name',
       name: 'name',
-      type: 'string',
+      type: 'string'
+    },
+    {
+      title: 'Image',
+      name: 'image',
+      type: 'image'
     },
     // {
     //   title: 'Tech Specs',
@@ -29,6 +34,12 @@ export default {
       name: 'weight',
       type: 'string',
       fieldset: 'tech-specs'
-    },
-  ]
+    }
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'image'
+    }
+  }
 }

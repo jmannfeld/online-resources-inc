@@ -8,14 +8,14 @@ export default {
   fieldsets: [
     {
       title: 'SEO & metadata',
-      name: 'metadata',
-    },
+      name: 'metadata'
+    }
   ],
   fields: [
     {
       title: 'Title',
       name: 'title',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Page sections',
@@ -25,29 +25,28 @@ export default {
         { type: 'hero' },
         { type: 'imageSection' },
         { type: 'mailchimp' },
-        { type: 'textSection' },
-      ],
+        { type: 'textSection' }
+      ]
     },
     {
       title: 'Description',
       name: 'description',
       type: 'text',
       description: 'This description populates meta-tags on the webpage',
-      fieldset: 'metadata',
+      fieldset: 'metadata'
     },
     {
       title: 'Open Graph Image',
       name: 'openGraphImage',
       type: 'image',
       description: 'Image for sharing previews on Facebook, Twitter etc.',
-      fieldset: 'metadata',
-    },
+      fieldset: 'metadata'
+    }
   ],
-
   preview: {
     select: {
       title: 'title',
-      media: 'openGraphImage',
-    },
-  },
-};
+      media: 'openGraphImage'
+    }
+  }
+}

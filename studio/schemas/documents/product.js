@@ -5,14 +5,18 @@ export default {
   name: 'product',
   type: 'document',
   icon: BiBarcode,
-  fieldsets: [{
-    name: 'tech-specs', title: 'Tech Specs', options: {
-      collapsible: true,
-      collapsed: true,
-      columns: 2
-    },
-    description: 'Select a category to enter specifications'
-  }],
+  fieldsets: [
+    {
+      name: 'tech-specs',
+      title: 'Tech Specs',
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 2
+      },
+      description: 'Select a category to enter specifications'
+    }
+  ],
   fields: [
     {
       title: 'Name',
@@ -23,6 +27,11 @@ export default {
       title: 'SKU',
       name: 'sku',
       type: 'string'
+    },
+    {
+      title: 'Image',
+      name: 'image',
+      type: 'image'
     },
     {
       title: 'Description',
@@ -52,10 +61,11 @@ export default {
       type: 'slug',
       options: {
         source: 'name',
-        slugify: input => input
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .slice(0, 200)
+        slugify: input =>
+          input
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .slice(0, 200)
       }
     },
     {
@@ -73,22 +83,24 @@ export default {
       hidden: ({ document }) => !document?.category
     },
     {
-      title: 'Image',
-      name: 'image',
-      type: 'image',
-    },
-    {
       title: 'Public',
       name: 'public',
       type: 'boolean',
-      description: 'Display product on the public website'
-    },
+      description: 'Display this product on the public website'
+    }
   ],
   preview: {
     select: {
       title: 'name',
-      // subtitle: ''
-      // media: ''
+      sku: 'sku',
+      media: 'image'
     },
-  },
+    prepare({ title, sku, media }) {
+      return {
+        title,
+        subtitle: sku ? `SKU: ${sku}` : '',
+        media
+      }
+    }
+  }
 }
