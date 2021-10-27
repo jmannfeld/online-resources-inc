@@ -1,7 +1,7 @@
 export default {
-  type: 'object',
-  name: 'hero',
   title: 'Hero',
+  name: 'hero',
+  type: 'object',
   fields: [
     {
       title: 'Heading',

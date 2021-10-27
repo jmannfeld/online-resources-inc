@@ -29,17 +29,14 @@ export default {
       title: 'Site language',
       name: 'lang',
       type: 'string',
-      description:
-        'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
+      description: 'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
       validation: Rule =>
-        Rule.custom(lang =>
-          bcp47.parse(lang) ? true : 'Please use a valid bcp47 code'
-        )
+        Rule.custom(lang => (bcp47.parse(lang) ? true : 'Please use a valid bcp47 code'))
     },
     {
       title: 'Brand logo',
       name: 'logo',
-      type: 'logoImageBlock',
+      type: 'logoImageBlock'
     },
     {
       title: 'Main navigation',

@@ -1,7 +1,10 @@
+import { BiNote } from 'react-icons/bi'
+
 export default {
   title: 'Page',
   name: 'page',
   type: 'document',
+  icon: BiNote,
   fieldsets: [
     {
       title: 'SEO & metadata',

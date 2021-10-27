@@ -5,8 +5,10 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
+import manufacturer from './documents/manufacturer';
 import page from './documents/page';
 import product from './documents/product';
+import productCategory from './documents/productCategory';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 
@@ -29,7 +31,7 @@ import textSection from './objects/textSection';
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   name: 'default',
-  // Then proceed to concatenate our our document type
+  // Then proceed to concatenate our document types
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     cta,
@@ -41,9 +43,11 @@ export default createSchema({
     link,
     logoImageBlock,
     mailchimp,
+    manufacturer,
     page,
-    product,
     portableText,
+    product,
+    productCategory,
     route,
     simplePortableText,
     siteConfig,
