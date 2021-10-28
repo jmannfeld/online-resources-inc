@@ -8,20 +8,21 @@ export default {
           {
             name: 'netlify',
             options: {
+              title: 'Netlify deploys',
               description:
                 'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when documents are published.',
               sites: [
                 {
-                  buildHookId: '616c634927b0871b32b7a872',
-                  title: 'Sanity Studio',
-                  name: 'online-resources-inc-studio',
-                  apiId: '02030bf6-caed-43b9-914e-d8aad96c9572'
+                  title: 'ORI Frontend Website',
+                  name: 'online-resources-inc',
+                  apiId: '3e2ddf18-283f-4d44-bf05-8e965bea7b03',
+                  buildHookId: '616c634961d550b9f3ea1e84'
                 },
                 {
-                  buildHookId: '616c634961d550b9f3ea1e84',
-                  title: 'Landing pages Website',
-                  name: 'online-resources-inc',
-                  apiId: '3e2ddf18-283f-4d44-bf05-8e965bea7b03'
+                  title: 'Sanity Studio',
+                  name: 'online-resources-inc-studio',
+                  apiId: '02030bf6-caed-43b9-914e-d8aad96c9572',
+                  buildHookId: '616c634927b0871b32b7a872'
                 }
               ]
             }
@@ -40,7 +41,12 @@ export default {
     { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',
-      options: { title: 'Recently edited', order: '_updatedAt desc', limit: 10, types: ['page', 'product'] },
+      options: {
+        title: 'Recently edited',
+        order: '_updatedAt desc',
+        limit: 10,
+        types: ['page', 'product', 'product-category']
+      },
       layout: { width: 'medium' }
     }
   ]

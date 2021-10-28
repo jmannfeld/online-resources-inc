@@ -1,9 +1,8 @@
 export default {
-  title: "Logo Image Block",
-  name: "logoImageBlock",
-  type: "object",
-  description:
-    'Best choice is to use an SVG where the color are set with currentColor',
+  title: 'Logo Image Block',
+  name: 'logoImageBlock',
+  type: 'image',
+  description: 'Best choice is to use an SVG where the color are set with currentColor',
   fields: [
     {
       title: 'Alternative text',
