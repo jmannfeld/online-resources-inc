@@ -1,12 +1,20 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { BiCog } from 'react-icons/bi'
+import { BiCog, BiFolderOpen } from 'react-icons/bi'
 
 // We filter document types defined in structure to prevent
 // them from being listed twice
 const hiddenDocTypes = listItem =>
-  !['page', 'route', 'site-config', 'manufacturer', 'product', 'product-category'].includes(
-    listItem.getId()
-  )
+  ![
+    'customer-review',
+    'industry',
+    'manufacturer',
+    'page',
+    'product',
+    'product-category',
+    'route',
+    'site-config',
+    'team-member'
+  ].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -41,5 +49,18 @@ export default () =>
         .title('Manufacturers')
         .schemaType('manufacturer')
         .child(S.documentTypeList('manufacturer').title('Manufacturers')),
+      S.listItem()
+        .title('Industries')
+        .schemaType('industry')
+        .child(S.documentTypeList('industry').title('Industries')),
+      S.listItem()
+        .title('Team Members')
+        .schemaType('team-member')
+        .child(S.documentTypeList('team-member').title('Team Members')),
+      S.listItem()
+        .title('Customer Reviews')
+        .icon(BiFolderOpen)
+        .schemaType('customer-review')
+        .child(S.documentTypeList('customer-review').title('Customer Reviews')),
       ...S.documentTypeListItems().filter(hiddenDocTypes)
     ])

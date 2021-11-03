@@ -1,10 +1,10 @@
-import { BiBuildings } from 'react-icons/bi'
+import { BiWorld } from 'react-icons/bi'
 
 export default {
-  title: 'Manufacturer',
-  name: 'manufacturer',
+  title: 'Industry',
+  name: 'industry',
   type: 'document',
-  icon: BiBuildings,
+  icon: BiWorld,
   fields: [
     {
       title: 'Name',
