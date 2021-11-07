@@ -1,18 +1,18 @@
 import { BiFile } from 'react-icons/bi'
 
 export default {
-  title: 'Customer Review',
+  title: 'Customer review',
   name: 'customer-review',
   type: 'document',
   icon: BiFile,
   fields: [
     {
-      title: 'Reviewer Name',
+      title: 'Reviewer name',
       name: 'name',
       type: 'string'
     },
     {
-      title: 'Reviewer Title/Company',
+      title: 'Reviewer title/company',
       name: 'title',
       type: 'string',
       description: '(optional)'
@@ -20,7 +20,7 @@ export default {
     {
       title: 'Review',
       name: 'review',
-      type: 'string',
+      type: 'text',
       description: 'Enter text only. No quotes needed'
     },
     {

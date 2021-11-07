@@ -12,7 +12,7 @@ export default {
       type: 'string'
     },
     {
-      title: 'Job Title',
+      title: 'Job title',
       name: 'title',
       type: 'string'
     },

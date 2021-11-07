@@ -1,48 +1,71 @@
 import bcp47 from 'bcp47'
+import socialMedia from '../objects/socialMedia'
 
 export default {
   title: 'Site configuration',
   name: 'site-config',
   type: 'document',
-  // https://www.sanity.io/docs/experimental/ui-affordances-for-actions
-  __experimental_actions: [/* 'create', 'delete', */ 'update', 'publish'],
-  fieldsets: [{ name: 'footer', title: 'Footer' }],
+  fieldsets: [
+    { title: 'Site settings', name: 'site-settings' },
+    { title: 'Layout', name: 'layout' },
+    { title: 'Footer', name: 'footer' },
+    { title: 'Business settings', name: 'business-settings' }
+  ],
   fields: [
     {
       title: 'Site title',
       name: 'title',
-      type: 'string'
+      type: 'string',
+      fieldset: 'site-settings'
     },
     {
       title: 'URL',
       name: 'url',
       type: 'url',
-      description: 'The main site url. Used to create canonical url'
-    },
-    {
-      name: 'frontpage',
-      type: 'reference',
-      description: 'Choose page to be the frontpage',
-      to: { type: 'page' }
+      description: 'The main site url. Used to create canonical url',
+      fieldset: 'site-settings'
     },
     {
       title: 'Site language',
       name: 'lang',
       type: 'string',
       description: 'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
+      fieldset: 'site-settings',
       validation: Rule =>
         Rule.custom(lang => (bcp47.parse(lang) ? true : 'Please use a valid bcp47 code'))
     },
     {
-      title: 'Brand logo',
+      title: 'ORI logo',
       name: 'logo',
-      type: 'logoImageBlock'
+      type: 'logoImageBlock',
+      fieldset: 'business-settings'
+    },
+    {
+      title: 'Phone number',
+      name: 'phone',
+      type: 'string',
+      fieldset: 'business-settings'
+    },
+    {
+      title: 'Main contact email',
+      name: 'email',
+      type: 'string',
+      fieldset: 'business-settings'
+    },
+    socialMedia,
+    {
+      name: 'frontpage',
+      type: 'reference',
+      description: 'Choose page to be the frontpage',
+      fieldset: 'layout',
+      to: { type: 'page' }
     },
     {
       title: 'Main navigation',
       name: 'mainNavigation',
       type: 'array',
       description: 'Select pages for the top menu',
+      fieldset: 'layout',
       validation: Rule => [
         Rule.max(5).warning('Are you sure you want more than 5 items?'),
         Rule.unique().error('You have duplicate menu items')
@@ -58,11 +81,11 @@ export default {
       title: 'Footer navigation items',
       name: 'footerNavigation',
       type: 'array',
+      fieldset: 'layout',
       validation: Rule => [
         Rule.max(10).warning('Are you sure you want more than 10 items?'),
         Rule.unique().error('You have duplicate menu items')
       ],
-      fieldset: 'footer',
       of: [
         {
           type: 'reference',
@@ -71,9 +94,10 @@ export default {
       ]
     },
     {
+      title: 'Footer text',
       name: 'footerText',
       type: 'simplePortableText',
-      fieldset: 'footer'
+      fieldset: 'layout'
     }
   ]
 }

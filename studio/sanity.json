@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "ORI Website"
+    "name": "ORI Website Studio"
   },
   "api": {
     "projectId": "3lsmf2pq",
@@ -22,6 +22,10 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema.js"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "resolveDocumentActions.js"
     },
     {
       "implements": "part:@sanity/desk-tool/structure",

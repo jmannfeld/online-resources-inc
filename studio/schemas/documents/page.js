@@ -36,7 +36,7 @@ export default {
       fieldset: 'metadata'
     },
     {
-      title: 'Open Graph Image',
+      title: 'Open graph image',
       name: 'openGraphImage',
       type: 'image',
       description: 'Image for sharing previews on Facebook, Twitter etc.',

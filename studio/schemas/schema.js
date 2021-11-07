@@ -24,6 +24,7 @@ import link from './objects/link'
 import logoImageBlock from './objects/logoImageBlock'
 import portableText from './objects/portableText'
 import simplePortableText from './objects/simplePortableText'
+import socialMedia from './objects/socialMedia'
 
 // Landing page sections
 import hero from './objects/hero'
@@ -37,26 +38,29 @@ export default createSchema({
   // Then proceed to concatenate our document types
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
+    // objects
     cta,
-    customerReview,
     embedHTML,
     figure,
     hero,
     imageSection,
-    industry,
     internalLink,
     link,
     logoImageBlock,
     mailchimp,
-    manufacturer,
-    page,
     portableText,
-    product,
-    productCategory,
-    route,
     simplePortableText,
     siteConfig,
+    socialMedia,
+    textSection,
+    // documents
+    page,
+    route,
+    product,
+    productCategory,
+    manufacturer,
+    industry,
     teamMember,
-    textSection
+    customerReview
   ])
 })
