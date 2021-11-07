@@ -1,5 +1,4 @@
 import bcp47 from 'bcp47'
-import socialMedia from '../objects/socialMedia'
 
 export default {
   title: 'Site configuration',
@@ -52,7 +51,11 @@ export default {
       type: 'string',
       fieldset: 'business-settings'
     },
-    socialMedia,
+    {
+      title: 'Social media accounts',
+      name: 'socialMedia',
+      type: 'socialMedia'
+    },
     {
       name: 'frontpage',
       type: 'reference',
