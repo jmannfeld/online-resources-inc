@@ -46,6 +46,16 @@ export default {
       fieldset: 'business-info'
     },
     {
+      title: 'Address',
+      name: 'address',
+      type: 'address'
+    },
+    {
+      title: 'Google Maps embed',
+      name: 'googleMapsUrl',
+      type: 'embedHTML'
+    },
+    {
       title: 'Main contact email',
       name: 'email',
       type: 'string',

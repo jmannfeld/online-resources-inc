@@ -16,6 +16,7 @@ import siteConfig from './documents/siteConfig'
 import teamMember from './documents/teamMember'
 
 // Object types
+import address from './objects/address'
 import cta from './objects/cta'
 import embedHTML from './objects/embedHTML'
 import figure from './objects/figure'
@@ -39,6 +40,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     // objects
+    address,
     cta,
     embedHTML,
     figure,
