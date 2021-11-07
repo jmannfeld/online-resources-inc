@@ -10,17 +10,17 @@ export default {
     },
     {
       title: 'Instagram URL',
-      name: 'instagramHandle',
+      name: 'instagramUrl',
       type: 'string'
     },
     {
-      title: 'Twitter URl',
-      name: 'twitterHandle',
+      title: 'Twitter URL',
+      name: 'twitterUrl',
       type: 'string'
     },
     {
       title: 'YouTube URL',
-      name: 'youtubeChannel',
+      name: 'youtubeUrl',
       type: 'string'
     }
   ]

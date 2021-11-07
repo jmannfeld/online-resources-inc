@@ -8,7 +8,7 @@ export default {
     { title: 'Site settings', name: 'site-settings' },
     { title: 'Layout', name: 'layout' },
     { title: 'Footer', name: 'footer' },
-    { title: 'Business settings', name: 'business-settings' }
+    { title: 'Business info', name: 'business-info' }
   ],
   fields: [
     {
@@ -37,19 +37,19 @@ export default {
       title: 'ORI logo',
       name: 'logo',
       type: 'logoImageBlock',
-      fieldset: 'business-settings'
+      fieldset: 'business-info'
     },
     {
       title: 'Phone number',
       name: 'phone',
       type: 'string',
-      fieldset: 'business-settings'
+      fieldset: 'business-info'
     },
     {
       title: 'Main contact email',
       name: 'email',
       type: 'string',
-      fieldset: 'business-settings'
+      fieldset: 'business-info'
     },
     {
       title: 'Social media accounts',
