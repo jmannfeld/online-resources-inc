@@ -21,7 +21,7 @@ export default () =>
     .title('Site')
     .items([
       S.listItem()
-        .title('Site config')
+        .title('Site Configuration')
         .icon(BiCog)
         .child(
           S.editor()

@@ -1,9 +1,12 @@
 import bcp47 from 'bcp47'
+import { BiCog } from 'react-icons/bi'
 
 export default {
-  title: 'Site configuration',
+  title: 'Site Configuration',
   name: 'site-config',
   type: 'document',
+  icon: BiCog,
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fieldsets: [
     { title: 'Site settings', name: 'site-settings' },
     { title: 'Layout', name: 'layout' },

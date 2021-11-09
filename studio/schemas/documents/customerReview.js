@@ -1,7 +1,7 @@
 import { BiFile } from 'react-icons/bi'
 
 export default {
-  title: 'Customer review',
+  title: 'Customer Review',
   name: 'customer-review',
   type: 'document',
   icon: BiFile,
