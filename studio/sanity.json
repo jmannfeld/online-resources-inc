@@ -24,10 +24,6 @@
       "path": "./schemas/schema.js"
     },
     {
-      "implements": "part:@sanity/base/document-actions/resolver",
-      "path": "resolveDocumentActions.js"
-    },
-    {
       "implements": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure.js"
     },
