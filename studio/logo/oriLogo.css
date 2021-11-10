@@ -1,0 +1,18 @@
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  padding-right: 1.5rem;
+}
+
+.oriLogo {
+  height: 100%;
+  max-height: 2.75rem;
+  padding: 0;
+}
+
+.h1 {
+  font-size: 1.15rem;
+  padding-left: 1.15rem;
+  margin: 0;
+  font-family: 'Helvetica', sans-serif;
+}

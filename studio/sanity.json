@@ -32,6 +32,10 @@
       "path": "./dashboardConfig.js"
     },
     {
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "./logo/oriLogo.js"
+    },
+    {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "./static/css/variables.css"
     }

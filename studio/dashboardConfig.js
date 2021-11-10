@@ -19,7 +19,7 @@ export default {
                   buildHookId: '616c634961d550b9f3ea1e84'
                 },
                 {
-                  title: 'Sanity Studio',
+                  title: 'Content Studio',
                   name: 'online-resources-inc-studio',
                   apiId: '02030bf6-caed-43b9-914e-d8aad96c9572',
                   buildHookId: '616c634927b0871b32b7a872'
