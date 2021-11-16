@@ -34,15 +34,14 @@ export default {
       type: 'image'
     },
     {
-      title: 'Description',
-      name: 'description',
-      type: 'text'
-    },
-    {
-      title: 'Manufacturer',
-      name: 'manufacturer',
-      type: 'reference',
-      to: [{ type: 'manufacturer' }]
+      title: 'Type',
+      name: 'type',
+      type: 'string',
+      options: {
+        list: ['Hardware', 'Software'],
+        layout: 'radio',
+        direction: 'horizontal'
+      }
     },
     {
       title: 'Category',
@@ -51,22 +50,20 @@ export default {
       to: [{ type: 'product-category' }]
     },
     {
+      title: 'Manufacturer',
+      name: 'manufacturer',
+      type: 'reference',
+      to: [{ type: 'manufacturer' }]
+    },
+    {
+      title: 'Description',
+      name: 'description',
+      type: 'text'
+    },
+    {
       title: 'Brochure',
       name: 'brochure',
       type: 'file'
-    },
-    {
-      title: 'Slug',
-      name: 'slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-        slugify: input =>
-          input
-            .toLowerCase()
-            .replace(/\s+/g, '-')
-            .slice(0, 200)
-      }
     },
     {
       title: 'Accuracy',
@@ -81,6 +78,19 @@ export default {
       type: 'string',
       fieldset: 'tech-specs',
       hidden: ({ document }) => !document?.category
+    },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+        slugify: input =>
+          input
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .slice(0, 200)
+      }
     },
     {
       title: 'Public',
