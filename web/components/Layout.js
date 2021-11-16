@@ -14,18 +14,20 @@ function Layout (props) {
     return <div>Missing config</div>
   }
 
-  const {title, mainNavigation, footerNavigation, footerText, logo, url} = config
+  const {title, mainNavigation, footerNavigation, footerText, logo, url, socialMedia} = config
   const logoUrl = logo && logo.asset && logo.asset.url
 
   return (
     <>
       <Head>
         <meta name='viewport' content='initial-scale=1.0, width=device-width, viewport-fit=cover' />
+        <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Inconsolata&display=swap" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://use.typekit.net/cqf5prn.css"></link>
       </Head>
       <div className='container'>
         <Header title={title} navItems={mainNavigation} logo={logo} />
         <div className='content'>{children}</div>
-        <Footer navItems={footerNavigation} text={footerText} />
+        <Footer navItems={footerNavigation} text={footerText} socialMedia={socialMedia} />
         {logoUrl && url && <LogoJsonLd url={url} logo={logoUrl} />}
       </div>
     </>

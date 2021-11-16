@@ -59,8 +59,14 @@ export default {
       type: 'embedHTML'
     },
     {
-      title: 'Main contact email',
-      name: 'email',
+      title: 'Sales email',
+      name: 'salesEmail',
+      type: 'string',
+      fieldset: 'business-info'
+    },
+    {
+      title: 'Technical support email',
+      name: 'supportEmail',
       type: 'string',
       fieldset: 'business-info'
     },

@@ -22,6 +22,11 @@ export default {
       title: 'YouTube URL',
       name: 'youtubeUrl',
       type: 'string'
+    },
+    {
+      title: 'LinkedIn URL',
+      name: 'linkedinUrl',
+      type: 'string'
     }
   ]
 }

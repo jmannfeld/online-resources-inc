@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "sanity-nextjs-landing-pages-studio",
+  "name": "ori-content-studio",
   "version": "1.0.11",
   "main": "package.json",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Jordan Mannfeld",
   "scripts": {
     "build": "sanity build",
     "dev": "sanity start",

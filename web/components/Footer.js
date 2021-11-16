@@ -4,11 +4,13 @@ import Link from 'next/link'
 import {withRouter} from 'next/router'
 import styles from './Footer.module.css'
 import SimpleBlockContent from './SimpleBlockContent'
+import SocialMedia from './SocialMedia'
 
 function Footer (props) {
-  const {navItems, text, router} = props
+  const {navItems, text, socialMedia, router} = props
   return (
     <div className={styles.root}>
+      <SocialMedia links={socialMedia} />
       <nav>
         <ul className={styles.items}>
           {navItems &&
