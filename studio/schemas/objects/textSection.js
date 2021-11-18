@@ -25,7 +25,7 @@ export default {
     },
     prepare({ heading }) {
       return {
-        title: `${heading}`,
+        title: heading ? `${heading}` : '',
         subtitle: 'Text section',
       };
     },

@@ -17,6 +17,11 @@ export default {
       type: 'string'
     },
     {
+      title: 'Email',
+      name: 'email',
+      type: 'string'
+    },
+    {
       title: 'Bio',
       name: 'bio',
       type: 'text'
