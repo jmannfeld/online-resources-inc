@@ -31,6 +31,7 @@ import socialMedia from './objects/socialMedia'
 import hero from './objects/hero'
 import imageSection from './objects/imageSection'
 import mailchimp from './objects/mailchimp'
+import teamList from './objects/teamList'
 import textSection from './objects/textSection'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -54,6 +55,7 @@ export default createSchema({
     simplePortableText,
     siteConfig,
     socialMedia,
+    teamList,
     textSection,
     // documents
     page,

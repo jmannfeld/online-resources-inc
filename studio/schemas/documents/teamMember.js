@@ -26,5 +26,11 @@ export default {
       name: 'headshot',
       type: 'image'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'headshot'
+    }
+  }
 }
