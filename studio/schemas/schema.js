@@ -33,6 +33,7 @@ import imageSection from './objects/imageSection'
 import mailchimp from './objects/mailchimp'
 import teamList from './objects/teamList'
 import textSection from './objects/textSection'
+import youtubeEmbed from './objects/youtubeEmbed'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -57,6 +58,7 @@ export default createSchema({
     socialMedia,
     teamList,
     textSection,
+    youtubeEmbed,
     // documents
     page,
     route,

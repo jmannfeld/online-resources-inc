@@ -26,7 +26,8 @@ export default {
         { type: 'imageSection' },
         { type: 'mailchimp' },
         { type: 'teamList' },
-        { type: 'textSection' }
+        { type: 'textSection' },
+        { type: 'youtubeEmbed' }
       ]
     },
     {

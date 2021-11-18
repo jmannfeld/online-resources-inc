@@ -6,27 +6,27 @@ export default {
     {
       title: 'Facebook URL',
       name: 'facebookUrl',
-      type: 'string'
+      type: 'url'
     },
     {
       title: 'Instagram URL',
       name: 'instagramUrl',
-      type: 'string'
+      type: 'url'
     },
     {
       title: 'Twitter URL',
       name: 'twitterUrl',
-      type: 'string'
+      type: 'url'
     },
     {
       title: 'YouTube URL',
       name: 'youtubeUrl',
-      type: 'string'
+      type: 'url'
     },
     {
       title: 'LinkedIn URL',
       name: 'linkedinUrl',
-      type: 'string'
+      type: 'url'
     }
   ]
 }
