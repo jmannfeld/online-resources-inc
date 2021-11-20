@@ -9,3 +9,14 @@
   --main-navigation-color: var(--brand-secondary);
   --main-navigation-color--inverted: var(--brand-secondary--inverted);
 }
+
+/* Color Theme Swatches in Hex */
+.primary { color: #028C41; }
+.primary-2 { color: #2EA64C; }
+.secondary-1 { color: #220DA6; }
+.secondary-2 { color: #0B0859; }
+
+.white { color: #F2F2F2; }
+.light-gray { color: #BFBFBF; }
+.black { color: #404040; }
+.dark-black { color: #262626; }

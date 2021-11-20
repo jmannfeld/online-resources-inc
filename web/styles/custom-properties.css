@@ -7,13 +7,23 @@
   /* --font-family-sans: 'Inconsolata'; */
   --font-family-sans: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --color-black: #202123;
-  --color-dark-gray: #32373e;
+  --color-black: #404040;
+  --color-dark-gray: #262626;
   --color-gray: #697a90;
-  --color-light-gray: #b4bcc7;
+  --color-light-gray: #BFBFBF;
   --color-very-light-gray: #e7ebed;
   --color-white: #fff;
-  --color-accent: #156dff;
+  --color-accent: #2EA64C;
+
+  /* .primary { color: #028C41; }
+  .primary-2 { color: #2EA64C; }
+  .secondary-1 { color: #220DA6; }
+  .secondary-2 { color: #0B0859; }
+
+  .white { color: #F2F2F2; }
+  .light-gray { color: #BFBFBF; }
+  .black { color: #404040; }
+  .dark-black { color: #262626; } */
 
   /* Typography */
   --unit: 16;
