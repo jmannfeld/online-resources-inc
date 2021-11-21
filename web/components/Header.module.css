@@ -7,11 +7,19 @@
   display: flex;
   margin: 0 auto;
   max-width: var(--width-small);
+  background-color: var(--color-accent)f;
 }
 
 .root a {
   color: inherit;
   text-decoration: inherit;
+}
+
+.root a:hover {
+  /* background-color: var(--color-very-light-gray); */
+  background-color: #39BB47;
+  /* color: white; */
+  /* line-height: 1.75em; */
 }
 
 .branding {

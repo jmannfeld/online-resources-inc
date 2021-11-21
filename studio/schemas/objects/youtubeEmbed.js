@@ -2,7 +2,6 @@ import React from "react";
 import getYouTubeID from "get-youtube-id";
 
 const YouTubePreview = ({ value }) => {
-  console.log('value', value);
   const { url, text, position, heading } = value;
   const id = getYouTubeID(url);
   const embedUrl = `https://www.youtube.com/embed/${id}`;

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import styles from './Cta.module.css'
+import { Button, ButtonGroup } from "@chakra-ui/react"
 
 function cta (props) {
   const {title, route, link} = props
@@ -15,20 +16,21 @@ function cta (props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <a className={styles.button}>{title}</a>
+        <Button colorScheme="green">Contact Us</Button>
       </Link>
     )
   }
 
   if (link) {
     return (
-      <a className={styles.button} href={link}>
-        {title}
-      </a>
+      <Button colorScheme="blue">Button</Button>
+      // <a className={styles.button} href={link}>
+      //   {title}
+      // </a>
     )
   }
 
-  return <a className={styles.button}>{title}</a>
+  return <Button colorScheme="blue">Button</Button>
 }
 
 cta.propTypes = {

@@ -11,13 +11,21 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.7.2",
+    "@chakra-ui/theme": "^1.12.1",
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^11.6.0",
+    "@fontsource/cairo": "^4.5.2",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^2.1.0",
     "@sanity/image-url": "^0.140.19",
     "@zeit/next-css": "^1.0.1",
+    "framer-motion": "^4.1.17",
     "groq": "^0.140.0",
     "lodash": "^4.17.11",
     "next": "^8.1.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-fonts": "^1.5.1",
     "next-images": "^1.8.2",
     "next-seo": "^1.11.2",
     "react": "^17.0.2",
@@ -25,7 +33,8 @@
     "react-inlinesvg": "^2.3.0",
     "react-mailchimp-form": "^1.0.1",
     "react-mailchimp-subscribe": "^2.1.0",
-    "social-media-icons-react": "^1.1.10"
+    "social-media-icons-react": "^1.1.10",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
