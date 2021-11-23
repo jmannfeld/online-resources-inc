@@ -25,6 +25,7 @@ export default {
         { type: 'hero' },
         { type: 'imageSection' },
         { type: 'mailchimp' },
+        { type: 'productList' },
         { type: 'teamList' },
         { type: 'textSection' },
         { type: 'youtubeEmbed' }

@@ -31,6 +31,7 @@ import socialMedia from './objects/socialMedia'
 import hero from './objects/hero'
 import imageSection from './objects/imageSection'
 import mailchimp from './objects/mailchimp'
+import productList from './objects/productList'
 import teamList from './objects/teamList'
 import textSection from './objects/textSection'
 import youtubeEmbed from './objects/youtubeEmbed'
@@ -53,6 +54,7 @@ export default createSchema({
     logoImageBlock,
     mailchimp,
     portableText,
+    productList,
     simplePortableText,
     siteConfig,
     socialMedia,

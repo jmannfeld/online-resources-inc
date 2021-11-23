@@ -1,0 +1,25 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.teamListContainer {
+    max-width: var(--width-medium);
+    margin: 0 auto;
+}
+
+.teamList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+}
+
+.memberName {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+.memberTitle {
+    margin-top: 0;
+    text-transform: uppercase;
+    color: var(--color-gray);
+    font-size: smaller;
+}

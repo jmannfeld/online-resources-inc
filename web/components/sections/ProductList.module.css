@@ -1,0 +1,48 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.productListContainer {
+    max-width: var(--width-small);
+    margin: 0 auto;
+}
+
+.productList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+
+.productItem {
+    color: var(--dark-gray);
+    background-color: white;
+}
+
+.productItem:hover {
+    cursor: pointer;
+}
+
+.productLink:hover {
+    background-color: var(--color-accent);
+}
+
+.productImage {
+    max-width: 100%;
+    background-color: #04a55114;
+}
+
+.productImage:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.productName {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 1em 0;
+    margin: 0;
+}
+
+.productName:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+}

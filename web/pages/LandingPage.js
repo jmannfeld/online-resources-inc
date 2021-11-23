@@ -21,8 +21,22 @@ const pageQuery = groq`
       ctas[] {
         ...,
         route->
+      },
+      products[]-> {
+        ...,
+        products {
+          image {
+            asset->
+          }
+        }
+      },
+      members[]-> {
+        ...,
+        headshot {
+          asset->
+        }
       }
-    }
+    },
   }
 }
 `
@@ -125,7 +139,7 @@ class LandingPage extends Component {
         }
       ]
       : []
-
+    console.log("CONTENT", content)
     return (
       <Layout config={config}>
         <NextSeo

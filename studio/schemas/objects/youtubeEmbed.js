@@ -2,7 +2,6 @@ import React from "react";
 import getYouTubeID from "get-youtube-id";
 
 const YouTubePreview = ({ value }) => {
-  console.log('value', value);
   const { url, text, position, heading } = value;
   const id = getYouTubeID(url);
   const embedUrl = `https://www.youtube.com/embed/${id}`;
@@ -18,6 +17,7 @@ const YouTubePreview = ({ value }) => {
             'display': 'block',
             'float': `${position.toLowerCase() === 'left' ? 'left' : 'right'}`,
             'padding': `${position.toLowerCase() === 'left' ? '0 1rem 0 0' : '0 0 0 1rem'}`,
+            'max-width': '100%'
           }}
           height="200"
           src={embedUrl}
