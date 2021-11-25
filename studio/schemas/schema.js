@@ -26,6 +26,7 @@ import logoImageBlock from './objects/logoImageBlock'
 import portableText from './objects/portableText'
 import simplePortableText from './objects/simplePortableText'
 import socialMedia from './objects/socialMedia'
+import techSpecs from './objects/techSpecs'
 
 // Landing page sections
 import hero from './objects/hero'
@@ -58,6 +59,7 @@ export default createSchema({
     simplePortableText,
     siteConfig,
     socialMedia,
+    techSpecs,
     teamList,
     textSection,
     youtubeEmbed,

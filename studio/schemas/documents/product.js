@@ -7,8 +7,8 @@ export default {
   icon: BiBarcode,
   fieldsets: [
     {
-      name: 'tech-specs',
       title: 'Tech Specs',
+      name: 'tech-specs',
       options: {
         collapsible: true,
         collapsed: true,
@@ -24,14 +24,27 @@ export default {
       type: 'string'
     },
     {
-      title: 'SKU',
-      name: 'sku',
-      type: 'string'
-    },
-    {
-      title: 'Image',
+      title: 'Display image',
       name: 'image',
       type: 'image'
+    },
+    {
+      title: 'Image gallery',
+      name: 'gallery',
+      type: 'array',
+      of: [{ 
+        type: 'image',
+        fields: [
+          {
+            name: 'caption',
+            type: 'string',
+            title: 'Caption',
+            options: {
+              isHighlighted: true // <-- make this field easily accessible
+            }
+          },
+        ]
+      }],
     },
     {
       title: 'Type',
@@ -56,6 +69,21 @@ export default {
       to: [{ type: 'manufacturer' }]
     },
     {
+      title: 'Industries',
+      name: 'industries',
+      type: 'array',
+      of: [
+        { 
+          type: 'reference',
+          to: [
+            { 
+              type: 'industry'
+            }
+          ]
+        }
+      ]
+    },
+    {
       title: 'Description',
       name: 'description',
       type: 'text'
@@ -66,18 +94,9 @@ export default {
       type: 'file'
     },
     {
-      title: 'Accuracy',
-      name: 'accuracy',
-      type: 'string',
-      fieldset: 'tech-specs',
-      hidden: ({ document }) => !document?.category
-    },
-    {
-      title: 'Weight',
-      name: 'weight',
-      type: 'string',
-      fieldset: 'tech-specs',
-      hidden: ({ document }) => !document?.category
+      title: 'Tech specs',
+      name: 'techSpecs',
+      type: 'techSpecs',
     },
     {
       title: 'Slug',

@@ -5,7 +5,6 @@ export default {
   name: 'product-category',
   type: 'document',
   icon: BiGridAlt,
-  fieldsets: [{ name: 'tech-specs', title: 'Tech Specs' }],
   fields: [
     {
       title: 'Name',
@@ -17,23 +16,10 @@ export default {
       name: 'image',
       type: 'image'
     },
-    // {
-    //   title: 'Tech Specs',
-    //   name: 'tech_specs2',
-    //   type: 'array',
-    //   of: [{}]
-    // },
     {
-      title: 'Accuracy',
-      name: 'accuracy',
-      type: 'string',
-      fieldset: 'tech-specs'
-    },
-    {
-      title: 'Weight',
-      name: 'weight',
-      type: 'string',
-      fieldset: 'tech-specs'
+      title: 'Description',
+      name: 'description',
+      type: 'simplePortableText'
     }
   ],
   preview: {
