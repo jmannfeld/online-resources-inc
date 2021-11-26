@@ -12,13 +12,13 @@ export default {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
-          { title: 'Code', value: 'code' },
+          { title: 'Code', value: 'code' }
         ],
-        annotations: [{ type: 'link' }, { type: 'internalLink' }],
-      },
+        annotations: [{ type: 'link' }, { type: 'internalLink' }]
+      }
     },
     {
-      type: 'embedHTML',
-    },
-  ],
+      type: 'embedHTML'
+    }
+  ]
 };

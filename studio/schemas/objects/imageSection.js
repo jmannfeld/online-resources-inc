@@ -6,41 +6,41 @@ export default {
     {
       title: 'Heading',
       name: 'heading',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Label',
       name: 'label',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Text',
       name: 'text',
-      type: 'simplePortableText',
+      type: 'simplePortableText'
     },
     {
       title: 'Image',
       name: 'image',
-      type: 'figure',
+      type: 'figure'
     },
     {
       title: 'Call to action',
       name: 'cta',
-      type: 'cta',
-    },
+      type: 'cta'
+    }
   ],
   preview: {
     select: {
       heading: 'heading',
       subtitle: 'label',
-      media: 'image',
+      media: 'image'
     },
     prepare({ heading, media }) {
       return {
         title: `Image: ${heading}`,
         subtitle: 'Image section',
-        media,
+        media
       };
-    },
-  },
+    }
+  }
 };

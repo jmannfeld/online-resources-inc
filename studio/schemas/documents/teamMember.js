@@ -1,4 +1,4 @@
-import { BiUser } from 'react-icons/bi'
+import { BiUser } from 'react-icons/bi';
 
 export default {
   title: 'Team Member',
@@ -38,4 +38,4 @@ export default {
       media: 'headshot'
     }
   }
-}
+};

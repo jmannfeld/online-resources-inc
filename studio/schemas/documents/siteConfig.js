@@ -1,5 +1,5 @@
-import bcp47 from 'bcp47'
-import { BiCog } from 'react-icons/bi'
+import bcp47 from 'bcp47';
+import { BiCog } from 'react-icons/bi';
 
 export default {
   title: 'Site Configuration',
@@ -122,4 +122,4 @@ export default {
       fieldset: 'layout'
     }
   ]
-}
+};

@@ -1,4 +1,4 @@
-import { BiWorld } from 'react-icons/bi'
+import { BiWorld } from 'react-icons/bi';
 
 export default {
   title: 'Industry',
@@ -17,4 +17,4 @@ export default {
       type: 'simplePortableText'
     }
   ]
-}
+};

@@ -1,37 +1,44 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Head from 'next/head'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
-import {LogoJsonLd} from 'next-seo'
-import Header from './Header'
-import Footer from './Footer'
+import { LogoJsonLd } from 'next-seo';
+import Header from './Header';
+import Footer from './Footer';
 
-function Layout (props) {
-  const {config, children} = props
+function Layout(props) {
+  const { config, children } = props;
+  const router = useRouter();
+  const currentPage = router.asPath;
 
   if (!config) {
-    console.error('Missing config')
-    return <div>Missing config</div>
+    console.error('Missing config');
+    return <div>Missing config</div>;
   }
 
-  const {title, mainNavigation, footerNavigation, footerText, logo, url, socialMedia} = config
-  const logoUrl = logo && logo.asset && logo.asset.url
+  const { title, mainNavigation, footerNavigation, footerText, logo, url, socialMedia } = config;
+  const logoUrl = logo && logo.asset && logo.asset.url;
 
   return (
     <>
       <Head>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width, viewport-fit=cover' />
-        <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Inconsolata&display=swap" rel="stylesheet"></link>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo&family=Inconsolata&display=swap"
+          rel="stylesheet"
+        ></link>
         <link rel="stylesheet" href="https://use.typekit.net/cqf5prn.css"></link>
       </Head>
-      <div className='container'>
+      <div className="container">
         <Header title={title} navItems={mainNavigation} logo={logo} />
-        <div className='content'>{children}</div>
+        <div className="content">{children}</div>
+
         <Footer navItems={footerNavigation} text={footerText} socialMedia={socialMedia} />
         {logoUrl && url && <LogoJsonLd url={url} logo={logoUrl} />}
       </div>
     </>
-  )
+  );
 }
 
 Layout.propTypes = {
@@ -48,6 +55,6 @@ Layout.propTypes = {
     }),
     url: PropTypes.string
   })
-}
+};
 
-export default Layout
+export default Layout;

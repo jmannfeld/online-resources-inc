@@ -1,4 +1,4 @@
-import { BiFile } from 'react-icons/bi'
+import { BiFile } from 'react-icons/bi';
 
 export default {
   title: 'Customer Review',
@@ -39,7 +39,7 @@ export default {
       return {
         title,
         subtitle: review ? `"${review.substr(0, 25)}"` : ''
-      }
+      };
     }
   }
-}
+};

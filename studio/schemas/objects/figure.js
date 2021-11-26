@@ -3,7 +3,7 @@ export default {
   name: 'figure',
   type: 'image',
   options: {
-    hotspot: true,
+    hotspot: true
   },
   fields: [
     {
@@ -11,8 +11,8 @@ export default {
       name: 'caption',
       type: 'string',
       options: {
-        isHighlighted: true,
-      },
+        isHighlighted: true
+      }
     },
     {
       title: 'Alternative text',
@@ -20,14 +20,14 @@ export default {
       type: 'string',
       description: 'Important for SEO and accessiblity.',
       options: {
-        isHighlighted: true,
-      },
-    },
+        isHighlighted: true
+      }
+    }
   ],
   preview: {
     select: {
       imageUrl: 'asset.url',
-      title: 'caption',
-    },
-  },
+      title: 'caption'
+    }
+  }
 };

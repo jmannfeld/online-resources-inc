@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const HTMLpreview = ({ value }) => (
   // eslint-disable-next-line
   <div dangerouslySetInnerHTML={{ __html: value.html }} />
-)
+);
 
 export default {
   title: 'Embed HTML',
@@ -25,4 +25,4 @@ export default {
     },
     component: HTMLpreview
   }
-}
+};

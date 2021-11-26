@@ -14,12 +14,12 @@ export default {
       validation: Rule =>
         Rule.uri({
           allowRelative: true,
-          scheme: ['https', 'http', 'mailto', 'tel'],
-        }),
-    },
+          scheme: ['https', 'http', 'mailto', 'tel']
+        })
+    }
   ],
   blockEditor: {
     icon: () => '🌍',
-    render: LinkRender,
-  },
+    render: LinkRender
+  }
 };

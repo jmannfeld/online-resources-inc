@@ -10,6 +10,6 @@ export default {
   to: [{ type: 'page' }, { type: 'route' }],
   blockEditor: {
     icon: () => '🔗',
-    render: InternalLinkRender,
-  },
+    render: InternalLinkRender
+  }
 };

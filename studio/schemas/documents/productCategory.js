@@ -1,4 +1,4 @@
-import { BiGridAlt } from 'react-icons/bi'
+import { BiGridAlt } from 'react-icons/bi';
 
 export default {
   title: 'Product Category',
@@ -28,4 +28,4 @@ export default {
       media: 'image'
     }
   }
-}
+};

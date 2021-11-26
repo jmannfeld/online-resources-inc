@@ -12,62 +12,62 @@ export default {
     {
       title: 'Accuracy',
       name: 'accuracy',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Volumetric accuracy',
       name: 'volumetricAccuracy',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Weight',
       name: 'weight',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Dimensions',
       name: 'dimensions',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Resolution',
       name: 'resolution',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Scanning area',
       name: 'scanningArea',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Measurement resolution',
       name: 'measurementResolution',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Measurement rate',
       name: 'measurementRate',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Mesh resolution',
       name: 'meshResolution',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Depth of field',
       name: 'depthOfField',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Light source',
       name: 'lightSource',
-      type: 'string',
+      type: 'string'
     },
     {
       title: 'Laser class',
       name: 'laserClass',
-      type: 'string',
-    },
-  ],
-}
+      type: 'string'
+    }
+  ]
+};

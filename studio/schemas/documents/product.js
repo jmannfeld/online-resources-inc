@@ -1,4 +1,4 @@
-import { BiBarcode } from 'react-icons/bi'
+import { BiBarcode } from 'react-icons/bi';
 
 export default {
   title: 'Product',
@@ -32,19 +32,21 @@ export default {
       title: 'Image gallery',
       name: 'gallery',
       type: 'array',
-      of: [{ 
-        type: 'image',
-        fields: [
-          {
-            name: 'caption',
-            type: 'string',
-            title: 'Caption',
-            options: {
-              isHighlighted: true // <-- make this field easily accessible
+      of: [
+        {
+          type: 'image',
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+              options: {
+                isHighlighted: true // <-- make this field easily accessible
+              }
             }
-          },
-        ]
-      }],
+          ]
+        }
+      ]
     },
     {
       title: 'Type',
@@ -73,10 +75,10 @@ export default {
       name: 'industries',
       type: 'array',
       of: [
-        { 
+        {
           type: 'reference',
           to: [
-            { 
+            {
               type: 'industry'
             }
           ]
@@ -96,7 +98,7 @@ export default {
     {
       title: 'Tech specs',
       name: 'techSpecs',
-      type: 'techSpecs',
+      type: 'techSpecs'
     },
     {
       title: 'Slug',
@@ -129,7 +131,7 @@ export default {
         title,
         subtitle: sku ? `SKU: ${sku}` : '',
         media
-      }
+      };
     }
   }
-}
+};

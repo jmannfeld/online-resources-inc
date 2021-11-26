@@ -1,4 +1,4 @@
-import { BiLinkAlt } from 'react-icons/bi'
+import { BiLinkAlt } from 'react-icons/bi';
 
 export default {
   title: 'Route',
@@ -43,7 +43,7 @@ export default {
       return {
         title: slug === '/' ? '/' : `/${slug}`,
         subtitle: `Page: ${pageTitle}`
-      }
+      };
     }
   }
-}
+};

@@ -8,7 +8,7 @@ function urlFor (source) {
   return imageUrlBuilder(client).image(source)
 }
 
-function teamList (props) {
+function TeamList (props) {
   const {subtitle, members} = props
   console.log('props', props)
   
@@ -40,4 +40,4 @@ function teamList (props) {
 //   link: PropTypes.string
 // }
 
-export default teamList
+export default TeamList

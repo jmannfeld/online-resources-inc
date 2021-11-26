@@ -1,4 +1,4 @@
-import { BiNote } from 'react-icons/bi'
+import { BiNote } from 'react-icons/bi';
 
 export default {
   title: 'Page',
@@ -52,4 +52,4 @@ export default {
       media: 'openGraphImage'
     }
   }
-}
+};

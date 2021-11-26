@@ -9,7 +9,7 @@ function urlFor (source) {
   return imageUrlBuilder(client).image(source)
 }
 
-function productList (props) {
+function ProductList (props) {
   const {name, products} = props
   console.log('products', products)
 
@@ -50,4 +50,4 @@ function productList (props) {
 //   link: PropTypes.string
 // }
 
-export default productList
+export default ProductList

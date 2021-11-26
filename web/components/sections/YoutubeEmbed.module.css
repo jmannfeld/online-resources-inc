@@ -1,0 +1,40 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.youtubeEmbedContainer {
+  padding: 2rem 0;
+  max-width: var(--width-medium);
+  width: 100%;
+  margin: 0 auto;
+
+  @media (--media-min-medium) {
+    padding: 4rem 0;
+  }
+}
+
+h2.youtubeHeading {
+  max-width: var(--width-medium);
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0.25 em;
+  font-size: var(--font-title3-size);
+  line-height: var(--font-title3-line-height);
+}
+
+.youtubeFlex {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-width: var(--width-medium);
+  width: 100%;
+  margin: 0 auto;
+  margin-top: calc(var(--font-title3-size) - 0.5rem);
+}
+
+.video {
+  margin-top: 0.5rem;
+}
+
+.youtubeText {
+  margin-top: 0;
+}

@@ -1,4 +1,4 @@
-import { BiBuildings } from 'react-icons/bi'
+import { BiBuildings } from 'react-icons/bi';
 
 export default {
   title: 'Manufacturer',
@@ -12,4 +12,4 @@ export default {
       type: 'string'
     }
   ]
-}
+};
