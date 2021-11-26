@@ -10,10 +10,10 @@
   --color-black: #404040;
   --color-dark-gray: #262626;
   --color-gray: #697a90;
-  --color-light-gray: #BFBFBF;
+  --color-light-gray: #bfbfbf;
   --color-very-light-gray: #e7ebed;
   --color-white: #fff;
-  --color-accent: #2EA64C;
+  --color-accent: #2ea64c;
 
   /* .primary { color: #028C41; }
   .primary-2 { color: #2EA64C; }
@@ -51,7 +51,12 @@
   --width-x-large: 100em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'futura-pt';
   /* font-family: 'Inconsolata'; */
   /* font-family: 'Cairo'; */

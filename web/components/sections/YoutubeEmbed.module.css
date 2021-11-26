@@ -8,7 +8,7 @@
   margin: 0 auto;
 
   @media (--media-min-medium) {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
   }
 }
 
@@ -19,6 +19,10 @@ h2.youtubeHeading {
   margin-top: 0.25 em;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
+
+  @media (--media-max-medium) {
+    padding-left: 1.5rem;
+  }
 }
 
 .youtubeFlex {
@@ -29,12 +33,27 @@ h2.youtubeHeading {
   width: 100%;
   margin: 0 auto;
   margin-top: calc(var(--font-title3-size) - 0.5rem);
+
+  @media (--media-max-medium) {
+    flex-direction: column;
+    margin: 0 auto;
+  }
 }
 
 .video {
   margin-top: 0.5rem;
+  max-width: var(--width-small);
+
+  @media (--media-max-medium) {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .youtubeText {
   margin-top: 0;
+
+  @media (--media-max-medium) {
+    padding-left: 1.5rem;
+  }
 }

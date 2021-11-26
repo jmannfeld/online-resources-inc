@@ -48,7 +48,7 @@
   @media (--media-min-medium) {
     font-size: var(--font-title1-size);
     line-height: var(--font-title1-line-height);
-    padding-top: 15rem;
+    padding-top: 12.5rem;
   }
 }
 
@@ -62,7 +62,7 @@
   /* font-family: "Open Sans"; */
   /* font-family: "Quicksand"; */
   /* font-family: "Josefin Sans"; */
-  font-family: "Cairo";
+  font-family: 'Cairo';
 
   @media (--media-min-medium) {
     font-size: var(--font-large-size);
