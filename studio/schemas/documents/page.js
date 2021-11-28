@@ -23,12 +23,12 @@ export default {
       type: 'array',
       of: [
         { type: 'hero' },
+        { type: 'textSection' },
         { type: 'imageSection' },
-        { type: 'mailchimp' },
+        { type: 'youtubeEmbed' },
         { type: 'productList' },
         { type: 'teamList' },
-        { type: 'textSection' },
-        { type: 'youtubeEmbed' }
+        { type: 'companyContact' }
       ]
     },
     {

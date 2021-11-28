@@ -18,7 +18,7 @@ function ProductList(props) {
   const [products, setProducts] = useState(props.products);
   const [filterButtonText, setFilterButtonText] = useState('');
   const [categoryList, setCategoryList] = useState([
-    '3D Scanners',
+    '3D Scanning',
     'CAD/CAM',
     'Inspection Software',
     'Reverse Engineering',
@@ -158,7 +158,7 @@ function ProductList(props) {
           return (
             <Link
               href={{
-                pathname: '/LandingPage',
+                pathname: '/ProductPage',
                 query: { slug: product.slug.current }
               }}
               as={`/products/${product.slug.current}`}

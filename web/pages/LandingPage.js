@@ -143,7 +143,9 @@ class LandingPage extends Component {
             noindex: disallowRobots
           }}
         />
-        {content && products && <RenderSections sections={content} products={products} />}
+        {content && products && (
+          <RenderSections sections={content} products={products} config={config} />
+        )}
       </Layout>
     );
   }

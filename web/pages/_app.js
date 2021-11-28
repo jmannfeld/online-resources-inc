@@ -22,9 +22,12 @@ const siteConfigQuery = groq`
   `;
 
 const productQuery = groq`
-  *[_type == "product"] {
+  *[_type == "product" && public] {
     ...,
     category-> {
+      name
+    },
+    manufacturer-> {
       name
     },
     // industries-> {

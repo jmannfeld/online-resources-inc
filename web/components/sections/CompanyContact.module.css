@@ -1,0 +1,20 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.companyContactContainer {
+  max-width: var(--width-small);
+  margin: 0 auto;
+  width: max-content;
+  padding: 4rem 0;
+}
+
+.companyContactContainer h3 {
+  background-color: var(--color-accent2);
+  padding: 0.75rem;
+  color: var(--color-very-light-gray);
+}
+
+.companyContactContainer p {
+  padding: 0 1.5rem;
+  /* font-size: var(--font-large-size); */
+}

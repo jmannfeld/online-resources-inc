@@ -8,14 +8,17 @@
   text-decoration: inherit;
   font-weight: 600;
   max-width: fit-content;
-  transition: transform 50ms ease-in-out;
+  transition: transform 45ms ease-in-out;
   transform: scale(1);
 }
 
 .button:hover {
-  transform: scale(1.05);
+  background-color: #ffffff1a;
 }
 
 .button:active {
-  transform: scale(0.95);
+  border-color: #ffffffc9;
+  color: #ffffffc9;
+  transform: scale(0.99);
+  background-color: #ffffff1a;
 }

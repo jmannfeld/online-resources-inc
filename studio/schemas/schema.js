@@ -29,6 +29,7 @@ import socialMedia from './objects/socialMedia';
 import techSpecs from './objects/techSpecs';
 
 // Landing page sections
+import companyContact from './objects/companyContact';
 import hero from './objects/hero';
 import imageSection from './objects/imageSection';
 import mailchimp from './objects/mailchimp';
@@ -45,6 +46,7 @@ export default createSchema({
   types: schemaTypes.concat([
     // objects
     address,
+    companyContact,
     cta,
     embedHTML,
     figure,

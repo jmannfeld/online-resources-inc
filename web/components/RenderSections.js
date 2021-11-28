@@ -15,7 +15,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const { sections, products } = props;
+  const { sections, products, config } = props;
   console.log('render sections props', props);
 
   if (!sections) {
@@ -30,7 +30,9 @@ function RenderSections(props) {
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>;
         }
-        return <SectionComponent {...section} products={products} key={section._key} />;
+        return (
+          <SectionComponent {...section} products={products} config={config} key={section._key} />
+        );
       })}
     </Fragment>
   );

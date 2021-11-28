@@ -1,0 +1,36 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.productPageContainer {
+  max-width: var(--width-medium);
+  margin: 0 auto;
+}
+
+.productName {
+  margin-bottom: 0;
+}
+
+.manufacturerName {
+  margin: 0;
+}
+
+.productTags {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  justify-content: flex-end;
+}
+
+.productTags p {
+  background-color: #251659;
+  padding: 0.75em 1.25em;
+  font-size: var(--font-small-size);
+  line-height: var(--font-small-line-height);
+  color: var(--color-dark-gray);
+  color: white;
+}
+
+.productImage {
+  max-width: var(--width-medium);
+  margin: 0 auto;
+}
