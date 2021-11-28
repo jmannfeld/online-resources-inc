@@ -1,0 +1,5 @@
+@import '../styles/custom-properties.css';
+
+.customBlockquote {
+  margin-top: 0.25em;
+}
