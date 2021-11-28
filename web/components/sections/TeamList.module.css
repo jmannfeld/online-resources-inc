@@ -2,37 +2,38 @@
 @import '../../styles/custom-properties.css';
 
 .teamListContainer {
-    padding: 2rem 0;
-    
-    @media (--media-min-medium) {
-        padding: 4rem 0;
-    }
+  padding: 2rem 0;
+  max-width: var(--width-small);
+  margin: 0 auto;
+
+  @media (--media-min-medium) {
+    padding: 4rem 0;
+  }
 }
 
 .teamListContainer h2 {
-    max-width: var(  --width-medium);
-    width: 100%;
-    margin: 0 auto;
-    /* padding: 0 2rem; */
+  font-size: var(--font-title3-size);
+  line-height: var(--font-title3-line-height);
+  /* padding: 0 2rem; */
 }
 
 .teamList {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1em;
-    max-width: var(--width-small);
-    margin: 0 auto;
-    /* width: 100%; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  max-width: var(--width-small);
+  margin: 0 auto;
+  /* width: 100%; */
 }
 
 .memberName {
-    margin-top: 0.5em;
-    margin-bottom: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0;
 }
 
 .memberTitle {
-    margin-top: 0;
-    text-transform: uppercase;
-    color: var(--color-gray);
-    font-size: smaller;
+  margin-top: 0;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  font-size: smaller;
 }

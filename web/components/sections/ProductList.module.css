@@ -2,47 +2,86 @@
 @import '../../styles/custom-properties.css';
 
 .productListContainer {
-    max-width: var(--width-small);
-    margin: 0 auto;
+  max-width: var(--width-small);
+  margin: 0 auto;
+}
+
+.filterContainer {
+  display: flex;
+  gap: 1em;
+  padding-bottom: 1.5em;
+}
+
+.filterButton {
+  background-color: transparent;
+  border: 3px solid #f3f3f3;
+  padding: 1em 2em;
+  font-size: var(--font-small-size);
+  line-height: var(--font-small-line-height);
+  font-weight: bold;
+}
+
+.filterButton:hover {
+  background-color: #2ea64c30;
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  cursor: pointer;
 }
 
 .productList {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
 }
 
 .productItem {
-    color: var(--dark-gray);
-    background-color: white;
+  color: var(--dark-gray);
+  background-color: white;
+  background-color: #04a55114;
+  border: 2px solid #f3f3f3;
 }
 
 .productItem:hover {
-    cursor: pointer;
+  cursor: pointer;
+  border: 2px solid var(--color-accent);
 }
 
 .productLink:hover {
-    background-color: var(--color-accent);
+  background-color: var(--color-accent);
 }
 
 .productImage {
-    max-width: 100%;
-    background-color: #04a55114;
+  max-width: 100%;
+}
+
+.productImageWrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  /* min-height: 250px; */
 }
 
 .productImage:hover {
-    background-color: white;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .productName {
-    text-align: center;
-    font-size: 1.5em;
-    padding: 1em 0;
-    margin: 0;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 1em 0;
+  margin: 0;
+  background-color: white;
+  order: 1;
 }
 
 .productName:hover {
-    background: var(--color-accent);
-    color: var(--color-white);
+  /* background: var(--color-accent); */
+  /* color: var(--color-white); */
+}
+
+.active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-dark-gray);
 }

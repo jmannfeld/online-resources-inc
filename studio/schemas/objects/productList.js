@@ -7,22 +7,22 @@ export default {
       title: 'List name',
       name: 'name',
       type: 'string'
-    },
-    {
-      title: 'Products',
-      name: 'products',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'product'
-            }
-          ]
-        }
-      ]
     }
+    // {
+    //   title: 'Products',
+    //   name: 'products',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       type: 'reference',
+    //       to: [
+    //         {
+    //           type: 'product'
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // }
   ],
   preview: {
     select: {

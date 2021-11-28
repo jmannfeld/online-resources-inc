@@ -10,6 +10,7 @@ import RenderSections from '../components/RenderSections';
 const builder = imageUrlBuilder(client);
 const pageQuery = groq`
 *[_type == "route" && slug.current == $slug][0]{
+  ...,
   page-> {
     ...,
     content[] {
@@ -24,11 +25,6 @@ const pageQuery = groq`
       },
       products[]-> {
         ...,
-        products {
-          image {
-            asset->
-          }
-        }
       },
       members[]-> {
         ...,
@@ -50,7 +46,8 @@ class LandingPage extends Component {
     openGraphImage: PropTypes.any,
     content: PropTypes.any,
     config: PropTypes.any,
-    slug: PropTypes.any
+    slug: PropTypes.any,
+    products: PropTypes.array
   };
 
   static async getInitialProps({ query }) {
@@ -60,7 +57,9 @@ class LandingPage extends Component {
       return;
     }
     if (slug && slug !== '/') {
-      return client.fetch(pageQuery, { slug }).then((res) => ({ ...res.page, slug }));
+      return client.fetch(pageQuery, { slug }).then((res) => {
+        return { ...res.page, slug };
+      });
     }
 
     // Frontpage
@@ -100,7 +99,8 @@ class LandingPage extends Component {
       openGraphImage,
       content = [],
       config = {},
-      slug
+      slug,
+      products = []
     } = this.props;
 
     const openGraphImages = openGraphImage
@@ -128,6 +128,7 @@ class LandingPage extends Component {
         ]
       : [];
     console.log('CONTENT', content);
+    console.log('PRODUCTS', products);
     return (
       <Layout config={config}>
         <NextSeo
@@ -142,7 +143,7 @@ class LandingPage extends Component {
             noindex: disallowRobots
           }}
         />
-        {content && <RenderSections sections={content} />}
+        {content && products && <RenderSections sections={content} products={products} />}
       </Layout>
     );
   }
