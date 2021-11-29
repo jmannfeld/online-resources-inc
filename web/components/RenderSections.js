@@ -16,7 +16,6 @@ function resolveSections(section) {
 
 function RenderSections(props) {
   const { sections, products, config } = props;
-  console.log('render sections props', props);
 
   if (!sections) {
     console.error('Missing section');

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
+import NextSeo from 'next-seo';
 import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
 import styles from './ProductPage.module.css';
@@ -13,8 +14,13 @@ function urlFor(source) {
 function ProductPage(props) {
   const urlPath = useRouter().asPath;
   const { config, products = [] } = props;
+  console.log('urlPath', urlPath);
   const product = products.filter((prod) => `/products/${prod.slug.current}` === urlPath)[0];
   console.log('PRODUCT DATA:', product);
+  if (!product) {
+    console.log('RETURNING NULL FOR:', urlPath);
+    return null;
+  }
   const {
     name,
     type,
@@ -26,6 +32,18 @@ function ProductPage(props) {
   } = product;
   return (
     <Layout config={config}>
+      <NextSeo
+        config={{
+          title: name,
+          titleTemplate: `${config.title} | %s`,
+          description,
+          canonical: config.url && `${config.url}/${product.slug.current}`,
+          openGraph: {
+            images: image
+          },
+          noindex: false
+        }}
+      />
       <div className={styles.productPageContainer}>
         <h1 className={styles.productName}>{name}</h1>
         <p className={styles.manufacturerName}>{manufacturer}</p>

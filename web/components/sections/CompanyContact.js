@@ -12,7 +12,6 @@ function CompanyContact(props) {
     supportEmail,
     address: { streetAddress, city, state, zipCode }
   } = config;
-  console.log('CompanyContact props', props);
 
   return (
     <div className={styles.companyContactContainer}>

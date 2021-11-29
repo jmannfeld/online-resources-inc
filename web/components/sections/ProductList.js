@@ -12,7 +12,7 @@ function urlFor(source) {
 }
 
 function ProductList(props) {
-  console.log('ProductList props', props);
+  // console.log('ProductList props', props);
   const { name } = props;
   // let products = props.products;
   const [products, setProducts] = useState(props.products);
