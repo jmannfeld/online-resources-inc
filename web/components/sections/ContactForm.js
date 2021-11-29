@@ -44,12 +44,12 @@ function ContactForm(props) {
         </p>
         <p>
           <label>
-            I am a current customer <input type="checkbox" name="current-customer" />
+            Message <textarea name="message" rows="4"></textarea>
           </label>
         </p>
         <p>
-          <label>
-            Message <textarea name="message"></textarea>
+          <label title="current-customer-label">
+            I am a current customer <input type="checkbox" name="current-customer" />
           </label>
         </p>
         <p>

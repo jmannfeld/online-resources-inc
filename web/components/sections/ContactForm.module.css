@@ -13,26 +13,40 @@
 .contactFormContainer label {
   font-size: smaller;
   font-weight: bold;
+  margin-top: 1.25rem;
+}
+
+.contactFormContainer input,
+.contactFormContainer label {
+  display: block;
 }
 
 .contactFormContainer input,
 .contactFormContainer textarea {
   line-height: var(--font-medium-line-height);
-  font-size: var(--font-title3-size);
+  font-size: var(--font-large-size);
   padding: 0.75rem;
   border-radius: 0;
   border: 1px solid var(--color-dark-gray);
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   vertical-align: text-top;
+  margin-top: 0.25rem;
+  width: 100%;
 }
 
 .contactFormContainer input[type='checkbox'] {
+  float: left;
+  margin: 0.05rem 0.75rem 0 0.5rem;
   width: 1em;
   height: 1em;
   color: var(--color-accent);
 }
 
 .contactFormContainer input[type='checkbox']:hover {
+  cursor: pointer;
+}
+
+.contactFormContainer label[title='current-customer-label']:hover {
   cursor: pointer;
 }
 
@@ -48,6 +62,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 2rem;
 }
 
 .contactFormContainer button svg {

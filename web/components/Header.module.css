@@ -106,6 +106,10 @@
       box-sizing: border-box;
       text-align: right;
 
+      @nest &[data-is-active='true'] {
+        border-bottom: 4px solid var(--color-accent);
+      }
+
       @nest &[data-is-active='true']::before {
         content: '';
         width: 100%;
@@ -122,8 +126,8 @@
     border-bottom: 4px solid var(--color-accent);
   }
 
-  @nest & > a:active {
-    /* background-color: #eff8f3; */
+  @nest .root[data-show-nav='false'] & > a[data-is-active='true'] {
+    border-bottom: 4px solid var(--color-accent);
   }
 
   @nest .root[data-show-nav='true'] & > a[data-is-active='true']::before {
