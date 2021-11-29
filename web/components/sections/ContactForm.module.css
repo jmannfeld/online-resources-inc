@@ -1,0 +1,9 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.contactFormContainer {
+  max-width: var(--width-small);
+  margin: 0 auto;
+  width: max-content;
+  padding: 4rem 0;
+}

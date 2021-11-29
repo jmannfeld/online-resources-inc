@@ -28,6 +28,7 @@ export default {
         { type: 'youtubeEmbed' },
         { type: 'productList' },
         { type: 'teamList' },
+        { type: 'contactForm' },
         { type: 'companyContact' }
       ]
     },

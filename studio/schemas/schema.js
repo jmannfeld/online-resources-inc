@@ -17,6 +17,7 @@ import teamMember from './documents/teamMember';
 
 // Object types
 import address from './objects/address';
+import contactForm from './objects/contactForm';
 import cta from './objects/cta';
 import embedHTML from './objects/embedHTML';
 import figure from './objects/figure';
@@ -48,6 +49,7 @@ export default createSchema({
     // objects
     address,
     companyContact,
+    contactForm,
     cta,
     embedHTML,
     figure,

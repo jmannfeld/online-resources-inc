@@ -29,6 +29,7 @@ function Layout(props) {
           rel="stylesheet"
         ></link>
         <link rel="stylesheet" href="https://use.typekit.net/cqf5prn.css"></link>
+        <link rel="shortcut icon" href="../static/favicon.ico" />
       </Head>
       <div className="container">
         <Header title={title} navItems={mainNavigation} logo={logo} />
