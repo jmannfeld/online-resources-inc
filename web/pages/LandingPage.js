@@ -127,8 +127,8 @@ class LandingPage extends Component {
           }
         ]
       : [];
-    console.log('CONTENT', content);
-    console.log('PRODUCTS', products);
+    // console.log('CONTENT', content);
+    // console.log('PRODUCTS', products);
     return (
       <Layout config={config}>
         <NextSeo

@@ -187,7 +187,6 @@ ProductList.getInitialProps = async ({ props }) => {
   console.log('in initial props');
   const res = await client.fetch(productQuery);
   const json = await res.json();
-  console.log('/PRODUCTS json', json);
   return { ...json };
 };
 
