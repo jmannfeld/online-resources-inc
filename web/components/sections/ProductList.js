@@ -11,6 +11,15 @@ function urlFor(source) {
   return imageUrlBuilder(client).image(source);
 }
 
+function NextLink(props) {
+  const { href, as, key, className, children, ...rest } = props;
+  return (
+    <Link href={href} as={as} key={key} className={className}>
+      <a {...rest}>{children}</a>
+    </Link>
+  );
+}
+
 function ProductList(props) {
   // console.log('ProductList props', props);
   const { name } = props;
@@ -114,7 +123,7 @@ function ProductList(props) {
 
   return (
     <div className={styles.productListContainer}>
-      <h2>{name}</h2>
+      <h1>{name}</h1>
       <div className={styles.filterContainer}>
         <button
           onClick={filterCategories}
@@ -156,14 +165,15 @@ function ProductList(props) {
       <div className={styles.productList}>
         {products.map((product) => {
           return (
-            <Link
+            <NextLink
               href={{
                 pathname: '/ProductPage',
                 query: { slug: product.slug.current }
               }}
               as={`/products/${product.slug.current}`}
               key={product.slug.current}
-              // className={styles.productLink}
+              tabIndex={0}
+              className={styles.productLink}
             >
               <div className={styles.productItem}>
                 <div className={styles.productImageWrapper}>
@@ -175,7 +185,7 @@ function ProductList(props) {
                 </div>
                 {/* <p>{product.description}</p> */}
               </div>
-            </Link>
+            </NextLink>
           );
         })}
       </div>

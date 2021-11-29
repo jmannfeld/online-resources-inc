@@ -32,16 +32,7 @@ export default {
       title: 'Image gallery',
       name: 'gallery',
       type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {
-              type: 'galleryImage'
-            }
-          ]
-        }
-      ]
+      of: [{ type: 'galleryImage' }]
     },
     {
       title: 'Type',

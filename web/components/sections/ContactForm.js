@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './ContactForm.module.css';
+import { FiSend } from 'react-icons/fi';
 
-function ContactForm() {
+function ContactForm(props) {
+  console.log('ContactForm props', props);
+  const { name: formTitle } = props;
   return (
     <div>
-      <a href="/">Link to Home</a>
       <form name="contact" netlify netlify-honeypot="bot-field" hidden>
         <input type="text" name="name" />
         <input type="email" name="email" />
@@ -18,33 +20,43 @@ function ContactForm() {
         action="/"
         className={styles.contactFormContainer}
       >
+        <h2>{formTitle}</h2>
         <input type="hidden" name="form-name" value="Contact Form" />
         <p>
           <label>
-            Your Name: <input type="text" name="name" />
+            Full name <input type="text" name="name" />
           </label>
         </p>
         <p>
           <label>
-            Your Email: <input type="email" name="email" />
+            Company/organization name <input type="text" name="company-name" />
           </label>
         </p>
         <p>
           <label>
-            Your Role:{' '}
-            <select name="role[]" multiple>
-              <option value="leader">Leader</option>
-              <option value="follower">Follower</option>
-            </select>
+            Email <input type="email" name="email" />
           </label>
         </p>
         <p>
           <label>
-            Message: <textarea name="message"></textarea>
+            Phone <input type="tel" name="phone" />
           </label>
         </p>
         <p>
-          <button type="submit">Send</button>
+          <label>
+            I am a current customer <input type="checkbox" name="current-customer" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message <textarea name="message"></textarea>
+          </label>
+        </p>
+        <p>
+          <button type="submit">
+            <span>Send</span>
+            <FiSend />
+          </button>
         </p>
       </form>
     </div>

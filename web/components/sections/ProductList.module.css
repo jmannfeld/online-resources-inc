@@ -35,7 +35,12 @@
 .productList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
+  gap: 1.5em;
+}
+
+.productList a {
+  text-decoration: none;
+  color: var(--dark-gray);
 }
 
 .productItem {
@@ -45,6 +50,7 @@
   border: 2px solid #f3f3f3;
   transition: transform 45ms ease-in-out;
   transform: scale(1);
+  height: 100%;
 }
 
 .productItem:hover {

@@ -10,6 +10,7 @@
   max-width: fit-content;
   transition: transform 45ms ease-in-out;
   transform: scale(1);
+  font-family: 'futura-pt';
 }
 
 .button:hover {
