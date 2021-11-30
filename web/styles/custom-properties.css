@@ -32,7 +32,7 @@
   --font-micro-line-height: calc(12 / 10); /* 12px */
   --font-small-size: calc(14 / var(--unit) * 1rem); /* 14px */
   --font-small-line-height: calc(21 / 14); /* 21px */
-  --font-base-size: 1.1em; /* 16px */
+  --font-base-size: 1.15em; /* 16px */
   --font-base-line-height: calc(24 / var(--unit)); /* 24px */
   --font-large-size: calc(18 / var(--unit) * 1rem); /* 18px */
   --font-large-line-height: calc(27 / 18); /* 27px */
@@ -46,7 +46,7 @@
 
   /* Widths */
   --width-x-small: 20em;
-  --width-smaller: 34em;
+  --width-smaller: 32em;
   --width-small: 40em;
   --width-medium: 60em;
   --width-large: 80em;
