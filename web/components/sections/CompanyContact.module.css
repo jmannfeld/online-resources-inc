@@ -2,10 +2,9 @@
 @import '../../styles/custom-properties.css';
 
 .companyContactContainer {
-  max-width: var(--width-small);
+  max-width: var(--width-smaller);
   margin: 0 auto;
-  width: max-content;
-  padding: 4rem 0;
+  padding: 4rem 0 4rem 0;
 }
 
 .companyContactContainer h3 {
@@ -20,7 +19,14 @@
 }
 
 .companyContactContainer span.companyContactSubHeading {
-  text-transform: uppercase;
-  margin-right: 0.75rem;
-  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.companyContactContainer a {
+  text-decoration: none;
+  color: var(--color-accent);
+}
+
+.companyContactContainer a:hover {
+  text-decoration: underline;
 }

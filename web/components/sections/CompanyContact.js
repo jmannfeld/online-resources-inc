@@ -21,11 +21,11 @@ function CompanyContact(props) {
       <h3>Email</h3>
       <p>
         <span className={styles.companyContactSubHeading}>Sales:</span>
-        {salesEmail}
+        <a href={`mailto:${salesEmail}`}>{salesEmail}</a>
       </p>
       <p>
-        <span className={styles.companyContactSubHeading}>Technical support:</span>
-        {supportEmail}
+        <span className={styles.companyContactSubHeading}>Technical Support:</span>
+        <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
       </p>
       <h3>Address</h3>
       <address>
