@@ -12,9 +12,9 @@ function urlFor(source) {
 }
 
 function NextLink(props) {
-  const { href, as, key, className, children, ...rest } = props;
+  const { href, as, linkKey, className, children, ...rest } = props;
   return (
-    <Link href={href} as={as} key={key} className={className}>
+    <Link href={href} as={as} key={linkKey}>
       <a {...rest}>{children}</a>
     </Link>
   );
@@ -167,7 +167,7 @@ function ProductList(props) {
           return (
             <NextLink
               href={{
-                pathname: '/ProductPage',
+                pathname: '/products/ProductPage',
                 query: { slug: product.slug.current }
               }}
               as={`/products/${product.slug.current}`}
