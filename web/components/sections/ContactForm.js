@@ -1,24 +1,18 @@
 import React from 'react';
-import styles from './ContactForm.module.css';
+import styles from './SubmissionForm.module.css';
 import { FiSend } from 'react-icons/fi';
 
 function ContactForm(props) {
-  console.log('ContactForm props', props);
   const { name: formTitle } = props;
   return (
     <div>
-      <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <textarea name="message"></textarea>
-      </form>
       <form
         name="Contact Form"
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
         action="/"
-        className={styles.contactFormContainer}
+        className={styles.submissionFormContainer}
       >
         <h2>{formTitle}</h2>
         <input type="hidden" name="form-name" value="Contact Form" />
@@ -29,12 +23,12 @@ function ContactForm(props) {
         </p>
         <p>
           <label>
-            Company/organization name <input type="text" name="company-name" />
+            Email <input type="email" name="email" />
           </label>
         </p>
         <p>
           <label>
-            Email <input type="email" name="email" />
+            Company/organization name <input type="text" name="company-name" />
           </label>
         </p>
         <p>

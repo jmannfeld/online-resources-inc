@@ -16,5 +16,11 @@
 
 .companyContactContainer p {
   padding: 0 1.5rem;
-  /* font-size: var(--font-large-size); */
+  font-size: var(--font-base-size);
+}
+
+.companyContactContainer span.companyContactSubHeading {
+  text-transform: uppercase;
+  margin-right: 0.75rem;
+  font-weight: 600;
 }

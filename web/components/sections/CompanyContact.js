@@ -15,11 +15,18 @@ function CompanyContact(props) {
 
   return (
     <div className={styles.companyContactContainer}>
+      <h2>Company Contact</h2>
       <h3>Phone</h3>
       <p>{phone}</p>
       <h3>Email</h3>
-      <p>Sales: {salesEmail}</p>
-      <p>Technical support: {supportEmail}</p>
+      <p>
+        <span className={styles.companyContactSubHeading}>Sales:</span>
+        {salesEmail}
+      </p>
+      <p>
+        <span className={styles.companyContactSubHeading}>Technical support:</span>
+        {supportEmail}
+      </p>
       <h3>Address</h3>
       <address>
         <p>{title}</p>

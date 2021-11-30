@@ -1,5 +1,5 @@
-@import "../styles/custom-media.css";
-@import "../styles/custom-properties.css";
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
 
 .root {
   position: relative;
@@ -36,26 +36,18 @@
   position: relative;
   margin: 0 1.5rem;
   max-width: var(--width-medium);
+  padding-top: 2rem;
 
   @nest & figcaption {
     width: 100%;
     box-sizing: border-box;
-  }
-
-  @media (--media-min-medium) {
-    margin: 0 auto;
-    padding-top: 2rem;
-
-    @nest & figcaption {
-      position: absolute;
-      top: 0;
-    }
   }
 }
 
 .caption {
   width: 100%;
   margin: 0 auto;
+  text-align: center;
   box-sizing: border-box;
 
   @media (--media-min-medium) {
@@ -66,9 +58,9 @@
 .captionBox {
   background-color: var(--color-white);
   border: 1px solid var(--color-black);
-  padding: 1.5rem;
+  padding: 0.75rem;
 
-  @media (--media-min-medium) {
-    max-width: calc((var(--width-small) / 2) - 3rem);
+  @media (--media-min-small) {
+    padding: 0.25rem;
   }
 }

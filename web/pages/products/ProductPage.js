@@ -73,7 +73,7 @@ function ProductPage(props) {
               })}
           </tbody>
         </table>
-        <p>{description}</p>
+        <p className={styles.productDescription}>{description}</p>
       </div>
     </Layout>
   );

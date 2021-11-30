@@ -34,3 +34,8 @@
   max-width: var(--width-medium);
   margin: 0 auto;
 }
+
+.productDescription {
+  max-width: var(--width-small);
+  margin: 0 auto;
+}

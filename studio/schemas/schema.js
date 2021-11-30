@@ -27,6 +27,7 @@ import link from './objects/link';
 import logoImageBlock from './objects/logoImageBlock';
 import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
+import serviceForm from './objects/serviceForm';
 import socialMedia from './objects/socialMedia';
 import techSpecs from './objects/techSpecs';
 
@@ -62,6 +63,7 @@ export default createSchema({
     mailchimp,
     portableText,
     productList,
+    serviceForm,
     simplePortableText,
     siteConfig,
     socialMedia,
