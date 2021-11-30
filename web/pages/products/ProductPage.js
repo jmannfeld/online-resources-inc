@@ -14,7 +14,12 @@ function urlFor(source) {
 function ProductPage(props) {
   const urlPath = useRouter().asPath;
   const { config, products = [] } = props;
+  if (products.length == 0) {
+    console.log('returning early');
+    return;
+  }
   console.log('urlPath', urlPath);
+  console.log('products', products);
   const product = products.filter((prod) => `/products/${prod.slug.current}` === urlPath)[0];
   console.log('PRODUCT DATA:', product);
   if (!product) {
