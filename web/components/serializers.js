@@ -1,3 +1,4 @@
+import BlockContent from '@sanity/block-content-to-react';
 import EmbedHTML from './EmbedHTML';
 import Figure from './Figure';
 import styles from './serializers.module.css';
@@ -10,7 +11,9 @@ const serializers = {
       if (props.node.style === 'blockquote') {
         return <h2 className={styles.customBlockquote}>{props.children}</h2>;
       }
-      return <p>{props.children}</p>;
+
+      // Fall back to default handling
+      return BlockContent.defaultSerializers.types.block(props);
     }
   }
 };
