@@ -2,4 +2,6 @@
 
 .customBlockquote {
   margin-top: 0.25em;
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
 }

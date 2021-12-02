@@ -13,15 +13,17 @@ function TeamList(props) {
 
   return (
     <div className={styles.teamListContainer}>
-      {subtitle && <h2>{subtitle}</h2>}
+      {subtitle && <h2 className={styles.memberPageSubtitle}>{subtitle}</h2>}
       <div className={styles.teamList}>
         {members.map((member) => {
           return (
             <div className={styles.memberItem}>
+              <div>
+                <h3 className={styles.memberName}>{member.name}</h3>
+                <h4 className={styles.memberTitle}>{member.title}</h4>
+                <p className={styles.memberBio}>{member.bio}</p>
+              </div>
               <img className={styles.memberImage} src={urlFor(member.headshot)}></img>
-              <h3 className={styles.memberName}>{member.name}</h3>
-              <h4 className={styles.memberTitle}>{member.title}</h4>
-              <p className={styles.memberBio}>{member.bio}</p>
             </div>
           );
         })}

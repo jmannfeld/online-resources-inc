@@ -12,22 +12,34 @@
 }
 
 .teamListContainer h2 {
-  font-size: var(--font-title3-size);
-  line-height: var(--font-title3-line-height);
-  /* padding: 0 2rem; */
+  max-width: var(--width-small);
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
+  padding: 0 1rem;
 }
 
 .teamList {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
+  grid-template-rows: repeat(3, 1fr);
   max-width: var(--width-small);
   margin: 0 auto;
-  /* width: 100%; */
+}
+
+.memberItem {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  padding: 0.75em 1.5em;
+}
+
+.memberImage {
+  max-width: 100%;
+  max-height: var(--width-x-small);
+  padding: 0.6em 1em 2em 2em;
 }
 
 .memberName {
-  margin-top: 0.5em;
+  margin-top: 0em;
   margin-bottom: 0;
 }
 
@@ -36,4 +48,9 @@
   text-transform: uppercase;
   color: var(--color-gray);
   font-size: smaller;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #094cfa;
 }
