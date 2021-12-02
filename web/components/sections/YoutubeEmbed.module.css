@@ -3,9 +3,11 @@
 
 .youtubeEmbedContainer {
   padding: 2rem 0;
-  max-width: var(--width-medium);
+  max-width: var(--width-small);
   width: 100%;
   margin: 0 auto;
+  padding: 0 1.5 rem;
+  box-sizing: border-box;
 
   @media (--media-min-medium) {
     padding: 4rem 1rem;
@@ -13,47 +15,35 @@
 }
 
 h2.youtubeHeading {
-  max-width: var(--width-medium);
-  width: 100%;
-  margin: 0 auto;
   margin-top: 0.25 em;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
-
-  @media (--media-max-medium) {
-    padding-left: 1.5rem;
-  }
+  padding: 0 1.5rem;
 }
 
 .youtubeFlex {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 2rem;
-  max-width: var(--width-medium);
+  max-width: var(--width-small);
   width: 100%;
   margin: 0 auto;
   margin-top: calc(var(--font-title3-size) - 0.5rem);
 
-  @media (--media-max-medium) {
+  @media (--media-max-small) {
     flex-direction: column;
     margin: 0 auto;
   }
 }
 
 .video {
-  margin-top: 0.5rem;
-  max-width: var(--width-small);
-
-  @media (--media-max-medium) {
-    flex-direction: column;
-    width: 100%;
-  }
+  max-width: 80vw;
+  padding: 0 1.5rem;
+  display: block;
+  margin: 0 auto;
 }
 
 .youtubeText {
-  margin-top: 0;
-
-  @media (--media-max-medium) {
-    padding-left: 1.5rem;
-  }
+  margin: 0;
+  padding: 0 1.5rem;
 }

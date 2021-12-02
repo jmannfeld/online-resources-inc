@@ -1,3 +1,4 @@
+@import '../styles/custom-media.css';
 @import '../styles/custom-properties.css';
 
 .root {
@@ -5,6 +6,8 @@
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
   padding: 2rem 0;
+  max-width: var(--width-small);
+  margin: 0 auto;
 }
 
 .items {
@@ -13,6 +16,12 @@
   justify-content: center;
   margin: 2.5rem 0 0;
   padding: 0;
+
+  @media (--media-max-small) {
+    flex-wrap: wrap;
+    gap: 0.75em;
+    row-gap: 0;
+  }
 }
 
 .item {
@@ -28,7 +37,7 @@
   text-align: center;
 
   @nest & p {
-    margin: 1rem 0 4rem 0;
+    margin: 3rem 2rem 4rem 2rem;
   }
 
   @nest & a {
