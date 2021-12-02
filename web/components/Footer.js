@@ -24,7 +24,7 @@ function Footer(props) {
                       pathname: '/LandingPage',
                       query: { slug: item.slug.current }
                     }}
-                    as={`/${item.slug.current}`}
+                    as={item.slug.current === '/' ? '/' : `/${item.slug.current}`}
                     prefetch
                   >
                     <a data-is-active={isActive ? 'true' : 'false'}>{item.title}</a>
