@@ -21,6 +21,7 @@
 
 .submissionFormContainer select {
   box-sizing: content-box;
+  background-color: transparent;
 }
 
 .submissionFormContainer input,

@@ -31,17 +31,22 @@ function ServiceForm(props) {
         </p>
         <p>
           <label>
+            Phone <input type="tel" name="phone" />
+          </label>
+        </p>
+        <p>
+          <label>
             Company/organization name <input type="text" name="company-name" />
           </label>
         </p>
         <p>
           <label>
             What is the purpose of having your part scanned?
-            <select name="purpose[]">
+            <select name="purpose">
               <option value="">--Select--</option>
               <option value="CAD">Reverse Engineering into CAD</option>
               <option value="Quality Control">Inspection/Analysis/Quality Control</option>
-              <option value="3D">3D Printing</option>
+              <option value="3D Printing">3D Printing</option>
               <option value="Other">Other</option>
             </select>
           </label>
@@ -52,9 +57,9 @@ function ServiceForm(props) {
             <select name="file-type[]">
               <option value="">--Select--</option>
               <option value="STL">STL</option>
-              <option value="PC">Points Cloud</option>
+              <option value="Points Cloud">Points Cloud</option>
               <option value="CAD">CAD model in STEP, IGES, Parasolids</option>
-              <option value="PDF">Inspection report in PDF, HTML, Excel</option>
+              <option value="Inspection report">Inspection report in PDF, HTML, Excel</option>
               <option value="Other">Other</option>
             </select>
           </label>
@@ -70,15 +75,15 @@ function ServiceForm(props) {
             Resources, Inc. office?
             <select name="location[]">
               <option value="">--Select--</option>
-              <option value="Here">On-site</option>
-              <option value="Shipped">Shipped/delivered</option>
+              <option value="On-site">On-site</option>
+              <option value="Shipped/delivered">Shipped/delivered</option>
             </select>
           </label>
         </p>
         <p>
           <label>
             What are the accuracy requirements?
-            <select name="accuracy[]" className="custom-select">
+            <select name="accuracy[]">
               <option value="">--Select--</option>
               <option value=".0005">.0005”</option>
               <option value=".001">.001”</option>
@@ -104,6 +109,11 @@ function ServiceForm(props) {
             Please attach a photo of the part so that we can better understand its scanning
             requirements.
             <input type="file" name="file-upload" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Feel free to leave any additional notes here<textarea name="notes" rows="4"></textarea>
           </label>
         </p>
         <p>
