@@ -70,3 +70,8 @@ input,
 textarea {
   font-family: var(--font-family-sans);
 }
+
+p,
+li {
+  line-height: 1.8;
+}

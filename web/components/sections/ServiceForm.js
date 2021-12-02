@@ -54,7 +54,7 @@ function ServiceForm(props) {
         <p>
           <label>
             What end deliverable file type is required?
-            <select name="file-type[]">
+            <select name="file-type">
               <option value="">--Select--</option>
               <option value="STL">STL</option>
               <option value="Points Cloud">Points Cloud</option>
@@ -73,7 +73,7 @@ function ServiceForm(props) {
           <label>
             Is this a request for on-site scanning or can the items be shipped/delivered to Online
             Resources, Inc. office?
-            <select name="location[]">
+            <select name="location">
               <option value="">--Select--</option>
               <option value="On-site">On-site</option>
               <option value="Shipped/delivered">Shipped/delivered</option>
@@ -83,7 +83,7 @@ function ServiceForm(props) {
         <p>
           <label>
             What are the accuracy requirements?
-            <select name="accuracy[]">
+            <select name="accuracy">
               <option value="">--Select--</option>
               <option value=".0005">.0005”</option>
               <option value=".001">.001”</option>
