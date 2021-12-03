@@ -69,9 +69,9 @@ module.exports = withImages(
         const nextRoutes = {
           // '/products/slug': { page: '/products/ProductPage' },
           // Routes imported from sanity
-          ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {}),
-          '/admin': { page: '/AdminPage' }
+          ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {})
         };
+        // '/admin': { page: '/AdminPage' }
 
         // Routes for product pages
         products.forEach((slug) => {
