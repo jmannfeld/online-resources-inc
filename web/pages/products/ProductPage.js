@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import styles from './ProductPage.module.css';
 import imageUrlBuilder from '@sanity/image-url';
 import client from '../../client';
+import SimpleBlockContent from '../../components/SimpleBlockContent';
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
@@ -78,7 +79,11 @@ function ProductPage(props) {
               })}
           </tbody>
         </table>
-        <p className={styles.productDescription}>{description}</p>
+        {description && (
+          <p className={styles.productDescription}>
+            <SimpleBlockContent blocks={description} />
+          </p>
+        )}
       </div>
     </Layout>
   );

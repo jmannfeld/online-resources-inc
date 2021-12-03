@@ -27,7 +27,11 @@ function Hero(props) {
       <div className={isHomepage ? styles.content + ' ' + styles.homepageBanner : styles.content}>
         <h1 className={styles.title}>{heading}</h1>
         {subheading && <h2 className={styles.subtitle}>{subheading}</h2>}
-        <div className={styles.tagline}>{tagline && <SimpleBlockContent blocks={tagline} />}</div>
+        {tagline && (
+          <div className={styles.tagline}>
+            <SimpleBlockContent blocks={tagline} />
+          </div>
+        )}
         {ctas && (
           <div className={isHomepage ? styles.ctas + ' ' + styles.homepageBanner : styles.ctas}>
             {ctas.map((cta) => (
