@@ -9,9 +9,14 @@ export default {
       type: 'string'
     },
     {
+      title: 'Subheading',
+      name: 'subheading',
+      type: 'string'
+    },
+    {
       title: 'Tagline',
       name: 'tagline',
-      type: 'simplePortableText'
+      type: 'portableText'
     },
     {
       title: 'Background image',
