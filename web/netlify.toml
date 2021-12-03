@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/admin"
-  to = "https://online-resources-inc-studio.netlify.app/"
-  status = 301
-  force = true
+from = "/admin"
+to = "https://online-resources-inc-studio.netlify.app/"
+status = 301
+force = true
