@@ -61,9 +61,10 @@ h5,
 h6,
 label,
 button {
-  font-family: 'futura-pt';
-  /* font-family: 'Inconsolata'; */
-  /* font-family: 'Cairo'; */
+  /* font-family: 'futura-pt-bold'; */
+  font-family: fairplex-wide, serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 input,
@@ -74,4 +75,13 @@ textarea {
 p,
 li {
   line-height: 1.8;
+}
+
+::selection {
+  background: var(--color-accent); /* WebKit/Blink Browsers */
+  color: white;
+}
+::-moz-selection {
+  background: var(--color-accent); /* Gecko Browsers */
+  color: white;
 }
