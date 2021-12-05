@@ -46,6 +46,7 @@ class App extends BaseApp {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
       // console.log('pageProps', pageProps);
+      // adds commit
     }
 
     // Add site config from sanity
