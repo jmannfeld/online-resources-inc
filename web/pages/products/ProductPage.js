@@ -15,12 +15,13 @@ function urlFor(source) {
 function ProductPage(props) {
   const urlPath = useRouter().asPath;
   const { config, products = [] } = props;
+  console.log('ProductPage props', props);
   // if (products.length == 0) {
   //   console.log('returning early');
   //   return;
   // }
   console.log('urlPath', urlPath);
-  console.log('products', products);
+  // console.log('products', products);
   const product = products.filter((prod) => `/products/${prod.slug.current}` === urlPath)[0];
   console.log('PRODUCT DATA:', product);
   if (!product) {
@@ -80,9 +81,9 @@ function ProductPage(props) {
           </tbody>
         </table>
         {description && (
-          <p className={styles.productDescription}>
+          <div className={styles.productDescription}>
             <SimpleBlockContent blocks={description} />
-          </p>
+          </div>
         )}
       </div>
     </Layout>

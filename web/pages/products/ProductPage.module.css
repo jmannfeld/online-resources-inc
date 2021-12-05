@@ -4,6 +4,7 @@
 .productPageContainer {
   max-width: var(--width-medium);
   margin: 0 auto;
+  margin-top: 7.25em;
 }
 
 .productName {

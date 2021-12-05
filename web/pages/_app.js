@@ -42,12 +42,10 @@ const productQuery = groq`
 class App extends BaseApp {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
-    console.log('app getInitialProps');
 
     if (Component.getInitialProps) {
-      console.log('component has initial props');
       pageProps = await Component.getInitialProps(ctx);
-      console.log('pageProps', pageProps);
+      // console.log('pageProps', pageProps);
     }
 
     // Add site config from sanity

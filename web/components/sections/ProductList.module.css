@@ -4,6 +4,7 @@
 .productListContainer {
   max-width: var(--width-small);
   margin: 0 auto;
+  margin-top: 7.25em;
 }
 
 .filterContainer {
