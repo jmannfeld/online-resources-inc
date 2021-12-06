@@ -1,6 +1,9 @@
+const withPlugins = require('next-compose-plugins');
 const withCSS = require('@zeit/next-css');
 const withImages = require('next-images');
 const client = require('./client');
+
+const withTM = require('next-transpile-modules')(['react-image-gallery']);
 
 const isProduction = process.env.NODE_ENV === 'production';
 const routeQuery = `
@@ -51,40 +54,149 @@ const reduceRoutes = (obj, route) => {
 //   return entries;
 // };
 
-module.exports = withImages(
-  withCSS({
-    cssModules: true,
-    cssLoaderOptions: {
-      importLoaders: 1,
-      localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]',
-      url: false
-    },
-    exportPathMap: async function () {
-      const products = await client.fetch(productQuery).then((res) => {
-        const productArray = res;
-        return productArray;
-      });
+// module.exports = withImages(
+//   withCSS({
+//     cssModules: true,
+//     cssLoaderOptions: {
+//       importLoaders: 1,
+//       localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]',
+//       url: false
+//     },
+//     exportPathMap: async function () {
+//       const products = await client.fetch(productQuery).then((res) => {
+//         const productArray = res;
+//         return productArray;
+//       });
 
-      return client.fetch(routeQuery).then((res) => {
-        const { routes = [] } = res;
-        const nextRoutes = {
-          // '/products/slug': { page: '/products/ProductPage' },
-          // Routes imported from sanity
-          ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {})
-        };
-        // '/admin': { page: '/AdminPage' }
+//       return client.fetch(routeQuery).then((res) => {
+//         const { routes = [] } = res;
+//         const nextRoutes = {
+//           // '/products/slug': { page: '/products/ProductPage' },
+//           // Routes imported from sanity
+//           ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {})
+//         };
+//         // '/admin': { page: '/AdminPage' }
 
-        // Routes for product pages
-        products.forEach((slug) => {
-          nextRoutes[`/products/${slug}`] = {
-            page: '/products/ProductPage',
-            query: { slug: slug },
-            includeInSitemap: true
-          };
-        });
-        console.log('nextRoutes', nextRoutes);
-        return nextRoutes;
-      });
-    }
-  })
+//         // Routes for product pages
+//         products.forEach((slug) => {
+//           nextRoutes[`/products/${slug}`] = {
+//             page: '/products/ProductPage',
+//             query: { slug: slug },
+//             includeInSitemap: true
+//           };
+//         });
+//         console.log('nextRoutes', nextRoutes);
+//         return nextRoutes;
+//       });
+//     }
+//   }),
+//   withTM({})
+// );
+
+// module.exports = withPlugins([
+//   [
+//     withCSS,
+//     {
+//       cssModules: true,
+//       cssLoaderOptions: {
+//         importLoaders: 1,
+//         localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]',
+//         url: false
+//       },
+//       exportPathMap: async function () {
+//         const products = await client.fetch(productQuery).then((res) => {
+//           const productArray = res;
+//           return productArray;
+//         });
+
+//         return client.fetch(routeQuery).then((res) => {
+//           const { routes = [] } = res;
+//           const nextRoutes = {
+//             // '/products/slug': { page: '/products/ProductPage' },
+//             // Routes imported from sanity
+//             ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {})
+//           };
+//           // '/admin': { page: '/AdminPage' }
+
+//           // Routes for product pages
+//           products.forEach((slug) => {
+//             nextRoutes[`/products/${slug}`] = {
+//               page: '/products/ProductPage',
+//               query: { slug: slug },
+//               includeInSitemap: true
+//             };
+//           });
+//           console.log('nextRoutes', nextRoutes);
+//           return nextRoutes;
+//         });
+//       }
+//     }
+//   ],
+//   withImages,
+//   [
+//     withTM,
+//     {
+//       transpileModules: ['react-image-gallery']
+//     }
+//   ]
+// ]);
+
+const nextConfig = {
+  trailingSlash: false
+};
+
+module.exports = withPlugins(
+  [
+    // add a plugin with specific configuration
+    [
+      withCSS,
+      {
+        cssModules: true,
+        cssLoaderOptions: {
+          importLoaders: 1,
+          localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]',
+          url: false
+        },
+        exportPathMap: async function () {
+          const products = await client.fetch(productQuery).then((res) => {
+            const productArray = res;
+            return productArray;
+          });
+
+          return client.fetch(routeQuery).then((res) => {
+            const { routes = [] } = res;
+            const nextRoutes = {
+              // '/products/slug': { page: '/products/ProductPage' },
+              // Routes imported from sanity
+              ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {})
+            };
+            // '/admin': { page: '/AdminPage' }
+
+            // Routes for product pages
+            products.forEach((slug) => {
+              nextRoutes[`/products/${slug}`] = {
+                page: '/products/ProductPage',
+                query: { slug: slug },
+                includeInSitemap: true
+              };
+            });
+            console.log('nextRoutes', nextRoutes);
+            return nextRoutes;
+          });
+        }
+      }
+    ],
+
+    // add a plugin without a configuration
+    withImages,
+
+    // another plugin with a configuration
+    [
+      withTM,
+      {
+        transpileModules: ['react-image-gallery']
+      }
+    ]
+  ],
+  nextConfig
 );
