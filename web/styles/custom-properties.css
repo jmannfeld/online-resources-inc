@@ -6,7 +6,7 @@
   /* --font-family-sans: 'Quicksand'; */
   /* --font-family-sans: 'Inconsolata'; */
   /* --font-family-sans: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; */
-  --font-family-sans: 'apparat';
+  --font-family-sans: 'apparat', sans-serif;
   font-weight: 300;
   font-style: normal;
 
@@ -65,9 +65,10 @@ h6,
 label,
 button {
   /* font-family: 'futura-pt-bold'; */
-  font-family: fairplex-wide, serif;
-  font-weight: 700;
-  font-style: normal;
+  /* font-family: fairplex-wide, serif; */
+  /* font-weight: 700; */
+  /* font-style: normal; */
+  font-family: 'Fjalla One', sans-serif;
 }
 
 input,

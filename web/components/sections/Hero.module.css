@@ -71,10 +71,11 @@
 
 .homepageBanner h1 {
   white-space: nowrap;
+  font-size: 4em;
 }
 
 .homepageBanner h2 {
-  font-size: var(--font-title2-size);
+  font-size: 2em;
   line-height: var(--font-title2-line-height);
   color: var(--color-light-gray);
 }
