@@ -59,12 +59,9 @@
   margin-top: 0.5em;
   margin-bottom: 1rem;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  font-family: apparat, sans-serif;
   font-weight: 500;
-
-  @media (--media-min-medium) {
-    font-size: var(--font-small-size);
-    line-height: var(--font-small-line-height);
-  }
+  /* color: var(--color-very-light-gray); */
 }
 
 .homepageBanner {
@@ -74,17 +71,31 @@
 
 .homepageBanner h1 {
   white-space: nowrap;
+  font-size: 3.75em;
+  @media (--media-max-medium) {
+    font-size: 3em;
+  }
+  @media (--media-max-small) {
+    font-size: 2em;
+  }
 }
 
 .homepageBanner h2 {
-  font-size: var(--font-title2-size);
+  font-size: 2em;
   line-height: var(--font-title2-line-height);
   color: var(--color-light-gray);
+  @media (--media-max-medium) {
+    font-size: 1.5em;
+  }
+  @media (--media-max-small) {
+    font-size: 1.25em;
+  }
 }
 
 .homepageBanner h3 {
-  font-family: 'Cairo';
+  font-family: apparat, sans-serif;
   margin-bottom: 0.5em;
+  font-weight: 500;
 }
 
 .homepageBanner ul {
@@ -94,7 +105,9 @@
   flex-direction: column;
   justify-content: center;
   display: inline-block;
-  font-family: 'Cairo';
+  font-family: apparat, sans-serif;
+  font-weight: 500;
+  font-style: normal;
   list-style-type: circle;
 }
 
@@ -105,7 +118,11 @@
 .homepageBanner .tagline {
   margin: 0;
   justify-content: center;
-  max-width: var(--width-small);
+
+  @media (--media-min-medium) {
+    font-size: var(--font-small-size);
+    line-height: var(--font-small-line-height);
+  }
 }
 
 .ctas {

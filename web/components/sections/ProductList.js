@@ -65,42 +65,42 @@ function ProductList(props) {
     setCategoryList(categoryList);
   };
 
-  const filterIndustries = () => {
-    setIndustryButtonText(industryList[0]);
+  // const filterIndustries = () => {
+  //   setIndustryButtonText(industryList[0]);
 
-    if (industryList[0] === 'All industries') {
-      setProducts(props.products);
-    }
+  //   if (industryList[0] === 'All industries') {
+  //     setProducts(props.products);
+  //   }
 
-    if (!industryButtonText) {
-      console.log('props.producys', props.products);
-      const filtered = props.products.filter((product) => {
-        if (product.industries) {
-          if (product.industries.includes('Education')) console.log('industry found');
-          return true;
-        }
-        return;
-      });
-      console.log('filtered', filtered);
-      setProducts(filtered);
-    }
-    if (industryButtonText && industryList[0] !== 'All industries') {
-      const filtered = props.products.filter((product) => {
-        if (product.industries) {
-          if (product.industries.includes(industryList[0])) {
-            console.log('industry found');
-            return true;
-          }
-        }
-        return false;
-      });
-      console.log('filtered', filtered);
-      setProducts(filtered);
-    }
-    industryList.push(industryList.shift());
-    setIndustryList(industryList);
-    console.log('industryList', industryList);
-  };
+  //   if (!industryButtonText) {
+  //     console.log('props.producys', props.products);
+  //     const filtered = props.products.filter((product) => {
+  //       if (product.industries) {
+  //         if (product.industries.includes('Education')) console.log('industry found');
+  //         return true;
+  //       }
+  //       return;
+  //     });
+  //     console.log('filtered', filtered);
+  //     setProducts(filtered);
+  //   }
+  //   if (industryButtonText && industryList[0] !== 'All industries') {
+  //     const filtered = props.products.filter((product) => {
+  //       if (product.industries) {
+  //         if (product.industries.includes(industryList[0])) {
+  //           console.log('industry found');
+  //           return true;
+  //         }
+  //       }
+  //       return false;
+  //     });
+  //     console.log('filtered', filtered);
+  //     setProducts(filtered);
+  //   }
+  //   industryList.push(industryList.shift());
+  //   setIndustryList(industryList);
+  //   console.log('industryList', industryList);
+  // };
 
   const filterTypes = () => {
     setTypeButtonText(typeList[0]);
@@ -137,7 +137,7 @@ function ProductList(props) {
             ? `${filterButtonText} (${products.length})`
             : `All categories (${categoryList.length - 1})`}
         </button>
-        <button
+        {/* <button
           onClick={filterIndustries}
           className={
             !industryButtonText || industryButtonText === 'All industries'
@@ -148,7 +148,7 @@ function ProductList(props) {
           {industryButtonText
             ? `${industryButtonText} (${products.length})`
             : `All industries (${industryList.length - 1})`}
-        </button>
+        </button> */}
         <button
           onClick={filterTypes}
           className={
@@ -177,10 +177,12 @@ function ProductList(props) {
             >
               <div className={styles.productItem}>
                 <div className={styles.productImageWrapper}>
-                  <img
-                    className={styles.productImage}
-                    src={product.image ? urlFor(product.image) : '../static/logo.png'}
-                  ></img>
+                  <div className={styles.imageCenter}>
+                    <img
+                      className={styles.productImage}
+                      src={product.image ? urlFor(product.image) : '../static/logo.png'}
+                    ></img>
+                  </div>
                   <h3 className={styles.productName}>{product.name}</h3>
                 </div>
                 {/* <p>{product.description}</p> */}

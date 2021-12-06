@@ -2,16 +2,26 @@
 @import '../../styles/custom-properties.css';
 
 .productPageContainer {
-  max-width: var(--width-medium);
+  max-width: var(--width-small);
   margin: 0 auto;
+  margin-top: 8em;
+}
+
+.productNameWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .productName {
-  margin-bottom: 0;
+  margin: 0;
+  font-size: 2.5em;
+  line-height: 1em;
 }
 
 .manufacturerName {
   margin: 0;
+  color: var(--color-gray);
 }
 
 .productTags {
@@ -19,23 +29,33 @@
   flex-direction: row;
   gap: 2em;
   justify-content: flex-end;
+  align-items: center;
+  margin-top: -1em;
 }
 
 .productTags p {
   background-color: #251659;
+  margin: 0;
   padding: 0.75em 1.25em;
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
   color: var(--color-dark-gray);
   color: white;
+  white-space: nowrap;
 }
 
 .productImage {
-  max-width: var(--width-medium);
+  max-width: var(--width-small);
   margin: 0 auto;
+  margin-top: 2em;
+  border: 2px solid var(--color-accent);
 }
 
 .productDescription {
   max-width: var(--width-small);
   margin: 0 auto;
+}
+
+.imageGallery {
+  max-width: var(--width-small);
 }
