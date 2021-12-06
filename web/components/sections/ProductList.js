@@ -44,26 +44,26 @@ function ProductList(props) {
   const [typeButtonText, setTypeButtonText] = useState('');
   const [typeList, setTypeList] = useState(['Hardware', 'Software', 'All types']);
 
-  // const filterCategories = () => {
-  //   setFilterButtonText(categoryList[0]);
+  const filterCategories = () => {
+    setFilterButtonText(categoryList[0]);
 
-  //   if (categoryList[0] === 'All categories') {
-  //     setProducts(props.products);
-  //   }
+    if (categoryList[0] === 'All categories') {
+      setProducts(props.products);
+    }
 
-  //   if (!filterButtonText) {
-  //     const filtered = props.products.filter((product) => product.category.name === '3D Scanners');
-  //     setProducts(filtered);
-  //   }
-  //   if (filterButtonText && categoryList[0] !== 'All categories') {
-  //     const filtered = props.products.filter(
-  //       (product) => product.category.name === categoryList[0]
-  //     );
-  //     setProducts(filtered);
-  //   }
-  //   categoryList.push(categoryList.shift());
-  //   setCategoryList(categoryList);
-  // };
+    if (!filterButtonText) {
+      const filtered = props.products.filter((product) => product.category.name === '3D Scanners');
+      setProducts(filtered);
+    }
+    if (filterButtonText && categoryList[0] !== 'All categories') {
+      const filtered = props.products.filter(
+        (product) => product.category.name === categoryList[0]
+      );
+      setProducts(filtered);
+    }
+    categoryList.push(categoryList.shift());
+    setCategoryList(categoryList);
+  };
 
   // const filterIndustries = () => {
   //   setIndustryButtonText(industryList[0]);
@@ -102,31 +102,31 @@ function ProductList(props) {
   //   console.log('industryList', industryList);
   // };
 
-  // const filterTypes = () => {
-  //   setTypeButtonText(typeList[0]);
+  const filterTypes = () => {
+    setTypeButtonText(typeList[0]);
 
-  //   if (typeList[0] === 'All types') {
-  //     setProducts(props.products);
-  //   }
+    if (typeList[0] === 'All types') {
+      setProducts(props.products);
+    }
 
-  //   if (!typeButtonText) {
-  //     const filtered = props.products.filter((product) => product.type === 'Hardware');
-  //     setProducts(filtered);
-  //   }
-  //   if (typeButtonText && typeList[0] !== 'All types') {
-  //     const filtered = props.products.filter((product) => product.type === typeList[0]);
-  //     setProducts(filtered);
-  //   }
-  //   typeList.push(typeList.shift());
-  //   setTypeList(typeList);
-  // };
+    if (!typeButtonText) {
+      const filtered = props.products.filter((product) => product.type === 'Hardware');
+      setProducts(filtered);
+    }
+    if (typeButtonText && typeList[0] !== 'All types') {
+      const filtered = props.products.filter((product) => product.type === typeList[0]);
+      setProducts(filtered);
+    }
+    typeList.push(typeList.shift());
+    setTypeList(typeList);
+  };
 
   return (
     <div className={styles.productListContainer}>
       <h1>{name}</h1>
       <div className={styles.filterContainer}>
         <button
-          onClick={null}
+          onClick={filterCategories}
           className={
             !filterButtonText || filterButtonText === 'All categories'
               ? styles.filterButton
@@ -137,8 +137,8 @@ function ProductList(props) {
             ? `${filterButtonText} (${products.length})`
             : `All categories (${categoryList.length - 1})`}
         </button>
-        <button
-          onClick={null}
+        {/* <button
+          onClick={filterIndustries}
           className={
             !industryButtonText || industryButtonText === 'All industries'
               ? styles.filterButton
@@ -148,9 +148,9 @@ function ProductList(props) {
           {industryButtonText
             ? `${industryButtonText} (${products.length})`
             : `All industries (${industryList.length - 1})`}
-        </button>
+        </button> */}
         <button
-          onClick={null}
+          onClick={filterTypes}
           className={
             !typeButtonText || typeButtonText === 'All types'
               ? styles.filterButton
@@ -177,10 +177,12 @@ function ProductList(props) {
             >
               <div className={styles.productItem}>
                 <div className={styles.productImageWrapper}>
-                  <img
-                    className={styles.productImage}
-                    src={product.image ? urlFor(product.image) : '../static/logo.png'}
-                  ></img>
+                  <div className={styles.imageCenter}>
+                    <img
+                      className={styles.productImage}
+                      src={product.image ? urlFor(product.image) : '../static/logo.png'}
+                    ></img>
+                  </div>
                   <h3 className={styles.productName}>{product.name}</h3>
                 </div>
                 {/* <p>{product.description}</p> */}

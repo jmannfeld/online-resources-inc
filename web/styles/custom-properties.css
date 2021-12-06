@@ -5,7 +5,10 @@
   /* --font-family-sans: 'Open Sans'; */
   /* --font-family-sans: 'Quicksand'; */
   /* --font-family-sans: 'Inconsolata'; */
-  --font-family-sans: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* --font-family-sans: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; */
+  --font-family-sans: 'apparat';
+  font-weight: 300;
+  font-style: normal;
 
   --color-black: #404040;
   --color-dark-gray: #262626;

@@ -17,7 +17,7 @@ function TeamList(props) {
       <div className={styles.teamList}>
         {members.map((member) => {
           return (
-            <div className={styles.memberItem}>
+            <div className={styles.memberItem} key={member.name}>
               <div>
                 <h3 className={styles.memberName}>{member.name}</h3>
                 <h4 className={styles.memberTitle}>{member.title}</h4>

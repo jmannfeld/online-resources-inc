@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import NextSeo from 'next-seo';
-import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
-import styles from './ProductPage.module.css';
+import ImageGallery from 'react-image-gallery';
 import imageUrlBuilder from '@sanity/image-url';
+import Layout from '../../components/Layout';
+import styles from './ProductPage.module.css';
 import client from '../../client';
 import SimpleBlockContent from '../../components/SimpleBlockContent';
 
@@ -13,30 +14,44 @@ function urlFor(source) {
 }
 
 function ProductPage(props) {
-  const urlPath = useRouter().asPath;
   const { config, products = [] } = props;
-  console.log('ProductPage props', props);
-  // if (products.length == 0) {
-  //   console.log('returning early');
-  //   return;
-  // }
-  console.log('urlPath', urlPath);
-  // console.log('products', products);
+  let urlPath = useRouter().asPath;
+
+  // fix bug if trailing slash is added to url
+  if (urlPath.at(-1) === '/') {
+    urlPath = urlPath.slice(0, -1);
+  }
+
+  // filter for current product
   const product = products.filter((prod) => `/products/${prod.slug.current}` === urlPath)[0];
   console.log('PRODUCT DATA:', product);
+
   if (!product) {
     console.log('RETURNING NULL FOR:', urlPath);
     return null;
   }
+
   const {
     name,
     type,
     description,
-    image,
+    mainImage,
+    galleryImages,
     manufacturer: { name: manufacturer } = '',
     category: { name: category } = '',
     techSpecs = {}
   } = product;
+
+  let listForGallery;
+  if (galleryImages) {
+    listForGallery = galleryImages.map((image) => ({
+      original: image,
+      thumbnail: image,
+      originalHeight: '200px',
+      thumbnailHeight: '200px'
+    }));
+    console.log('listForGallery', listForGallery);
+  }
   return (
     <Layout config={config}>
       <NextSeo
@@ -46,26 +61,31 @@ function ProductPage(props) {
           description,
           canonical: config.url && `${config.url}/${product.slug.current}`,
           openGraph: {
-            images: image
+            images: mainImage
           },
           noindex: false
         }}
       />
       <div className={styles.productPageContainer}>
-        <h1 className={styles.productName}>{name}</h1>
-        <p className={styles.manufacturerName}>{manufacturer}</p>
-        <div className={styles.productTags}>
-          <p>
-            {category.slice(-1) === 's' ? category.substring(0, category.length - 1) : category}
-          </p>
-          <p>{type}</p>
+        <div className={styles.productNameWrapper}>
+          <div>
+            <h1 className={styles.productName}>{name}</h1>
+            <p className={styles.manufacturerName}>{manufacturer}</p>
+          </div>
+          <div className={styles.productTags}>
+            <p>
+              {category.slice(-1) === 's' ? category.substring(0, category.length - 1) : category}
+            </p>
+            <p>{type}</p>
+          </div>
         </div>
-        {image && (
+        {/* {mainImage && (
           <img
             className={styles.productImage}
-            src={image ? urlFor(image) : '../static/logo.png'}
+            src={mainImage ? urlFor(mainImage) : '../static/logo.png'}
           ></img>
-        )}
+        )} */}
+        {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />}
         <table>
           <tbody>
             {techSpecs &&
@@ -91,6 +111,11 @@ function ProductPage(props) {
 }
 
 ProductPage.getInitialProps = async ({ props }) => {
+  console.log('ProductPage props', props);
+  // const listForGallery = props.galleryImages.map((image) => ({
+  //   originial: image,
+  //   thumbnail: image
+  // }));
   return { ...props };
 };
 // ProductPage.propTypes = {

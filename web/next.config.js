@@ -56,7 +56,8 @@ module.exports = withImages(
     cssModules: true,
     cssLoaderOptions: {
       importLoaders: 1,
-      localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]'
+      localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]',
+      url: false
     },
     exportPathMap: async function () {
       const products = await client.fetch(productQuery).then((res) => {

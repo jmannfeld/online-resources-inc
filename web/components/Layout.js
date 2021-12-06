@@ -25,11 +25,11 @@ function Layout(props) {
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600&display=swap"
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"></link>
+        {/* <link
+          href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap"
           rel="stylesheet"
-        ></link>
+        ></link> */}
         <link rel="stylesheet" href="https://use.typekit.net/cqf5prn.css"></link>
         <link rel="shortcut icon" href="../static/favicon.ico" />
       </Head>
