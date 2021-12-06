@@ -71,13 +71,25 @@
 
 .homepageBanner h1 {
   white-space: nowrap;
-  font-size: 4em;
+  font-size: 3.75em;
+  @media (--media-max-medium) {
+    font-size: 3em;
+  }
+  @media (--media-max-small) {
+    font-size: 2em;
+  }
 }
 
 .homepageBanner h2 {
   font-size: 2em;
   line-height: var(--font-title2-line-height);
   color: var(--color-light-gray);
+  @media (--media-max-medium) {
+    font-size: 1.5em;
+  }
+  @media (--media-max-small) {
+    font-size: 1.25em;
+  }
 }
 
 .homepageBanner h3 {
