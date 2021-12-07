@@ -33,7 +33,7 @@
 .industryImage {
   max-width: 100%;
   max-height: var(--width-x-small);
-  border-radius: 5px;
+  border-radius: 2px;
   margin-top: 0.4em;
 }
 

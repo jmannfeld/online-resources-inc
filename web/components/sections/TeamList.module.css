@@ -36,6 +36,7 @@
   max-width: 100%;
   max-height: var(--width-x-small);
   padding: 0.6em 1em 2em 2em;
+  border-radius: 2px;
 }
 
 .memberName {

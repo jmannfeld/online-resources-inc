@@ -22,7 +22,7 @@ body,
 
 :global(.content) {
   min-height: calc(100% - 84px - 218px);
-  margin-top: 100px;
+  margin-top: calc(100px + 2.5em);
 }
 
 section h3 {
