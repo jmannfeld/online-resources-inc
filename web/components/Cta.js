@@ -7,13 +7,14 @@ function cta(props) {
   const { title, route, link } = props;
 
   if (route && route.slug && route.slug.current) {
+    const isServiceForm = route.slug.current.toLowerCase() === 'services';
     return (
       <Link
         href={{
           pathname: '/LandingPage',
           query: { slug: route.slug.current }
         }}
-        as={`/${route.slug.current}`}
+        as={isServiceForm ? `/${route.slug.current}#service-form` : `/${route.slug.current}`}
       >
         <a className={styles.button}>{title}</a>
       </Link>

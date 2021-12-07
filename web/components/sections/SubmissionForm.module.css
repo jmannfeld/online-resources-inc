@@ -45,7 +45,16 @@
 .submissionFormContainer h2 {
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-  margin-top: 0.75em;
+  margin-top: 0.25em;
+}
+
+.submissionFormContainer h2.serviceMargin::before {
+  display: block;
+  content: ' ';
+  margin-top: -200px;
+  height: 200px;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .submissionFormContainer label {
@@ -132,4 +141,9 @@
 
 .submissionFormContainer button:active {
   transform: scale(0.99);
+}
+
+div#service-form {
+  margin-top: -400px;
+  padding-top: 400px;
 }

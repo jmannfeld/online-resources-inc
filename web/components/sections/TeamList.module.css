@@ -15,7 +15,10 @@
   max-width: var(--width-small);
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-  padding: 0 1rem;
+  padding: 0 3.25rem;
+  @media (--media-max-medium) {
+    padding: 0 1.25rem;
+  }
 }
 
 .teamList {
@@ -23,20 +26,31 @@
   grid-template-rows: repeat(3, 1fr);
   max-width: var(--width-small);
   margin: 0 auto;
+  @media (--media-max-large) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .memberItem {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: start;
   margin: 0 auto;
   padding: 0.75em 1.5em;
+  @media (--media-max-medium) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .memberImage {
   max-width: 100%;
   max-height: var(--width-x-small);
-  padding: 0.6em 1em 2em 2em;
-  border-radius: 2px;
+  margin: 0.3em 2em 2em 2em;
+  outline: 4px solid var(--color-gray);
+  @media (--media-max-medium) {
+    margin-left: 0;
+    margin-bottom: 0.5em;
+  }
 }
 
 .memberName {

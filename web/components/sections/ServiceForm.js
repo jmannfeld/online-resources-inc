@@ -16,7 +16,9 @@ function ServiceForm(props) {
         action="/"
         className={styles.submissionFormContainer}
       >
-        <h2 id="service-form">{heading}</h2>
+        <h2 id="service-form" className={styles.serviceMargin}>
+          {heading}
+        </h2>
         <p>{subheading}</p>
         <input type="hidden" name="form-name" value="Service Form" />
         <div className={styles.serviceFormInputs}>

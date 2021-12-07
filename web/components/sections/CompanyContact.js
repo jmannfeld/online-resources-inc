@@ -22,7 +22,7 @@ function CompanyContact(props) {
           width="100%"
           height="500"
           style={{ border: '3px solid var(--color-accent)' }}
-          allowfullscreen=""
+          allowFullScreen=""
           loading="lazy"
         ></iframe>
       </div>
