@@ -97,6 +97,7 @@ class App extends BaseApp {
             if (products && pageProps) {
               pageProps.products = products;
             }
+            return { pageProps };
           })
         )
     );
