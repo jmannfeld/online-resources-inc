@@ -59,6 +59,7 @@ module.exports = withImages(
       localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]',
       url: false
     },
+    trailingSlash: false,
     exportPathMap: async function () {
       const products = await client.fetch(productQuery).then((res) => {
         const productArray = res;

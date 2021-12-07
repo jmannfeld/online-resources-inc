@@ -59,6 +59,22 @@ class App extends BaseApp {
       // adds commit
     }
 
+    // hacky way to remove trailing slash
+    if (ctx.req && !ctx.req.url === '/') {
+      const pathAndQueryDivided = ctx.req.url.split('?');
+      if (pathAndQueryDivided[0].endsWith('/')) {
+        const urlWithoutEndingSlash = pathAndQueryDivided[0].replace(/\/*$/gim, '');
+
+        ctx.res.writeHead(301, {
+          Location:
+            urlWithoutEndingSlash +
+            (pathAndQueryDivided.length > 1 ? `?${pathAndQueryDivided[1]}` : '')
+        });
+        ctx.res.end();
+        return {};
+      }
+    }
+
     // Add site config from sanity
     return (
       client
