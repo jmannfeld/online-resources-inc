@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './SubmissionForm.module.css';
 import { FiSend } from 'react-icons/fi';
+import CompanyContact from './CompanyContact';
 
 function ContactForm(props) {
-  const { name: formTitle } = props;
+  const { name: formTitle, config } = props;
   return (
-    <div>
+    <div className={styles.submissionFormWrapper}>
+      <CompanyContact config={config} />
       <form
         name="Contact Form"
         method="POST"

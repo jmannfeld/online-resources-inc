@@ -1,13 +1,41 @@
 @import '../../styles/custom-media.css';
 @import '../../styles/custom-properties.css';
 
-.companyContactContainer {
-  max-width: var(--width-smaller);
-  margin: 0 auto;
-  padding: 4rem 0 4rem 0;
+.companyContactWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  border-right: 2px solid #f3f3f3;
+  @media (--media-max-large) {
+    margin: 0 auto;
+    border-right: none;
+    padding: 0;
+    max-width: var(--width-small);
+  }
+}
+
+.companyContactWrapper h3 {
+  margin-top: 1em;
+  font-weight: 400;
+  font-family: 'apparat';
+  @media (--media-max-large) {
+    margin-top: 2.5em;
+  }
 }
 
 .companyContactContainer h3 {
+  margin-top: 3em;
+  @media (--media-max-large) {
+    margin-top: 2.5em;
+  }
+}
+
+.companyContactContainer {
+  max-width: var(--width-smaller);
+  margin: 0 auto;
+}
+
+.companyContactContainer h4 {
   background-color: var(--color-accent2);
   padding: 0.75rem;
   color: var(--color-very-light-gray);
@@ -29,4 +57,8 @@
 
 .companyContactContainer a:hover {
   text-decoration: underline;
+}
+
+.companyContactContainer address p {
+  margin: 0;
 }

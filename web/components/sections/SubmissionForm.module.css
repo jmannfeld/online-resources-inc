@@ -1,19 +1,55 @@
 @import '../../styles/custom-media.css';
 @import '../../styles/custom-properties.css';
 
-.submissionFormContainer {
-  max-width: var(--width-smaller);
+.submissionFormWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
+  @media (--media-max-large) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.serviceFormWrapper {
+  max-width: var(--width-small);
+  margin: 0 auto;
+}
+
+.submissionFormContainer {
   padding: 4rem;
   line-height: var(--font-large-line-height);
   font-size: var(--font-large-size);
 
-  @media (--media-max-medium) {
-    padding: 2rem 3rem 1.5rem 2rem;
+  @media (--media-max-large) {
+    padding: 0 8rem;
+  }
+  @media (--media-max-large) {
+    padding: 3rem 3rem 1.5rem 2rem;
+    grid-column-start: 1;
+    grid-row-start: 1;
   }
 }
 
+.submissionFormContainer form {
+  @media (--media-max-medium) {
+    padding: 4rem 3rem 1.5rem 2rem;
+    grid-column-start: 0;
+    grid-row-start: 0;
+  }
+}
+
+.submissionFormContainer form[name='Service Form'] {
+  max-width: var(--width-small);
+}
+
+.submissionFormContainer h2 {
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
+  margin-top: 0.75em;
+}
+
 .submissionFormContainer label {
+  font-family: 'apparat', sans-serif;
   font-size: smaller;
   font-weight: bold;
   margin-top: 1.75rem;
@@ -73,8 +109,9 @@
   background-color: var(--color-accent);
   padding: 0.75em 1.75em;
   font-size: var(--font-title3-size);
-  font-family: var(--font-family-sans);
+  /* font-family: var(--font-family-sans); */
   font-family: 'Fjalla One', sans-serif;
+  /* font-family: 'apparat'; */
   text-transform: uppercase;
   border: none;
   color: var(--color-dark-gray);

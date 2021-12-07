@@ -8,7 +8,7 @@ function SocialMedia(props) {
 
   return (
     <div className={styles.socialWrapper}>
-      <h4>Follow ORI on social media</h4>
+      <h3>Follow ORI on social media</h3>
       <div className={styles.socialContainer}>
         {links.facebookUrl ? (
           <SocialMediaIconsReact

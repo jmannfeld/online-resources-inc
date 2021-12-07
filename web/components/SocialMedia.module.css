@@ -1,7 +1,7 @@
 @import '../styles/custom-media.css';
 @import '../styles/custom-properties.css';
 
-.socialWrapper h4 {
+.socialWrapper h3 {
   text-align: center;
   margin-bottom: 0.75rem;
 }
