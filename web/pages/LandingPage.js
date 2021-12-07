@@ -79,6 +79,13 @@ class LandingPage extends Component {
               ctas[] {
                 ...,
                 route->
+              },
+              industries[]-> {
+                name,
+                description,
+                "image": image {
+                  asset->
+                },
               }
             }
           }

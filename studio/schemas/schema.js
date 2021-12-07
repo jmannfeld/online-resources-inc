@@ -22,6 +22,7 @@ import cta from './objects/cta';
 import embedHTML from './objects/embedHTML';
 import figure from './objects/figure';
 import galleryImage from './objects/galleryImage';
+import industryList from './objects/industryList';
 import internalLink from './objects/internalLink';
 import link from './objects/link';
 import logoImageBlock from './objects/logoImageBlock';
@@ -57,6 +58,7 @@ export default createSchema({
     galleryImage,
     hero,
     imageSection,
+    industryList,
     internalLink,
     link,
     logoImageBlock,

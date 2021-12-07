@@ -1,7 +1,7 @@
 @import '../../styles/custom-media.css';
 @import '../../styles/custom-properties.css';
 
-.teamListContainer {
+.industryListContainer {
   padding: 2rem 0;
   max-width: var(--width-small);
   margin: 0 auto;
@@ -11,48 +11,50 @@
   }
 }
 
-.teamListContainer h2 {
+.industryListContainer h2 {
   max-width: var(--width-small);
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   padding: 0 1rem;
 }
 
-.teamList {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
+.industryList {
   max-width: var(--width-small);
   margin: 0 auto;
 }
 
-.memberItem {
+.industryItem {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
-  padding: 0.75em 1.5em;
+  padding: 1.5em 1.5em;
 }
 
-.memberImage {
+.industryImage {
   max-width: 100%;
   max-height: var(--width-x-small);
-  padding: 0.6em 1em 2em 2em;
+  border-radius: 5px;
+  margin-top: 0.4em;
 }
 
-.memberName {
+.industryDescription {
+  padding-right: 1em;
+}
+
+.industryDescription p {
+  margin-top: 0.5em;
+}
+
+.industryName {
   margin-top: 0em;
   margin-bottom: 0;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
 }
 
-.memberTitle {
+.industryTitle {
   margin-top: 0;
   text-transform: uppercase;
   color: var(--color-gray);
   font-size: smaller;
-}
-
-hr {
-  border: 0;
-  border-top: 1px solid #094cfa;
 }

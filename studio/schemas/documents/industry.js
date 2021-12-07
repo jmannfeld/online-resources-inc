@@ -15,6 +15,11 @@ export default {
       title: 'Description',
       name: 'description',
       type: 'simplePortableText'
+    },
+    {
+      title: 'Display image',
+      name: 'image',
+      type: 'image'
     }
   ]
 };
