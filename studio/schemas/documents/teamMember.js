@@ -22,9 +22,9 @@ export default {
       type: 'string'
     },
     {
-      title: 'Bio',
-      name: 'bio',
-      type: 'text'
+      title: 'Phone number',
+      name: 'phone',
+      type: 'string'
     },
     {
       title: 'Headshot',

@@ -22,7 +22,23 @@ function TeamList(props) {
               <div>
                 <h3 className={styles.memberName}>{member.name}</h3>
                 <h4 className={styles.memberTitle}>{member.title}</h4>
-                <p className={styles.memberBio}>{member.bio}</p>
+                <div className={styles.contactInfo}>
+                  <h5>Email:</h5>
+                  <p>
+                    <a className={styles.memberEmail} href={`mailto:${member.email}`}>
+                      {member.email}
+                    </a>
+                  </p>
+                  <h5>Phone:</h5>
+                  <p>
+                    <a
+                      className={styles.memberPhone}
+                      href={`tel:${member.phone.replace(/-/g, '')}`}
+                    >
+                      {member.phone}
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
           );

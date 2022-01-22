@@ -67,6 +67,25 @@
   font-size: smaller;
 }
 
+.contactInfo h5 {
+  margin-bottom: 0;
+  font-family: var(--font-family-sans);
+}
+
+.contactInfo p {
+  margin: 0;
+}
+
+.contactInfo a.memberEmail {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.contactInfo a.memberPhone {
+  color: var(--color-black);
+  text-decoration: none;
+}
+
 hr {
   border: 0;
   border-top: 1px solid #094cfa;
