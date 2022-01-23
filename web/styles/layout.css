@@ -1,3 +1,4 @@
+@import './custom-media.css';
 @import './custom-properties.css';
 
 html {
@@ -23,6 +24,10 @@ body,
 :global(.content) {
   min-height: calc(100% - 84px - 218px);
   margin-top: calc(100px + 2.5em);
+
+  @media (--media-max-large) {
+    margin-top: calc(100px + 1.85em);
+  }
 }
 
 section h3 {
