@@ -15,6 +15,16 @@ function Footer(props) {
         <ul className={styles.items}>
           {navItems &&
             navItems.map((item) => {
+              // handle external URLs
+              if (item.url) {
+                return (
+                  <li key={item._key} className={styles.item}>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">
+                      {item.navText}
+                    </a>
+                  </li>
+                );
+              }
               const isActive =
                 router.pathname === '/LandingPage' && router.query.slug === item.slug.current;
               return (

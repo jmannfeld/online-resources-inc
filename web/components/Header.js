@@ -20,10 +20,10 @@ class Header extends Component {
     title: PropTypes.string,
     navItems: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string,
         slug: PropTypes.shape({
           current: PropTypes.string
-        }).isRequired
+        })
       })
     ),
     logo: PropTypes.shape({
@@ -98,6 +98,16 @@ class Header extends Component {
               <ul className={styles.navItems}>
                 {navItems &&
                   navItems.map((item) => {
+                    // handle external URLs
+                    if (item.url) {
+                      return (
+                        <li key={item._key} className={styles.navItem}>
+                          <a href={item.url} target="_blank" rel="noopener noreferrer">
+                            {item.navText}
+                          </a>
+                        </li>
+                      );
+                    }
                     const { slug, title, _id } = item;
                     const isActive =
                       router.pathname === '/LandingPage' && router.query.slug === slug.current;

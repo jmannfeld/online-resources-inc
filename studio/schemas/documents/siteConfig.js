@@ -89,13 +89,17 @@ export default {
       description: 'Select pages for the top menu',
       fieldset: 'layout',
       validation: Rule => [
-        Rule.max(5).warning('Are you sure you want more than 5 items?'),
+        Rule.max(6).warning('Are you sure you want more than 6 items?'),
         Rule.unique().error('You have duplicate menu items')
       ],
       of: [
         {
           type: 'reference',
           to: [{ type: 'route' }]
+        },
+        {
+          title: 'External URL',
+          type: 'externalUrl'
         }
       ]
     },
@@ -112,6 +116,10 @@ export default {
         {
           type: 'reference',
           to: [{ type: 'route' }]
+        },
+        {
+          title: 'External URL',
+          type: 'externalUrl'
         }
       ]
     },

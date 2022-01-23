@@ -12,13 +12,19 @@ const siteConfigQuery = groq`
   *[_id == "global-config"] {
     ...,
     logo {asset->{extension, url}},
-    mainNavigation[] -> {
-      ...,
-      "title": page->title
+    mainNavigation[] {
+      _type == 'reference' => @-> {
+        ...,
+        "title": page->title
+      },
+      _type != 'reference' => @,
     },
-    footerNavigation[] -> {
-      ...,
-      "title": page->title
+    footerNavigation[] {
+      _type == 'reference' => @-> {
+        ...,
+        "title": page->title
+      },
+      _type != 'reference' => @,
     }
   }[0]
   `;

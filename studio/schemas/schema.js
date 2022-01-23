@@ -20,6 +20,7 @@ import address from './objects/address';
 import contactForm from './objects/contactForm';
 import cta from './objects/cta';
 import embedHTML from './objects/embedHTML';
+import externalUrl from './objects/externalUrl';
 import figure from './objects/figure';
 import galleryImage from './objects/galleryImage';
 import industryList from './objects/industryList';
@@ -54,6 +55,7 @@ export default createSchema({
     contactForm,
     cta,
     embedHTML,
+    externalUrl,
     figure,
     galleryImage,
     hero,
