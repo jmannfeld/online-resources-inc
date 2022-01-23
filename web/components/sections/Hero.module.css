@@ -67,16 +67,17 @@
 .homepageBanner {
   text-align: center;
   justify-content: center;
+  margin-top: -3rem;
 }
 
 .homepageBanner h1 {
   white-space: nowrap;
   font-size: 3.75em;
   @media (--media-max-medium) {
-    font-size: 3em;
+    font-size: 2.5em;
   }
   @media (--media-max-small) {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 }
 
@@ -88,7 +89,7 @@
     font-size: 1.5em;
   }
   @media (--media-max-small) {
-    font-size: 1.25em;
+    font-size: 1.15em;
   }
 }
 

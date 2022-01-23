@@ -65,6 +65,7 @@
   text-transform: uppercase;
   color: var(--color-gray);
   font-size: smaller;
+  font-family: var(--font-family-sans);
 }
 
 .contactInfo h5 {
