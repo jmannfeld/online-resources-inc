@@ -16,13 +16,13 @@ function IndustryList(props) {
     <div className={styles.industryListContainer}>
       {subtitle && (
         <div>
-          <h3 className={styles.industryPageSubtitle}>{subtitle}</h3>
+          <h4 className={styles.industryPageSubtitle}>{subtitle}</h4>
         </div>
       )}
       <div className={styles.industryList}>
         {industries.map((industry, ix) => {
           return (
-            <div className={styles[`gallery-figure-${ix + 1}`]} key={industry.name}>
+            <div className={styles.galleryFigure} key={industry.name}>
               <figure className={styles.industryFigure}>
                 <img
                   className={styles.industryImage}
