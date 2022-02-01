@@ -11,25 +11,25 @@ function urlFor(source) {
 
 function IndustryList(props) {
   const { subtitle, industries } = props;
-  console.log('indsutry props', props);
 
   return (
     <div className={styles.industryListContainer}>
-      {subtitle && <h2 className={styles.industryPageSubtitle}>{subtitle}</h2>}
+      {subtitle && (
+        <div>
+          <h3 className={styles.industryPageSubtitle}>{subtitle}</h3>
+        </div>
+      )}
       <div className={styles.industryList}>
-        {industries.map((industry) => {
+        {industries.map((industry, ix) => {
           return (
-            <div className={styles.industryItem} key={industry.name}>
-              <div>
+            <div className={styles[`gallery-figure-${ix + 1}`]} key={industry.name}>
+              <figure className={styles.industryFigure}>
+                <img
+                  className={styles.industryImage}
+                  src={industry.image ? urlFor(industry.image) : '../static/logo.png'}
+                ></img>
                 <h3 className={styles.industryName}>{industry.name}</h3>
-                <div className={styles.industryDescription}>
-                  <SimpleBlockContent blocks={industry.description} />
-                </div>
-              </div>
-              <img
-                className={styles.industryImage}
-                src={industry.image ? urlFor(industry.image) : '../static/logo.png'}
-              ></img>
+              </figure>
             </div>
           );
         })}

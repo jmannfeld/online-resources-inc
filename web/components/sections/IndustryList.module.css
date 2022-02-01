@@ -2,13 +2,7 @@
 @import '../../styles/custom-properties.css';
 
 .industryListContainer {
-  padding: 2rem 0;
-  max-width: var(--width-small);
   margin: 0 auto;
-
-  @media (--media-min-medium) {
-    padding: 4rem 0;
-  }
 }
 
 .industryListContainer h2 {
@@ -18,23 +12,48 @@
   padding: 0 1rem;
 }
 
+.industryPageSubtitle {
+  font-size: var(--font-title3-size);
+  line-height: var(--font-title3-line-height);
+  width: 100vw;
+  background-color: var(--color-accent);
+  margin: 0;
+  padding: 0.25em 0;
+  text-align: center;
+  color: var(--color-black);
+}
+
+.industryFigure {
+  position: relative;
+}
+
 .industryList {
-  max-width: var(--width-small);
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  display: grid;
+  background-color: black;
 }
 
 .industryItem {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0 auto;
-  padding: 1.5em 1.5em;
+  max-width: var(--width-small);
+  position: relative;
 }
 
 .industryImage {
-  max-width: 100%;
-  max-height: var(--width-x-small);
-  border-radius: 2px;
-  margin-top: 0.4em;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  height: 165px;
+  opacity: 0.8;
+
+  @media (--media-max-small) {
+    height: 150px;
+  }
+}
+
+.industryList figure {
+  margin: 0;
 }
 
 .industryDescription {
@@ -50,6 +69,26 @@
   margin-bottom: 0;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
+  position: absolute;
+  top: 65%;
+  left: 5%;
+  color: #ebebeb;
+  text-shadow: 1px 1px 5px var(--color-dark-gray);
+  font-family: var(--font-family-sans);
+
+  @media (--media-max-medium) {
+    font-size: var(--font-large-size);
+    line-height: var(--font-large-line-height);
+    top: 75%;
+    left: 8%;
+  }
+
+  @media (--media-max-small) {
+    font-size: var(--font-small-size);
+    line-height: var(--font-small-line-height);
+    top: 65%;
+    left: 7%;
+  }
 }
 
 .industryTitle {
