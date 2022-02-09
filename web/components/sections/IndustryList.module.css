@@ -25,10 +25,14 @@
 }
 
 .industryList {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  display: grid;
   background-color: var(--color-black);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+
+  @media (--media-max-medium) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .galleryFigure {
@@ -56,10 +60,6 @@
   object-fit: cover;
   opacity: 0.75;
   transition: all 0.25s ease-in-out;
-
-  @media (--media-max-small) {
-    height: 150px;
-  }
 }
 
 .industryDescription {
@@ -84,15 +84,8 @@
   text-shadow: 1px 1px 5px var(--color-dark-gray);
 
   @media (--media-max-medium) {
-    font-size: var(--font-large-size);
+    font-size: 24px;
     line-height: var(--font-large-line-height);
-  }
-
-  @media (--media-max-small) {
-    font-size: var(--font-small-size);
-    line-height: var(--font-small-line-height);
-    top: 65%;
-    left: 7%;
   }
 }
 
