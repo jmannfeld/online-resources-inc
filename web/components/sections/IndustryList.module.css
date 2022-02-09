@@ -21,6 +21,7 @@
   padding: 0.25em 0;
   text-align: center;
   color: var(--color-black);
+  font-family: var(--font-family-sans);
 }
 
 .industryList {
@@ -79,9 +80,8 @@
   left: 50%;
   width: 90%;
   transform: translate(-48%, 0);
-  color: #ebebeb;
+  color: #e7ebed;
   text-shadow: 1px 1px 5px var(--color-dark-gray);
-  font-family: var(--font-family-sans);
 
   @media (--media-max-medium) {
     font-size: var(--font-large-size);
