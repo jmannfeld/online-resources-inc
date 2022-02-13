@@ -1,0 +1,21 @@
+@import '../styles/custom-media.css';
+
+.fifty {
+  display: grid;
+  grid-template-areas:
+    'hero'
+    'section';
+  @media (--media-min-large) {
+    grid-template-areas:
+      'hero hero'
+      'section section';
+  }
+}
+
+.fifty > :nth-child(2) {
+  border-right: 2px solid #f3f3f3;
+}
+
+/* .full {
+  color: blue;
+} */

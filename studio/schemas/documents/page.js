@@ -35,6 +35,17 @@ export default {
       ]
     },
     {
+      title: 'Layout',
+      name: 'layout',
+      type: 'string',
+      options: {
+        list: ['Full-width', '2 columns'],
+        layout: 'radio',
+        direction: 'horizontal',
+        default: 'Full-width'
+      }
+    },
+    {
       title: 'Description',
       name: 'description',
       type: 'text',

@@ -6,6 +6,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../components/Layout';
 import client from '../client';
 import RenderSections from '../components/RenderSections';
+import styles from './LandingPage.module.css';
 
 const builder = imageUrlBuilder(client);
 const pageQuery = groq`
@@ -107,7 +108,8 @@ class LandingPage extends Component {
       content = [],
       config = {},
       slug,
-      products = []
+      products = [],
+      layout
     } = this.props;
 
     const openGraphImages = openGraphImage
@@ -136,6 +138,8 @@ class LandingPage extends Component {
       : [];
     // console.log('CONTENT', content);
     // console.log('PRODUCTS', products);
+
+    console.log('LandingPage layout: ', layout);
     return (
       <Layout config={config}>
         <NextSeo
@@ -150,9 +154,36 @@ class LandingPage extends Component {
             noindex: disallowRobots
           }}
         />
-        {content && products && (
-          <RenderSections sections={content} products={products} config={config} />
-        )}
+        {content &&
+          products &&
+          (layout === '2 columns' ? (
+            <div className={styles.fifty}>
+              <RenderSections
+                sections={content}
+                layout={layout}
+                products={products}
+                config={config}
+              />
+            </div>
+          ) : layout === '3 columns' ? (
+            <div className={styles.thirds}>
+              <RenderSections
+                sections={content}
+                layout={layout}
+                products={products}
+                config={config}
+              />
+            </div>
+          ) : (
+            <div className={styles.full}>
+              <RenderSections
+                sections={content}
+                layout={layout}
+                products={products}
+                config={config}
+              />
+            </div>
+          ))}
       </Layout>
     );
   }

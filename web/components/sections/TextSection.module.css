@@ -13,7 +13,7 @@
   width: 100%;
   max-width: var(--width-small);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 4rem;
   box-sizing: border-box;
 }
 
@@ -22,7 +22,7 @@
   line-height: var(--font-micro-line-height);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 .heading {

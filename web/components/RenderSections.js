@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { upperFirst } from 'lodash';
 import * as SectionComponents from './sections';
+import styles from './RenderSections.module.css';
 
 function resolveSections(section) {
   // eslint-disable-next-line import/namespace
@@ -30,7 +31,13 @@ function RenderSections(props) {
           return <div>Missing section {section._type}</div>;
         }
         return (
-          <SectionComponent {...section} products={products} config={config} key={section._key} />
+          <SectionComponent
+            {...section}
+            products={products}
+            config={config}
+            key={section._key}
+            className={styles.section}
+          />
         );
       })}
     </Fragment>

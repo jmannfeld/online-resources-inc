@@ -10,6 +10,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   padding-bottom: 2rem;
+  grid-area: hero;
 
   @media (--media-min-medium) {
     padding-bottom: 4rem;

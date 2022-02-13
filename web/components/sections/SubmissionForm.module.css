@@ -24,7 +24,7 @@
     padding: 0 8rem;
   }
   @media (--media-max-large) {
-    padding: 3rem 3rem 1.5rem 2rem;
+    padding: 3rem 4rem 1.5rem 4rem;
     grid-column-start: 1;
     grid-row-start: 1;
   }
@@ -45,7 +45,6 @@
 .submissionFormContainer h2 {
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-  margin-top: 0.25em;
 }
 
 .submissionFormContainer h2.serviceMargin::before {
