@@ -4,6 +4,7 @@ import NextSeo from 'next-seo';
 import groq from 'groq';
 import { useRouter } from 'next/router';
 // import ImageGallery from 'react-image-gallery';
+// comment
 import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../../components/Layout';
 import styles from './ProductPage.module.css';
