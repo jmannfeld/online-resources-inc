@@ -54,10 +54,10 @@ function Footer(props) {
 Footer.propTypes = {
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      title: PropTypes.string,
       slug: PropTypes.shape({
         current: PropTypes.string
-      }).isRequired
+      })
     })
   ),
   text: PropTypes.arrayOf(PropTypes.object),

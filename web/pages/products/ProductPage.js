@@ -129,14 +129,16 @@ class ProductPage extends React.Component {
                 })}
             </tbody>
           </table>
-          <button
-            className={styles.brochureButton}
-            type="button"
-            onClick={() => window.open(brochure.asset.url, '_blank')}
-          >
-            <span>Tech Specs Brochure</span>
-            <FiExternalLink />
-          </button>
+          {brochure && (
+            <button
+              className={styles.brochureButton}
+              type="button"
+              onClick={() => window.open(brochure.asset.url, '_blank')}
+            >
+              <span>Tech Specs Brochure</span>
+              <FiExternalLink />
+            </button>
+          )}
           {description && (
             <div className={styles.productDescription}>
               <SimpleBlockContent blocks={description} />
