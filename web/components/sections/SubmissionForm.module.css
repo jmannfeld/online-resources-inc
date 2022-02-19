@@ -75,8 +75,7 @@
   font-family: var(--font-family-sans);
   padding: 0.75rem;
   border-radius: 3px;
-  border: 1px solid #5b5b5b;
-  border: 2px solid #d1d1d1;
+  border: 2px solid var(--color-light-gray);
   margin-left: 0.5rem;
   vertical-align: text-top;
   margin-top: 0.25rem;
@@ -111,9 +110,8 @@
   background-color: var(--color-accent);
   padding: 0.75em 1.75em;
   font-size: var(--font-title3-size);
-  /* font-family: var(--font-family-sans); */
-  font-family: 'Fjalla One', sans-serif;
-  /* font-family: 'apparat'; */
+  /* font-family: 'Fjalla One', sans-serif; */
+  font-family: var(--font-family-sans);
   text-transform: uppercase;
   border: none;
   color: var(--color-dark-gray);
