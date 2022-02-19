@@ -3,7 +3,7 @@ import React from 'react';
 import NextSeo from 'next-seo';
 import groq from 'groq';
 import { useRouter } from 'next/router';
-import ImageGallery from 'react-image-gallery';
+// import ImageGallery from 'react-image-gallery';
 import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../../components/Layout';
 import styles from './ProductPage.module.css';
@@ -52,7 +52,6 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    console.log('PROPS in render', this.props);
     const {
       name,
       type,
@@ -76,6 +75,7 @@ class ProductPage extends React.Component {
       }));
       console.log('listForGallery', listForGallery);
     }
+    console.log('PROPS in render', this.props);
     return (
       <Layout config={config}>
         <NextSeo
@@ -109,7 +109,7 @@ class ProductPage extends React.Component {
             src={mainImage ? urlFor(mainImage) : '../static/logo.png'}
           ></img>
         )} */}
-          {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />}
+          {/* {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />} */}
           <table>
             <tbody>
               {techSpecs &&

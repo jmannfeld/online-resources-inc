@@ -75,8 +75,7 @@
   font-family: var(--font-family-sans);
   padding: 0.75rem;
   border-radius: 3px;
-  border: 1px solid #5b5b5b;
-  border: 2px solid #d1d1d1;
+  border: 2px solid var(--color-light-gray);
   margin-left: 0.5rem;
   vertical-align: text-top;
   margin-top: 0.25rem;
