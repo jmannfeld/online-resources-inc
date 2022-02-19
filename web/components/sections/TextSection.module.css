@@ -3,18 +3,18 @@
 
 .root {
   padding: 2rem 0;
-
-  @media (--media-min-medium) {
-    padding: 4rem 0;
-  }
 }
 
 .article {
   width: 100%;
   max-width: var(--width-small);
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 2rem;
   box-sizing: border-box;
+
+  @media (--media-min-medium) {
+    padding: 0 4rem;
+  }
 }
 
 .label {
@@ -22,7 +22,7 @@
   line-height: var(--font-micro-line-height);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-top: 0.5em;
+  margin-top: 0.6em;
 }
 
 .heading {

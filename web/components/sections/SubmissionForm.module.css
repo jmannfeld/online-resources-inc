@@ -19,15 +19,17 @@
   padding: 4rem;
   line-height: var(--font-large-line-height);
   font-size: var(--font-large-size);
+  padding: 2rem 4rem 1.5rem 4rem;
 
   @media (--media-max-large) {
-    padding: 0 8rem;
-  }
-  @media (--media-max-large) {
-    padding: 3rem 4rem 1.5rem 4rem;
+    padding: 2rem 7rem 1.5rem 2rem;
     grid-column-start: 1;
     grid-row-start: 1;
   }
+}
+
+.subheading {
+  font-size: 1rem;
 }
 
 .submissionFormContainer form {
@@ -45,15 +47,6 @@
 .submissionFormContainer h2 {
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-}
-
-.submissionFormContainer h2.serviceMargin::before {
-  display: block;
-  content: ' ';
-  margin-top: -200px;
-  height: 200px;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .submissionFormContainer label {
@@ -83,6 +76,7 @@
   padding: 0.75rem;
   border-radius: 3px;
   border: 1px solid #5b5b5b;
+  border: 2px solid #d1d1d1;
   margin-left: 0.5rem;
   vertical-align: text-top;
   margin-top: 0.25rem;

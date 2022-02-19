@@ -4,7 +4,7 @@
 .companyContactWrapper {
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 2rem;
   border-right: 2px solid #f3f3f3;
   @media (--media-max-large) {
     margin: 0 auto;
@@ -15,9 +15,7 @@
 }
 
 .companyContactWrapper h3 {
-  margin-top: 1em;
-  font-weight: 400;
-  font-family: 'apparat';
+  margin-top: 0;
   @media (--media-max-large) {
     margin-top: 2.5em;
   }
@@ -39,6 +37,8 @@
   background-color: var(--color-accent2);
   padding: 0.75rem;
   color: var(--color-very-light-gray);
+  font-weight: 600;
+  font-family: 'apparat';
 }
 
 .companyContactContainer p {
