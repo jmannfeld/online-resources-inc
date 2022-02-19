@@ -48,7 +48,8 @@
   max-width: var(--width-small);
   margin: 0 auto;
   margin-top: 2em;
-  border: 2px solid var(--color-accent);
+  /* border: 2px solid var(--color-accent); */
+  border: 2px solid var(--color-light-gray);
 }
 
 .productDescription {
@@ -58,4 +59,33 @@
 
 .imageGallery {
   max-width: var(--width-small);
+}
+
+.brochureButton {
+  background-color: var(--color-accent);
+  color: var(--color-dark-gray);
+  font-size: var(--font-title3-size);
+  font-size: var(--font-base-size);
+  font-family: 'Fjalla One', sans-serif;
+  font-family: var(--font-family-sans);
+  padding: 0.75em 1.75em;
+  margin-top: 1em;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.brochureButton svg {
+  padding-left: 0.5rem;
+}
+
+.brochureButton:hover {
+  cursor: pointer;
+  transform: scale(1.025);
+}
+
+.brochureButton:active {
+  transform: scale(0.99);
 }

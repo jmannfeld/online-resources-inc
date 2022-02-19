@@ -3,8 +3,8 @@ import React from 'react';
 import NextSeo from 'next-seo';
 import groq from 'groq';
 import { useRouter } from 'next/router';
+import { FiExternalLink } from 'react-icons/fi';
 // import ImageGallery from 'react-image-gallery';
-// comment
 import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../../components/Layout';
 import styles from './ProductPage.module.css';
@@ -23,6 +23,9 @@ const productQuery = groq`
     },
     manufacturer-> {
       name
+    },
+    brochure {
+      asset->
     },
     slug {
       current
@@ -63,7 +66,8 @@ class ProductPage extends React.Component {
       category: { name: category } = '',
       techSpecs = {},
       config,
-      slug
+      slug,
+      brochure
     } = this.props;
 
     let listForGallery;
@@ -104,12 +108,12 @@ class ProductPage extends React.Component {
               <p>{type}</p>
             </div>
           </div>
-          {/* {mainImage && (
-          <img
-            className={styles.productImage}
-            src={mainImage ? urlFor(mainImage) : '../static/logo.png'}
-          ></img>
-        )} */}
+          {mainImage && (
+            <img
+              className={styles.productImage}
+              src={mainImage ? urlFor(mainImage) : '../static/logo.png'}
+            ></img>
+          )}
           {/* {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />} */}
           <table>
             <tbody>
@@ -125,6 +129,14 @@ class ProductPage extends React.Component {
                 })}
             </tbody>
           </table>
+          <button
+            className={styles.brochureButton}
+            type="button"
+            onClick={() => window.open(brochure.asset.url, '_blank')}
+          >
+            <span>Tech Specs Brochure</span>
+            <FiExternalLink />
+          </button>
           {description && (
             <div className={styles.productDescription}>
               <SimpleBlockContent blocks={description} />
