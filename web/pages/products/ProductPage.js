@@ -115,14 +115,16 @@ class ProductPage extends React.Component {
             ></img>
           )}
           {/* {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />} */}
-          <table>
+          <table className={styles.techSpecsTable}>
             <tbody>
               {techSpecs &&
                 Object.entries(techSpecs).map(([key, value]) => {
+                  // converts camelCase to split words
+                  const techSpecField = key.replace(/([a-z])([A-Z])/g, '$1 $2');
                   if (!key.startsWith('_'))
                     return (
                       <tr key={key}>
-                        <th>{key.toUpperCase()}</th>
+                        <th>{techSpecField.toUpperCase()}</th>
                         <td>{value}</td>
                       </tr>
                     );
