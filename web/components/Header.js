@@ -110,7 +110,9 @@ class Header extends Component {
                     }
                     const { slug, title, _id } = item;
                     const isActive =
-                      router.pathname === '/LandingPage' && router.query.slug === slug.current;
+                      (router.pathname === '/LandingPage' && router.query.slug === slug.current) ||
+                      // handles subpages like product pages
+                      router.pathname.includes(slug.current);
                     return (
                       <li key={_id} className={styles.navItem}>
                         <Link
