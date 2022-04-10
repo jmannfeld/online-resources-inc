@@ -163,6 +163,7 @@ function ProductList(props) {
             ? `${typeButtonText} (${products.length})`
             : `All types (${typeList.length - 1})`}
         </button>
+        <input className={styles.searchProducts} placeholder="Search products..."></input>
       </div>
       <div className={styles.productList}>
         {products

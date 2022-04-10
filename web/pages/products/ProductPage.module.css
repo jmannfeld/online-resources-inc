@@ -5,6 +5,7 @@
   max-width: var(--width-small);
   margin: 0 auto;
   margin-top: 11em;
+  padding: 0 2rem;
 }
 
 .productNameWrapper {

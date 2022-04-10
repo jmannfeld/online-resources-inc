@@ -35,6 +35,27 @@
   transform: scale(1.015);
 }
 
+.searchProducts {
+  border: 2px solid #efefef;
+  border-radius: 0;
+  font-size: var(--font-small-size);
+  line-height: var(--font-small-line-height);
+  font-weight: bold;
+  font-family: apparat, sans-serif;
+  flex-basis: 12em;
+  margin-left: auto;
+  padding: 1em;
+}
+
+.searchProducts:focus {
+  outline: none !important;
+  border: 2px solid var(--color-accent);
+}
+
+.searchProducts::placeholder {
+  color: #9d9d9d;
+}
+
 .productList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
