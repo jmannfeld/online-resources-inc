@@ -99,13 +99,17 @@ class ProductPage extends React.Component {
           <div className={styles.productNameWrapper}>
             <div>
               <h1 className={styles.productName}>{name}</h1>
-              <p className={styles.manufacturerName}>{manufacturer}</p>
+              <p className={styles.manufacturerName}>{manufacturer && manufacturer}</p>
             </div>
             <div className={styles.productTags}>
-              <p>
-                {category.slice(-1) === 's' ? category.substring(0, category.length - 1) : category}
-              </p>
-              <p>{type}</p>
+              {category && (
+                <p>
+                  {category.slice(-1) === 's'
+                    ? category.substring(0, category.length - 1)
+                    : category}
+                </p>
+              )}
+              {type && <p>{type}</p>}
             </div>
           </div>
           {mainImage && (
@@ -115,14 +119,16 @@ class ProductPage extends React.Component {
             ></img>
           )}
           {/* {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />} */}
-          <table>
+          <table className={styles.techSpecsTable}>
             <tbody>
               {techSpecs &&
                 Object.entries(techSpecs).map(([key, value]) => {
+                  // converts camelCase to split words
+                  const techSpecField = key.replace(/([a-z])([A-Z])/g, '$1 $2');
                   if (!key.startsWith('_'))
                     return (
                       <tr key={key}>
-                        <th>{key.toUpperCase()}</th>
+                        <th>{techSpecField.toUpperCase()}</th>
                         <td>{value}</td>
                       </tr>
                     );

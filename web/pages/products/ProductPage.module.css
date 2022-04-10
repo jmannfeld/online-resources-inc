@@ -61,6 +61,14 @@
   max-width: var(--width-small);
 }
 
+.techSpecsTable th {
+  padding-right: 2em;
+}
+
+.techSpecsTable tr {
+  text-align-last: left;
+}
+
 .brochureButton {
   background-color: var(--color-accent);
   color: var(--color-dark-gray);
