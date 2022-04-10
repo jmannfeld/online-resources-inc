@@ -45,6 +45,7 @@
   margin: 0;
   padding: 0;
   padding-top: 11rem;
+  color: var(--color-white);
 
   @media (--media-min-medium) {
     font-size: var(--font-title1-size);
@@ -55,14 +56,26 @@
 
 .tagline {
   position: relative;
-  margin: 0;
   padding: 0;
-  margin-top: 0.5em;
-  margin-bottom: 1rem;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  font-family: apparat, sans-serif;
+  color: var(--color-white);
+  font-size: 1.1rem !important;
+  font-family: var(--font-family-sans) !important;
+  max-width: 30rem;
+  margin: 0 auto !important;
   font-weight: 500;
-  /* color: var(--color-very-light-gray); */
+  @media (--media-max-large) {
+    max-width: 25rem;
+    font-size: 1rem !important;
+  }
+  @media (--media-max-medium) {
+    max-width: 20rem;
+    font-size: 0.9rem !important;
+  }
+  @media (--media-max-small) {
+    max-width: 16rem;
+    font-size: 0.8rem !important;
+  }
 }
 
 .homepageBanner {
@@ -82,7 +95,7 @@
   }
 }
 
-.homepageBanner h2 {
+.homepageBanner > h2 {
   font-size: 2em;
   line-height: var(--font-title2-line-height);
   color: var(--color-light-gray);
@@ -118,7 +131,6 @@
 }
 
 .homepageBanner .tagline {
-  margin: 0;
   justify-content: center;
 
   @media (--media-min-medium) {

@@ -1,11 +1,6 @@
 :root {
   --wide-container: 60rem;
   --narrow-container: 40rem;
-  /* --font-family-sans: 'EB Garamond'; */
-  /* --font-family-sans: 'Open Sans'; */
-  /* --font-family-sans: 'Quicksand'; */
-  /* --font-family-sans: 'Inconsolata'; */
-  /* --font-family-sans: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; */
   --font-family-sans: 'apparat', sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -18,16 +13,6 @@
   --color-white: #fff;
   --color-accent: #2ea64c;
   --color-accent2: #251659;
-
-  /* .primary { color: #028C41; }
-  .primary-2 { color: #2EA64C; }
-  .secondary-1 { color: #220DA6; }
-  .secondary-2 { color: #0B0859; }
-
-  .white { color: #F2F2F2; }
-  .light-gray { color: #BFBFBF; }
-  .black { color: #404040; }
-  .dark-black { color: #262626; } */
 
   /* Typography */
   --unit: 16;
@@ -64,10 +49,6 @@ h5,
 h6,
 label,
 button {
-  /* font-family: 'futura-pt-bold'; */
-  /* font-family: fairplex-wide, serif; */
-  /* font-weight: 700; */
-  /* font-style: normal; */
   font-family: 'Fjalla One', sans-serif;
 }
 
