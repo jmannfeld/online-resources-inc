@@ -4,7 +4,7 @@
 .productListContainer {
   max-width: var(--width-small);
   margin: 0 auto;
-  margin-top: 11em;
+  margin-top: 3.25rem;
 }
 
 .filterContainer {
@@ -71,6 +71,7 @@
 
 .productImage {
   max-width: 100%;
+  max-height: 28vh;
 }
 
 .productImageWrapper {
@@ -78,7 +79,7 @@
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  /* min-height: 250px; */
+  min-height: 28vh;
 }
 
 .imageCenter {
@@ -88,6 +89,7 @@
   align-content: center;
   margin: 0 auto;
   width: 100%;
+  height: 100%;
 }
 
 .productImage:hover {
@@ -104,10 +106,10 @@
   /* font-family: apparat, sans-serif; */
 }
 
-.productName:hover {
-  /* background: var(--color-accent); */
-  /* color: var(--color-white); */
-}
+/* .productName:hover,
+.productImageWrapper:hover .productName {
+  background: var(--color-accent);
+} */
 
 .active {
   background-color: var(--color-accent);

@@ -60,7 +60,7 @@ module.exports = withImages(
       url: false
     },
     trailingSlash: false,
-    exportPathMap: async function () {
+    exportPathMap: async () => {
       const products = await client.fetch(productQuery).then((res) => {
         const productArray = res;
         return productArray;

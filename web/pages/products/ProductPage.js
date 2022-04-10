@@ -99,13 +99,17 @@ class ProductPage extends React.Component {
           <div className={styles.productNameWrapper}>
             <div>
               <h1 className={styles.productName}>{name}</h1>
-              <p className={styles.manufacturerName}>{manufacturer}</p>
+              <p className={styles.manufacturerName}>{manufacturer && manufacturer}</p>
             </div>
             <div className={styles.productTags}>
-              <p>
-                {category.slice(-1) === 's' ? category.substring(0, category.length - 1) : category}
-              </p>
-              <p>{type}</p>
+              {category && (
+                <p>
+                  {category.slice(-1) === 's'
+                    ? category.substring(0, category.length - 1)
+                    : category}
+                </p>
+              )}
+              {type && <p>{type}</p>}
             </div>
           </div>
           {mainImage && (
