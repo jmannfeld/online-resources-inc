@@ -5,6 +5,7 @@
   max-width: var(--width-small);
   margin: 0 auto;
   margin-top: 3.25rem;
+  padding: 0 2rem;
 }
 
 .filterContainer {

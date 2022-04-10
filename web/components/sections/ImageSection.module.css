@@ -6,7 +6,7 @@
   padding: 2rem 0;
 
   @media (--media-min-medium) {
-    padding: 4rem 0;
+    padding: 2rem 0;
   }
 }
 
@@ -35,7 +35,7 @@
 .content {
   position: relative;
   margin: 0 1.5rem;
-  max-width: var(--width-base);
+  max-width: var(--width-medium);
 
   @nest & figcaption {
     width: 100%;

@@ -10,7 +10,7 @@
   box-sizing: border-box;
 
   @media (--media-min-medium) {
-    padding: 4rem 1rem;
+    padding: 1.25rem 1rem;
   }
 }
 
