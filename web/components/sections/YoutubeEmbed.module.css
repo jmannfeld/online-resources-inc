@@ -38,9 +38,9 @@ h2.youtubeHeading {
 
 .video {
   max-width: 80vw;
-  padding: 0 1.5rem;
   display: block;
   margin: 0 auto;
+  border: 1px solid var(--color-black);
 }
 
 .youtubeText {
