@@ -16,7 +16,7 @@ function IndustryList(props) {
     <div className={styles.industryListContainer}>
       {subtitle && (
         <div>
-          <h4 className={styles.industryPageSubtitle}>{subtitle}</h4>
+          <h3 className={styles.industryPageSubtitle}>{subtitle}</h3>
         </div>
       )}
       <div className={styles.industryList}>
@@ -27,6 +27,7 @@ function IndustryList(props) {
                 <img
                   className={styles.industryImage}
                   src={industry.image ? urlFor(industry.image) : '../static/logo.png'}
+                  alt={`${industry.name} industry card`}
                 ></img>
                 <h3 className={styles.industryName}>{industry.name}</h3>
               </figure>

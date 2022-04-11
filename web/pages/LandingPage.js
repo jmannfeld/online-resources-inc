@@ -26,6 +26,7 @@ const pageQuery = groq`
       },
       products[]-> {
         ...,
+        product->
       },
       members[]-> {
         ...,

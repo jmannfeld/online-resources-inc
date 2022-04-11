@@ -62,11 +62,21 @@ class Header extends Component {
 
     if (logo.asset.extension === 'svg') {
       return (
-        <SVG src={logo.asset.url} aria-label="Online Resouces Inc. logo" className={styles.logo} />
+        <SVG
+          src={logo.asset.url}
+          aria-label="Online Resouces Inc. logo"
+          alt="Online Resources, Inc. logo in green text"
+          className={styles.logo}
+        />
       );
     }
-
-    return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />;
+    return (
+      <img
+        src={logo.asset.url}
+        alt="Online Resources, Inc. logo in green text"
+        className={styles.logo}
+      />
+    );
   };
 
   render() {
