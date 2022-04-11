@@ -62,7 +62,6 @@
   font-size: 1.1rem !important;
   font-family: var(--font-family-sans) !important;
   max-width: 30rem;
-  margin: 0 auto !important;
   font-weight: 500;
   @media (--media-max-large) {
     max-width: 25rem;
@@ -82,6 +81,8 @@
   text-align: center;
   justify-content: center;
   margin-top: -3rem;
+  /* makes homepage banner hit bottom of window */
+  /* margin: 0 auto; */
 }
 
 .homepageBanner h1 {
@@ -132,6 +133,7 @@
 
 .homepageBanner .tagline {
   justify-content: center;
+  margin: 0 auto;
 
   @media (--media-min-medium) {
     font-size: var(--font-small-size);

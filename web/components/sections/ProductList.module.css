@@ -9,9 +9,14 @@
 }
 
 .filterContainer {
-  display: flex;
+  display: grid;
   gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding-bottom: 1.5em;
+  @media (--media-max-medium) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
 
 .filterButton {
@@ -19,9 +24,16 @@
   border: 2px solid #efefef;
   padding: 1em 2em;
   font-size: var(--font-small-size);
+  color: var(--color-black);
   line-height: var(--font-small-line-height);
   font-weight: bold;
   font-family: apparat, sans-serif;
+  white-space: nowrap;
+  text-align: center;
+
+  @media (--media-max-medium) {
+    padding: 0.5em 0.25em;
+  }
 }
 
 .filterButton:hover {
@@ -45,6 +57,14 @@
   flex-basis: 12em;
   margin-left: auto;
   padding: 1em;
+  white-space: nowrap;
+  grid-column: 3 / span 2;
+
+  @media (--media-max-medium) {
+    grid-column: 1 / span 2;
+    height: 50%;
+    padding: 0.5em;
+  }
 }
 
 .searchProducts:focus {
