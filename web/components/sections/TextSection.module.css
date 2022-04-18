@@ -13,7 +13,8 @@
   box-sizing: border-box;
 
   @media (--media-min-medium) {
-    padding: 1rem 4rem;
+    padding: 0rem 4rem;
+    min-width: 18em;
   }
 }
 

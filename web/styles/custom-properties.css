@@ -18,6 +18,8 @@
   --unit: 16;
   --font-micro-size: calc(10 / var(--unit) * 1rem); /* 10px */
   --font-micro-line-height: calc(12 / 10); /* 12px */
+  --font-smaller-size: calc(12 / var(--unit) * 1rem); /* 14px */
+  --font-smaller-line-height: calc(21 / 12); /* 21px */
   --font-small-size: calc(14 / var(--unit) * 1rem); /* 14px */
   --font-small-line-height: calc(21 / 14); /* 21px */
   --font-base-size: 1.15em; /* 16px */
@@ -25,6 +27,8 @@
   --font-large-size: calc(18 / var(--unit) * 1rem); /* 18px */
   --font-large-line-height: calc(27 / 18); /* 27px */
 
+  --font-title4-size: calc(18 / var(--unit) * 1rem); /* 21px */
+  --font-title4-line-height: calc(24 / 18); /* 30px */
   --font-title3-size: calc(24 / var(--unit) * 1rem); /* 21px */
   --font-title3-line-height: calc(30 / 21); /* 30px */
   --font-title2-size: calc(30 / var(--unit) * 1rem); /* 24px */

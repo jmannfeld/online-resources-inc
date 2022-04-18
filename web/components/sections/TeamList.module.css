@@ -2,12 +2,13 @@
 @import '../../styles/custom-properties.css';
 
 .teamListContainer {
-  padding: 2rem 0;
+  width: 100%;
   max-width: var(--width-small);
   margin: 0 auto;
-
+  padding: 0 2rem;
+  box-sizing: border-box;
   @media (--media-min-medium) {
-    padding: 4rem 0;
+    padding: 1rem 4rem;
   }
 }
 
@@ -15,9 +16,13 @@
   max-width: var(--width-small);
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-  padding: 0 3.25rem;
-  @media (--media-max-medium) {
-    padding: 0 1.25rem;
+  padding: 0 1.15rem;
+  @media (--media-min-large) {
+    padding-top: 1rem;
+    padding-left: 0.75rem;
+  }
+  @media (--media-min-small) {
+    padding-left: 0.75rem;
   }
 }
 
@@ -25,47 +30,65 @@
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   max-width: var(--width-small);
-  margin: 0 auto;
-  @media (--media-max-large) {
+  @media (--media-max-medium) {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
 .memberItem {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 150px 1fr;
+  gap: 2em;
   align-items: start;
-  margin: 0 auto;
   padding: 0.75em 1.5em;
   @media (--media-max-medium) {
     grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+    padding-bottom: 3em;
+  }
+  @media (--media-min-small) {
+    padding-left: 1em;
+  }
+}
+
+.teamListContainer h2,
+.memberItem {
+  @media (--media-max-large) {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 .memberImage {
   max-width: 100%;
   max-height: var(--width-x-small);
-  margin: 0.3em 2em 2em 2em;
   outline: 4px solid var(--color-gray);
-  @media (--media-max-medium) {
+  margin: 4px;
+  @media (--media-min-large) {
     margin-left: 0;
-    margin-bottom: 0.5em;
+    max-height: 12em;
   }
+}
+
+.memberInfo {
+  padding: 0 0.5em 0.5em 0.5em;
 }
 
 .memberName {
   margin-top: 0em;
   margin-bottom: 0;
-  font-size: var(--font-title3-size);
-  line-height: var(--font-title3-line-height);
+  font-size: var(--font-base-size);
+  line-height: var(--font-base-line-height);
 }
 
 .memberTitle {
   margin-top: 0;
   text-transform: uppercase;
   color: var(--color-gray);
-  font-size: smaller;
+  font-size: var(--font-smaller-size);
+  line-height: var(--font-smaller-line-height);
   font-family: var(--font-family-sans);
+  white-space: nowrap;
 }
 
 .contactInfo h5 {

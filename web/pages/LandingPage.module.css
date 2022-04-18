@@ -13,7 +13,15 @@
 }
 
 .fifty > :nth-child(2) {
-  border-right: 2px solid #f3f3f3;
+  @media (--media-min-large) {
+    border-right: 2px solid #f3f3f3;
+  }
+}
+
+.fifty > :nth-child(4) {
+  @media (--media-min-large) {
+    grid-column: span 2;
+  }
 }
 
 /* .full {

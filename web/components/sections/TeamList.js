@@ -19,7 +19,7 @@ function TeamList(props) {
           return (
             <div className={styles.memberItem} key={member.name}>
               <img className={styles.memberImage} src={urlFor(member.headshot)}></img>
-              <div>
+              <div className={styles.memberInfo}>
                 <h3 className={styles.memberName}>{member.name}</h3>
                 <h4 className={styles.memberTitle}>{member.title}</h4>
                 <div className={styles.contactInfo}>
