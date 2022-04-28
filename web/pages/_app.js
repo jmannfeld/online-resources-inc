@@ -82,31 +82,29 @@ class App extends BaseApp {
     }
 
     // Add site config from sanity
-    return (
-      client
-        .fetch(siteConfigQuery)
-        .then((config) => {
-          if (!config) {
+    return await client
+      .fetch(siteConfigQuery)
+      .then((config) => {
+        if (!config) {
+          return { pageProps };
+        }
+        if (config && pageProps) {
+          pageProps.config = config;
+        }
+        return { pageProps };
+      })
+      // Add products from sanity
+      .then(
+        await client.fetch(productQuery).then((products) => {
+          if (!products) {
             return { pageProps };
           }
-          if (config && pageProps) {
-            pageProps.config = config;
+          if (products && pageProps) {
+            pageProps.products = products;
           }
           return { pageProps };
         })
-        // Add products from sanity
-        .then(
-          client.fetch(productQuery).then((products) => {
-            if (!products) {
-              return { pageProps };
-            }
-            if (products && pageProps) {
-              pageProps.products = products;
-            }
-            return { pageProps };
-          })
-        )
-    );
+      );
   }
 
   render() {

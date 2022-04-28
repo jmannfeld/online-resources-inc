@@ -21,9 +21,7 @@ function NextLink(props) {
 }
 
 function ProductList(props) {
-  // console.log('ProductList props', props);
   const { name } = props;
-  // let products = props.products;
   const [products, setProducts] = useState(props.products);
   const [filterButtonText, setFilterButtonText] = useState('');
   const [categoryList, setCategoryList] = useState([
@@ -204,12 +202,12 @@ function ProductList(props) {
   );
 }
 
-ProductList.getInitialProps = async ({ props }) => {
-  console.log('in initial props');
-  const res = await client.fetch(productQuery);
-  const json = await res.json();
-  return { ...json };
-};
+// ProductList.getInitialProps = async ({ props }) => {
+//   console.log('in initial props');
+//   const res = await client.fetch(productQuery);
+//   const json = await res.json();
+//   return { ...json };
+// };
 
 // productList.propTypes = {
 //   title: PropTypes.string.isRequired,

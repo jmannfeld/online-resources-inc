@@ -47,12 +47,7 @@ const productQuery = groq`
 class ProductPage extends React.Component {
   static async getInitialProps({ query }) {
     const { slug } = query;
-    if (slug && slug !== '/') {
-      return client.fetch(productQuery, { slug }).then((res) => {
-        return { ...res, slug };
-      });
-    }
-    return { ...props };
+    return await client.fetch(productQuery, { slug }).then((res) => ({ ...res, slug }));
   }
 
   render() {

@@ -24,10 +24,6 @@ const pageQuery = groq`
         ...,
         route->
       },
-      products[]-> {
-        ...,
-        product->
-      },
       members[]-> {
         ...,
         headshot {
@@ -54,19 +50,20 @@ class LandingPage extends Component {
 
   static async getInitialProps({ query }) {
     const { slug } = query;
+    let pageData;
+
     if (!query) {
       console.error('no query');
       return;
     }
+
     if (slug && slug !== '/') {
-      return client.fetch(pageQuery, { slug }).then((res) => {
-        return { ...res.page, slug };
-      });
+      pageData = await client.fetch(pageQuery, { slug }).then((res) => ({ ...res.page, slug }));
     }
 
     // Frontpage
     if (slug && slug === '/') {
-      return client
+      pageData = await client
         .fetch(
           groq`
         *[_id == "global-config"][0]{
@@ -97,7 +94,7 @@ class LandingPage extends Component {
         .then((res) => ({ ...res.frontpage, slug }));
     }
 
-    return null;
+    return pageData;
   }
 
   render() {
