@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styles from './Cta.module.css';
+import { FiExternalLink } from 'react-icons/fi';
 
 function cta(props) {
   const { title, route, link } = props;
@@ -24,7 +25,7 @@ function cta(props) {
   if (link) {
     return (
       <a className={styles.button} href={link}>
-        {title}
+        {title} <FiExternalLink />
       </a>
     );
   }

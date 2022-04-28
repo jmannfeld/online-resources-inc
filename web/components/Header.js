@@ -5,6 +5,7 @@ import { withRouter } from 'next/router';
 import SVG from 'react-inlinesvg';
 import styles from './Header.module.css';
 import HamburgerIcon from './icons/Hamburger';
+import { FiExternalLink } from 'react-icons/fi';
 
 class Header extends Component {
   state = { showNav: false };
@@ -112,8 +113,13 @@ class Header extends Component {
                     if (item.url) {
                       return (
                         <li key={item._key} className={styles.navItem}>
-                          <a href={item.url} target="_blank" rel="noopener noreferrer">
-                            {item.navText}
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="external-link"
+                          >
+                            {item.navText} <FiExternalLink />
                           </a>
                         </li>
                       );

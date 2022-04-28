@@ -5,6 +5,7 @@ import { withRouter } from 'next/router';
 import styles from './Footer.module.css';
 import SimpleBlockContent from './SimpleBlockContent';
 import SocialMedia from './SocialMedia';
+import { FiExternalLink } from 'react-icons/fi';
 
 function Footer(props) {
   const { navItems, text, socialMedia, router } = props;
@@ -19,8 +20,13 @@ function Footer(props) {
               if (item.url) {
                 return (
                   <li key={item._key} className={styles.item}>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer">
-                      {item.navText}
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="external-link"
+                    >
+                      {item.navText} <FiExternalLink />
                     </a>
                   </li>
                 );
