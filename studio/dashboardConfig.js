@@ -10,7 +10,7 @@ export default {
             options: {
               title: 'Netlify deploys',
               description:
-                'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when documents are published.',
+                'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when new documents are published.',
               sites: [
                 {
                   title: 'ORI Frontend Website',

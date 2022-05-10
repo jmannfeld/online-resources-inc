@@ -24,7 +24,7 @@ function cta(props) {
 
   if (link) {
     return (
-      <a className={styles.button} href={link}>
+      <a className={styles.button} href={link} target="_blank">
         {title} <FiExternalLink />
       </a>
     );
