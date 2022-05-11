@@ -34,6 +34,31 @@ const pageQuery = groq`
   }
 }
 `;
+const productQuery = groq`
+  *[_type == "product" && public] {
+    ...,
+    category-> {
+      name
+    },
+    manufacturer-> {
+      name
+    },
+    slug {
+      current
+    },
+    "mainImage": image {
+      asset->
+    },
+    "galleryImages": gallery[] {
+    "image": asset-> {
+        url
+      }
+    }.image.url,
+    "industries": industries[]-> {
+      name
+    }.name
+  }
+`;
 
 class LandingPage extends Component {
   static propTypes = {
@@ -57,11 +82,21 @@ class LandingPage extends Component {
       return;
     }
 
+    // Page query if not on homepage
     if (slug && slug !== '/') {
       pageData = await client.fetch(pageQuery, { slug }).then((res) => ({ ...res.page, slug }));
     }
 
-    // Frontpage
+    // Query products if on products page
+    if (slug && slug === 'products') {
+      const products = await client.fetch(productQuery).then((products) => {
+        if (products && pageData) {
+          pageData.products = products;
+        }
+      });
+    }
+
+    // Frontpage query
     if (slug && slug === '/') {
       pageData = await client
         .fetch(
@@ -134,8 +169,6 @@ class LandingPage extends Component {
           }
         ]
       : [];
-    // console.log('CONTENT', content);
-    // console.log('PRODUCTS', products);
 
     console.log('LandingPage layout: ', layout);
     return (
@@ -152,36 +185,19 @@ class LandingPage extends Component {
             noindex: disallowRobots
           }}
         />
-        {content &&
-          products &&
-          (layout === '2 columns' ? (
-            <div className={styles.fifty}>
-              <RenderSections
-                sections={content}
-                layout={layout}
-                products={products}
-                config={config}
-              />
-            </div>
-          ) : layout === '3 columns' ? (
-            <div className={styles.thirds}>
-              <RenderSections
-                sections={content}
-                layout={layout}
-                products={products}
-                config={config}
-              />
-            </div>
-          ) : (
-            <div className={styles.full}>
-              <RenderSections
-                sections={content}
-                layout={layout}
-                products={products}
-                config={config}
-              />
-            </div>
-          ))}
+        {content && (
+          <div
+            className={
+              layout === '2 columns'
+                ? styles.fifty
+                : layout === '75-25'
+                ? styles.threeQuarters
+                : styles.full
+            }
+          >
+            <RenderSections sections={content} config={config} products={products} />
+          </div>
+        )}
       </Layout>
     );
   }

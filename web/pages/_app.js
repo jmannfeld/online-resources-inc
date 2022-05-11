@@ -29,43 +29,15 @@ const siteConfigQuery = groq`
   }[0]
   `;
 
-const productQuery = groq`
-  *[_type == "product" && public] {
-    ...,
-    category-> {
-      name
-    },
-    manufacturer-> {
-      name
-    },
-    slug {
-      current
-    },
-    "mainImage": image {
-      asset->
-    },
-    "galleryImages": gallery[] {
-    "image": asset-> {
-        url
-      }
-    }.image.url,
-    "industries": industries[]-> {
-      name
-    }.name
-  }
-`;
-
 class App extends BaseApp {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
-      // console.log('pageProps', pageProps);
-      // adds commit
     }
 
-    // hacky way to remove trailing slash
+    // Hacky way to remove trailing slash
     if (ctx.req && !ctx.req.url === '/') {
       const pathAndQueryDivided = ctx.req.url.split('?');
       if (pathAndQueryDivided[0].endsWith('/')) {
@@ -81,30 +53,14 @@ class App extends BaseApp {
       }
     }
 
-    // Add site config from sanity
-    return await client
-      .fetch(siteConfigQuery)
-      .then((config) => {
-        if (!config) {
-          return { pageProps };
-        }
-        if (config && pageProps) {
-          pageProps.config = config;
-        }
-        return { pageProps };
-      })
-      // Add products from sanity
-      .then(
-        await client.fetch(productQuery).then((products) => {
-          if (!products) {
-            return { pageProps };
-          }
-          if (products && pageProps) {
-            pageProps.products = products;
-          }
-          return { pageProps };
-        })
-      );
+    // Add site config from sanity on every page
+    await client.fetch(siteConfigQuery).then((config) => {
+      if (config && pageProps) {
+        pageProps.config = config;
+      }
+    });
+
+    return { pageProps };
   }
 
   render() {
