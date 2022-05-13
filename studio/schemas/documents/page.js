@@ -28,6 +28,7 @@ export default {
         { type: 'youtubeEmbed' },
         { type: 'productList' },
         { type: 'industryList' },
+        { type: 'benefits' },
         { type: 'teamList' },
         { type: 'serviceForm' },
         { type: 'contactForm' },

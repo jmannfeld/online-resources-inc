@@ -43,14 +43,6 @@ const reduceRoutes = (obj, route) => {
   return obj;
 };
 
-// const getBlogPostEntries = async (client) => {
-//   const entries = await client.getEntries({
-//     content_type: 'blogPost',
-//     order: 'fields.date'
-//   });
-//   return entries;
-// };
-
 module.exports = withImages(
   withCSS({
     cssModules: true,
@@ -68,13 +60,13 @@ module.exports = withImages(
 
       return client.fetch(routeQuery).then((res) => {
         const { routes = [] } = res;
+
+        // Import routes for pages created in the Studio
         const nextRoutes = {
-          // '/products/slug': { page: '/products/ProductPage' },
-          // Routes imported from sanity
           ...routes.filter(({ slug }) => slug.current).reduce(reduceRoutes, {})
         };
-        // '/admin': { page: '/AdminPage' }
 
+        // We can add extra pages here that are not created in the Studio
         // Routes for product pages
         products.forEach((slug) => {
           nextRoutes[`/products/${slug}`] = {
@@ -83,7 +75,11 @@ module.exports = withImages(
             includeInSitemap: true
           };
         });
+
+        // '/admin': { page: '/AdminPage' }
+
         console.log('nextRoutes', nextRoutes);
+
         return nextRoutes;
       });
     }

@@ -17,6 +17,7 @@ import teamMember from './documents/teamMember';
 
 // Object types
 import address from './objects/address';
+import benefits from './objects/benefits';
 import contactForm from './objects/contactForm';
 import cta from './objects/cta';
 import embedHTML from './objects/embedHTML';
@@ -51,6 +52,7 @@ export default createSchema({
   types: schemaTypes.concat([
     // objects
     address,
+    benefits,
     companyContact,
     contactForm,
     cta,

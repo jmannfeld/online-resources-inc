@@ -1,3 +1,4 @@
+export { default as Benefits } from './Benefits';
 export { default as CompanyContact } from './CompanyContact';
 export { default as ContactForm } from './ContactForm';
 export { default as Hero } from './Hero';

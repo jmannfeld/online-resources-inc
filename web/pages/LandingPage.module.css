@@ -4,10 +4,12 @@
   display: grid;
   grid-template-areas:
     'hero'
+    'benefits'
     'section';
   @media (--media-min-large) {
     grid-template-areas:
       'hero hero'
+      'benefits benefits'
       'section section';
   }
 }
