@@ -15,11 +15,7 @@
   max-width: var(--width-small);
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
-  padding: 0 1.15rem;
   margin-bottom: 1.25rem;
-  @media (--media-min-small) {
-    padding-left: 0.75rem;
-  }
 }
 
 .benefitList {

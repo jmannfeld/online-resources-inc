@@ -94,10 +94,18 @@
 .contactInfo h5 {
   margin-bottom: 0;
   font-family: var(--font-family-sans);
+  margin-top: 1rem;
+  @media (--media-max-medium) {
+    margin-top: 1.15rem;
+  }
 }
 
 .contactInfo p {
   margin: 0;
+  margin-top: -0.25rem;
+  @media (--media-max-medium) {
+    margin-top: -0.15rem;
+  }
 }
 
 .contactInfo a.memberEmail {

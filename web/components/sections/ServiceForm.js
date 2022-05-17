@@ -22,7 +22,7 @@ function ServiceForm(props) {
         <div className={styles.serviceFormInputs}>
           <p>
             <label>
-              Full name <input type="text" name="name" />
+              Name <input type="text" name="name" />
             </label>
           </p>
           <p>

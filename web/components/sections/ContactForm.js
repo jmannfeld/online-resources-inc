@@ -20,7 +20,7 @@ function ContactForm(props) {
         <input type="hidden" name="form-name" value="Contact Form" />
         <p>
           <label>
-            Full name <input type="text" name="name" />
+            Name <input type="text" name="name" />
           </label>
         </p>
         <p>
