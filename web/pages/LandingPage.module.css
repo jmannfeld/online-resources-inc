@@ -13,6 +13,12 @@
   }
 }
 
+.fifty > :nth-child(1) {
+  @media (--media-min-large) {
+    grid-column: span 2;
+  }
+}
+
 .fifty > :nth-child(2) {
   @media (--media-min-large) {
     border-right: 2px solid #f3f3f3;
@@ -22,6 +28,64 @@
 .fifty > :nth-child(4) {
   @media (--media-min-large) {
     grid-column: span 2;
+  }
+}
+
+.industry {
+  display: grid;
+  grid-template-areas:
+    'hero'
+    'benefits'
+    'textSection'
+    'textSection'
+    'textSection';
+  @media (--media-min-large) {
+    grid-template-areas:
+      'hero hero'
+      'benefits benefits'
+      'textSection textSection'
+      'textSection textSection'
+      'textSection textSection';
+  }
+}
+
+.industry > :nth-child(1) {
+  grid-column: 1;
+  @media (--media-min-large) {
+    grid-column: span 2;
+  }
+}
+
+.industry > :nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+  @media (--media-min-large) {
+    grid-column: span 2;
+  }
+}
+
+.industry > :nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+  @media (--media-min-large) {
+    grid-column: span 2;
+  }
+}
+
+.industry > :nth-child(4) {
+  grid-column: 1;
+  grid-row: 4;
+  @media (--media-min-large) {
+    grid-column: 1;
+  }
+}
+
+.industry > :nth-child(5) {
+  grid-column: 1;
+  grid-row: 5;
+  @media (--media-min-large) {
+    grid-row: 4;
+    grid-column: 2;
   }
 }
 
@@ -108,12 +172,6 @@
   @media (--media-min-large) {
     grid-row: 4;
     grid-column: 2;
-  }
-}
-
-.fifty > :nth-child(1) {
-  @media (--media-min-large) {
-    grid-column: span 2;
   }
 }
 
