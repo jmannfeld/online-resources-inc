@@ -2,7 +2,24 @@
 @import '../../styles/custom-properties.css';
 
 .root {
+  grid-area: textSection;
   padding: 2rem 0;
+}
+
+.twitterRoot {
+  grid-area: twitter;
+  padding: 2rem 0;
+}
+
+.twitterRoot .label {
+  margin-top: 0.75em;
+}
+
+.twitterRoot .article {
+  padding: 0rem 4rem;
+  @media (--media-min-large) {
+    padding: 0;
+  }
 }
 
 .article {

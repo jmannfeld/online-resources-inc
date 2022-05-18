@@ -2,6 +2,7 @@
 @import '../../styles/custom-properties.css';
 
 .root {
+  grid-area: imageSection;
   position: relative;
   padding: 2rem 0;
 
@@ -59,7 +60,7 @@
   box-sizing: border-box;
 
   @media (--media-min-medium) {
-    max-width: calc(var(--width-small) - 3rem);
+    max-width: calc(var(--width-small));
   }
 }
 
@@ -67,8 +68,9 @@
   background-color: var(--color-white);
   border: 1px solid var(--color-black);
   padding: 1.5rem;
+  font-size: 0.85rem;
 
   @media (--media-min-medium) {
-    max-width: calc((var(--width-small) / 2) - 3rem);
+    max-width: calc((var(--width-small) / 2));
   }
 }

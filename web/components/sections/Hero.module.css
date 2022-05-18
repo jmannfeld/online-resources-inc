@@ -2,6 +2,7 @@
 @import '../../styles/custom-properties.css';
 
 .root {
+  grid-area: hero;
   composes: center from '../../styles/shared.module.css';
   position: relative;
   background-color: var(--color-black, #000);

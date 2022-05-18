@@ -2,6 +2,7 @@
 @import '../../styles/custom-properties.css';
 
 .youtubeEmbedContainer {
+  grid-area: youTube;
   padding: 2rem 0;
   max-width: var(--width-small);
   width: 100%;
@@ -15,9 +16,9 @@
 }
 
 h2.youtubeHeading {
-  margin-top: 0.25 em;
-  font-size: var(--font-title3-size);
-  line-height: var(--font-title3-line-height);
+  margin-top: 0.25em;
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
   padding: 0 1.5rem;
 }
 

@@ -2,6 +2,7 @@
 @import '../../styles/custom-properties.css';
 
 .industryListContainer {
+  grid-area: industries;
   margin: 0 auto;
 }
 

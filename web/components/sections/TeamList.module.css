@@ -2,12 +2,13 @@
 @import '../../styles/custom-properties.css';
 
 .teamListContainer {
+  grid-area: teamList;
   width: 100%;
   max-width: var(--width-small);
   margin: 0 auto;
   padding: 0 2rem;
   box-sizing: border-box;
-  @media (--media-min-medium) {
+  @media (--media-min-large) {
     padding: 1rem 4rem;
   }
 }

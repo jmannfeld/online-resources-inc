@@ -5,9 +5,13 @@ import styles from './TextSection.module.css';
 
 function TextSection(props) {
   const { heading, label, text } = props;
+  let isTwitter = false;
+  if (heading && heading.toLowerCase().includes('twitter')) {
+    isTwitter = true;
+  }
 
   return (
-    <div className={styles.root}>
+    <div className={isTwitter ? styles.twitterRoot : styles.root}>
       <section className={styles.article}>
         {label && <div className={styles.label}>{label}</div>}
         {heading && <h2 className={styles.heading}>{heading}</h2>}

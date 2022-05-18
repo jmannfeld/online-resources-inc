@@ -188,10 +188,14 @@ class LandingPage extends Component {
         {content && (
           <div
             className={
-              layout === '2 columns'
+              slug === '/'
+                ? styles.home
+                : slug === 'robotics'
+                ? styles.robotics
+                : slug === 'about-us'
+                ? styles.about
+                : layout === '2 columns'
                 ? styles.fifty
-                : layout === '75-25'
-                ? styles.threeQuarters
                 : styles.full
             }
           >
