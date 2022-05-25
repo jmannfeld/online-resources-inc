@@ -21,104 +21,52 @@ function NextLink(props) {
 }
 
 function ProductList(props) {
-  const { name } = props;
-  const [products, setProducts] = useState(props.products);
-  const [filterButtonText, setFilterButtonText] = useState('');
+  const { name, products } = props;
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [categoryList, setCategoryList] = useState([
+    'All categories',
     '3D Scanning',
     'CAD/CAM',
     'Inspection Software',
-    'Reverse Engineering',
-    'All categories'
+    'Reverse Engineering Software'
   ]);
-  const [industryButtonText, setIndustryButtonText] = useState('');
-  const [industryList, setIndustryList] = useState([
-    'Education',
-    'Aerospace & Defense',
-    'Medical',
-    'Automotive',
-    'All industries'
-  ]);
-  const [typeButtonText, setTypeButtonText] = useState('');
-  const [typeList, setTypeList] = useState(['Hardware', 'Software', 'All types']);
 
-  const filterCategories = () => {
-    setFilterButtonText(categoryList[0]);
+  const [typeList, setTypeList] = useState(['All types', 'Hardware', 'Software']);
 
-    if (categoryList[0] === 'All categories') {
-      setProducts(props.products);
-    }
+  const [categorySelected, setCategorySelected] = useState(false);
+  const [typeSelected, setTypeSelected] = useState(false);
 
-    if (!filterButtonText) {
-      const filtered = props.products.filter((product) => product.category.name === '3D Scanners');
-      setProducts(filtered);
-    }
-    if (filterButtonText && categoryList[0] !== 'All categories') {
-      const filtered = props.products.filter(
-        (product) => product.category.name === categoryList[0]
-      );
-      setProducts(filtered);
-    }
+  const handleCategoryToggle = () => {
     categoryList.push(categoryList.shift());
     setCategoryList(categoryList);
+    setCategorySelected(categoryList[0]);
   };
 
-  // const filterIndustries = () => {
-  //   setIndustryButtonText(industryList[0]);
-
-  //   if (industryList[0] === 'All industries') {
-  //     setProducts(props.products);
-  //   }
-
-  //   if (!industryButtonText) {
-  //     console.log('props.producys', props.products);
-  //     const filtered = props.products.filter((product) => {
-  //       if (product.industries) {
-  //         if (product.industries.includes('Education')) console.log('industry found');
-  //         return true;
-  //       }
-  //       return;
-  //     });
-  //     console.log('filtered', filtered);
-  //     setProducts(filtered);
-  //   }
-  //   if (industryButtonText && industryList[0] !== 'All industries') {
-  //     const filtered = props.products.filter((product) => {
-  //       if (product.industries) {
-  //         if (product.industries.includes(industryList[0])) {
-  //           console.log('industry found');
-  //           return true;
-  //         }
-  //       }
-  //       return false;
-  //     });
-  //     console.log('filtered', filtered);
-  //     setProducts(filtered);
-  //   }
-  //   industryList.push(industryList.shift());
-  //   setIndustryList(industryList);
-  //   console.log('industryList', industryList);
-  // };
-
-  const filterTypes = () => {
-    setTypeButtonText(typeList[0]);
-
-    if (typeList[0] === 'All types') {
-      setProducts(props.products);
-    }
-
-    if (!typeButtonText) {
-      const filtered = props.products.filter((product) => product.type === 'Hardware');
-      setProducts(filtered);
-    }
-    if (typeButtonText && typeList[0] !== 'All types') {
-      const filtered = props.products.filter((product) => product.type === typeList[0]);
-      setProducts(filtered);
-    }
+  const handleTypeToggle = () => {
     typeList.push(typeList.shift());
     setTypeList(typeList);
+    setTypeSelected(typeList[0]);
+    // setTypeSelected(!typeSelected);
   };
 
+  useEffect(() => {
+    const filteredList = products.filter((product) => {
+      console.log('categoryList[0]', categoryList[0]);
+      console.log('typeList[0]', typeList[0]);
+      if (categoryList[0] === 'All categories' && typeList[0] === 'All types') {
+        return true;
+      } else {
+        return (
+          (categorySelected && product.category.name == categoryList[0]) ||
+          (typeSelected && product.type == typeList[0])
+        );
+      }
+    });
+    console.log('filteredList', filteredList);
+    setFilteredProducts(filteredList);
+  }, [products, categorySelected, typeSelected]);
+
+  console.log('categorySelected', categorySelected);
   return (
     <div className={styles.productListContainer}>
       <h1>
@@ -126,15 +74,15 @@ function ProductList(props) {
       </h1>
       <div className={styles.filterContainer}>
         <button
-          onClick={filterCategories}
+          onClick={handleCategoryToggle}
           className={
-            !filterButtonText || filterButtonText === 'All categories'
+            !categorySelected || categorySelected === 'All categories'
               ? styles.filterButton
               : styles.filterButton + ' ' + styles.active
           }
         >
-          {filterButtonText
-            ? `${filterButtonText} (${products.length})`
+          {categorySelected
+            ? `${categoryList[0]} (${filteredProducts.length})`
             : `All categories (${categoryList.length - 1})`}
         </button>
         {/* <button
@@ -150,21 +98,21 @@ function ProductList(props) {
             : `All industries (${industryList.length - 1})`}
         </button> */}
         <button
-          onClick={filterTypes}
+          onClick={handleTypeToggle}
           className={
-            !typeButtonText || typeButtonText === 'All types'
+            !typeSelected || typeSelected === 'All types'
               ? styles.filterButton
               : styles.filterButton + ' ' + styles.active
           }
         >
-          {typeButtonText
-            ? `${typeButtonText} (${products.length})`
+          {typeSelected
+            ? `${typeList[0]} (${filteredProducts.length})`
             : `All types (${typeList.length - 1})`}
         </button>
         <input className={styles.searchProducts} placeholder="Search products..."></input>
       </div>
       <div className={styles.productList}>
-        {products
+        {filteredProducts
           .sort((a, b) => {
             // sorts products asc by name
             if (a.name > b.name) return 1;
