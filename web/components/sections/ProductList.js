@@ -26,7 +26,7 @@ function ProductList(props) {
   const [categoryList, setCategoryList] = useState([
     'All categories',
     '3D Scanning',
-    'CAD/CAM',
+    'Modeling Software',
     'Inspection Software',
     'Reverse Engineering Software'
   ]);
@@ -35,6 +35,8 @@ function ProductList(props) {
 
   const [categorySelected, setCategorySelected] = useState(false);
   const [typeSelected, setTypeSelected] = useState(false);
+
+  const [searchValue, setSearchValue] = useState('');
 
   const handleCategoryToggle = () => {
     categoryList.push(categoryList.shift());
@@ -109,7 +111,14 @@ function ProductList(props) {
             ? `${typeList[0]} (${filteredProducts.length})`
             : `All types (${typeList.length - 1})`}
         </button>
-        <input className={styles.searchProducts} placeholder="Search products..."></input>
+        <input
+          className={styles.searchProducts}
+          type="text"
+          name="search"
+          placeholder="Search products..."
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        ></input>
       </div>
       <div className={styles.productList}>
         {filteredProducts
@@ -119,6 +128,7 @@ function ProductList(props) {
             if (a.name < b.name) return -1;
             return 0;
           })
+          .filter((product) => product.name.match(new RegExp(searchValue, 'i')))
           .map((product) => {
             return (
               <NextLink
