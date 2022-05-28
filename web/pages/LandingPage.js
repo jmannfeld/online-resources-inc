@@ -190,9 +190,9 @@ class LandingPage extends Component {
             className={
               slug === '/'
                 ? styles.home
-                : slug.includes('industries')
-                ? styles.industry
-                : slug === 'robotics'
+                : // : slug.includes('industries')
+                // ? styles.industry
+                slug === 'robotics'
                 ? styles.robotics
                 : slug === 'about-us'
                 ? styles.about

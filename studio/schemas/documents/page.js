@@ -24,6 +24,7 @@ export default {
       of: [
         { type: 'hero' },
         { type: 'textSection' },
+        { type: 'textSectionSplit' },
         { type: 'imageSection' },
         { type: 'youtubeEmbed' },
         { type: 'productList' },

@@ -31,7 +31,7 @@
   }
 }
 
-.industry {
+/* .industry {
   display: grid;
   grid-template-areas:
     'hero'
@@ -47,9 +47,9 @@
       'textSection textSection'
       'textSection textSection';
   }
-}
+} */
 
-.industry > :nth-child(1) {
+/* .industry > :nth-child(1) {
   grid-column: 1;
   @media (--media-min-large) {
     grid-column: span 2;
@@ -87,18 +87,57 @@
     grid-row: 4;
     grid-column: 2;
   }
-}
+} */
 
 .robotics {
   display: grid;
   grid-template-areas:
     'hero'
     'textSection'
-    'imageSection';
+    'imageSection'
+    'youtube';
   @media (--media-min-large) {
     grid-template-areas:
       'hero hero'
-      'imageSection textSection';
+      'imageSection textSection'
+      'youtube youtube';
+  }
+}
+
+.robotics > :nth-child(1) {
+  grid-row: 1;
+  grid-column: 1;
+  @media (--media-min-large) {
+    grid-row: 1;
+    grid-column: span 2;
+  }
+}
+
+.robotics > :nth-child(2) {
+  grid-row: 2;
+  grid-column: 1;
+  @media (--media-min-large) {
+    grid-row: 2;
+    grid-column: 2;
+  }
+}
+
+.robotics > :nth-child(3) {
+  grid-row: 3;
+  grid-column: 1;
+  @media (--media-min-large) {
+    grid-row: 2;
+    grid-column: 1;
+    border-right: 2px solid #f3f3f3;
+  }
+}
+
+.robotics > :nth-child(4) {
+  grid-row: 4;
+  grid-column: 1;
+  @media (--media-min-large) {
+    grid-row: 3;
+    grid-column: span 2;
   }
 }
 

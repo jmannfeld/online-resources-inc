@@ -42,6 +42,7 @@ import mailchimp from './objects/mailchimp';
 import productList from './objects/productList';
 import teamList from './objects/teamList';
 import textSection from './objects/textSection';
+import textSectionSplit from './objects/textSectionSplit';
 import youtubeEmbed from './objects/youtubeEmbed';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -76,6 +77,7 @@ export default createSchema({
     techSpecs,
     teamList,
     textSection,
+    textSectionSplit,
     youtubeEmbed,
     // documents
     page,

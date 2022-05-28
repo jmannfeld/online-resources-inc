@@ -13,13 +13,18 @@ function YoutubeEmbed(props) {
       <h2 className={styles.youtubeHeading}>{heading}</h2>
       {position.toLowerCase() === 'right' ? (
         <div className={styles.youtubeFlex}>
-          <p className={styles.youtubeText}>{text}</p>
+          {text && <p className={styles.youtubeText}>{text}</p>}
           <YouTube videoId={videoId} className={styles.video} />
+        </div>
+      ) : position.toLowerCase() === 'left' ? (
+        <div className={styles.youtubeFlex}>
+          <YouTube videoId={videoId} className={styles.video} />
+          {text && <p className={styles.youtubeText}>{text}</p>}
         </div>
       ) : (
         <div className={styles.youtubeFlex}>
+          {text && <p className={styles.youtubeText}>{text}</p>}
           <YouTube videoId={videoId} className={styles.video} />
-          <p className={styles.youtubeText}>{text}</p>
         </div>
       )}
     </div>

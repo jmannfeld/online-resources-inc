@@ -1,0 +1,50 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.root {
+  grid-area: textSectionSplit;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (--media-min-medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.root > :nth-child(1) {
+  border: none;
+
+  @media (--media-min-medium) {
+    border-right: 2px solid #f3f3f3;
+  }
+}
+
+.article {
+  max-width: var(--width-small);
+  margin: 0 auto;
+  padding: 2rem 2rem;
+  box-sizing: border-box;
+
+  @media (--media-min-medium) {
+    padding: 2rem 4rem;
+    min-width: 18em;
+  }
+}
+
+.label {
+  font-size: var(--font-micro-size);
+  line-height: var(--font-micro-line-height);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.6em;
+  min-height: 1.25em;
+}
+
+.heading {
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
+}
+
+.label + .heading {
+  margin-top: 0.25em;
+}

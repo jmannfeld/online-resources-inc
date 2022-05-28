@@ -9,4 +9,5 @@ export { default as ProductList } from './ProductList';
 export { default as ServiceForm } from './ServiceForm';
 export { default as TeamList } from './TeamList';
 export { default as TextSection } from './TextSection';
+export { default as TextSectionSplit } from './TextSectionSplit';
 export { default as YoutubeEmbed } from './YoutubeEmbed';

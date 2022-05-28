@@ -11,13 +11,38 @@ const YouTubePreview = ({ value }) => {
   }
   return (
     <div>
-      <h5 style={{ margin: '1rem' }}>{heading}</h5>
-      <div style={{ margin: '0.5rem 1rem 1rem 1rem' }}>
+      <h5
+        style={{
+          margin: '1rem',
+          textAlign: `${position.toLowerCase() === 'center' ? 'center' : 'left'}`
+        }}
+      >
+        {heading}
+      </h5>
+      <div
+        style={{
+          margin: '0.5rem 1rem 1rem 1rem',
+          display: `${position.toLowerCase() === 'center' ? 'flex' : 'block'}`,
+          justifyContent: 'center'
+        }}
+      >
         <iframe
           style={{
             display: 'block',
-            float: `${position.toLowerCase() === 'right' ? 'right' : 'left'}`,
-            padding: `${position.toLowerCase() === 'right' ? '0 0 0 1rem' : '0 1rem 0 0'}`,
+            float: `${
+              position.toLowerCase() === 'right'
+                ? 'right'
+                : position.toLowerCase() === 'left'
+                ? 'left'
+                : 'none'
+            }`,
+            padding: `${
+              position.toLowerCase() === 'right'
+                ? '0 0 0 1rem'
+                : position.toLowerCase() === 'left'
+                ? '0 1rem 0 0'
+                : '0'
+            }`,
             maxWidth: '100%'
           }}
           height="200"
@@ -48,7 +73,7 @@ export default {
       type: 'string',
       initialValue: 'Left',
       options: {
-        list: ['Left', 'Right'],
+        list: ['Left', 'Right', 'Center'],
         layout: 'radio',
         direction: 'horizontal',
         default: 'Left'
