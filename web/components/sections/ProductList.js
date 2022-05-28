@@ -33,6 +33,12 @@ function ProductList(props) {
       products
         .filter((product) => product.category.name !== undefined)
         .map((product) => product.category && product.category.name)
+        .sort((a, b) => {
+          // sorts categories asc by name
+          if (a > b) return 1;
+          if (a < b) return -1;
+          return 0;
+        })
     )
   ];
 
@@ -43,8 +49,8 @@ function ProductList(props) {
         .map((product) => product.manufacturer && product.manufacturer.name)
         .sort((a, b) => {
           // sorts manufacturers asc by name
-          if (a.name > b.name) return 1;
-          if (a.name < b.name) return -1;
+          if (a > b) return 1;
+          if (a < b) return -1;
           return 0;
         })
     )
