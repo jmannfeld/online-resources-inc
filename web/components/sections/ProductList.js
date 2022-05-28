@@ -23,18 +23,11 @@ function NextLink(props) {
 function ProductList(props) {
   const { name, products } = props;
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [categoryList, setCategoryList] = useState([
-    'All categories',
-    '3D Scanning',
-    'Modeling Software',
-    'Inspection Software',
-    'Reverse Engineering Software'
-  ]);
 
   const [typeList, setTypeList] = useState(['All types', 'Hardware', 'Software']);
+  const [typeSelected, setTypeSelected] = useState(false);
 
   const [categorySelected, setCategorySelected] = useState(false);
-  const [typeSelected, setTypeSelected] = useState(false);
 
   const [searchValue, setSearchValue] = useState('');
 
@@ -45,7 +38,6 @@ function ProductList(props) {
         .map((product) => product.category && product.category.name)
     )
   ];
-  console.log('arrayUniqueCategories', arrayUniqueCategories);
 
   const arrayUniqueManufacturers = [
     ...new Set(
@@ -54,37 +46,93 @@ function ProductList(props) {
         .map((product) => product.manufacturer && product.manufacturer.name)
     )
   ];
-  console.log('arrayUniqueManufacturers', arrayUniqueManufacturers);
 
-  const handleCategoryToggle = () => {
-    categoryList.push(categoryList.shift());
-    setCategoryList(categoryList);
-    setCategorySelected(categoryList[0]);
+  const manufacturerFilterObj = {};
+  const [manufacturers, setManufacturers] = useState(
+    arrayUniqueManufacturers.reduce((accumulator, value) => {
+      return { ...accumulator, [value]: false };
+    }, {})
+  );
+  // arrayUniqueManufacturers.forEach((manufacturer) => {
+  //   manufacturerFilterObj[manufacturer] = false;
+  // });
+  console.log(manufacturers);
+
+  const handleManufacturerChange = (e) => {
+    const { name } = e.target;
+    setManufacturers({
+      ...manufacturers,
+      [name]: !manufacturers[name]
+    });
+  };
+
+  const handleCategoryToggle = (newCategory) => {
+    if (categorySelected === newCategory) {
+      setCategorySelected(false);
+    } else {
+      setCategorySelected(newCategory);
+    }
   };
 
   const handleTypeToggle = () => {
     typeList.push(typeList.shift());
     setTypeList(typeList);
     setTypeSelected(typeList[0]);
-    // setTypeSelected(!typeSelected);
+  };
+
+  const checkedManufacturers = Object.entries(manufacturers)
+    .filter((manufacturer) => manufacturer[1])
+    .map((manufacturer) => manufacturer[0]);
+  console.log('checkedManufacturers', checkedManufacturers);
+
+  const isOfType = (product) => {
+    if (product.type === typeList[0]) {
+      console.log('is of type');
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isCategory = (product) => {
+    if (product.category.name === categorySelected) {
+      console.log('is in category');
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isFromManufacturer = (product) => {
+    if (checkedManufacturers.length === 0) return true;
+    if (
+      checkedManufacturers.length > 0 &&
+      product.manufacturer &&
+      checkedManufacturers.includes(product.manufacturer.name)
+    ) {
+      console.log('is from manu');
+      return true;
+    }
   };
 
   useEffect(() => {
     const filteredList = products.filter((product) => {
-      console.log('categoryList[0]', categoryList[0]);
-      console.log('typeList[0]', typeList[0]);
-      if (categoryList[0] === 'All categories' && typeList[0] === 'All types') {
-        return true;
-      } else {
-        return (
-          (categorySelected && product.category.name == categoryList[0]) ||
-          (typeSelected && product.type == typeList[0])
-        );
-      }
+      // console.log('product', product);
+      // return isOfType(product) || isCategory(product) || isFromManufacturer(product);
+      return isOfType(product) || isCategory(product);
     });
+    // } else if (
+    //   checkedManufacturers.length > 0 &&
+    //   product.manufacturer &&
+    //   checkedManufacturers.includes(product.manufacturer.name)
+    // ) {
+    //   return true;
+    // } else if (typeList[0] === 'All types') {
+    // console.log('typeList[0]', typeList[0]);
+    // return true;
     console.log('filteredList', filteredList);
     setFilteredProducts(filteredList);
-  }, [products, categorySelected, typeSelected]);
+  }, [products, categorySelected, typeSelected, manufacturers]);
 
   console.log('categorySelected', categorySelected);
   return (
@@ -92,14 +140,14 @@ function ProductList(props) {
       <div className={styles.manufacturerFilterContainer}>
         <h4>Manufacturer</h4>
         {arrayUniqueManufacturers.map((manufacturer) => {
-          console.log(manufacturer);
           return (
             <div className={styles.checkboxWrapper}>
               <input
                 type="checkbox"
                 id={manufacturer}
-                className="manufacturer-checkbox"
                 name={manufacturer}
+                className="manufacturer-checkbox"
+                onChange={handleManufacturerChange}
               />
               <label htmlFor={manufacturer} className="checkboxLabel">
                 {manufacturer}
@@ -148,67 +196,65 @@ function ProductList(props) {
         </div>
         <div className={styles.categoryFilterContainer}>
           {arrayUniqueCategories.map((category) => {
-            return <button className={styles.filterButton}>{category}</button>;
+            return (
+              <button
+                className={
+                  categorySelected === category
+                    ? styles.filterButton + ' ' + styles.active
+                    : styles.filterButton
+                }
+                value={category}
+                onClick={(e) => handleCategoryToggle(category)}
+              >
+                {category}
+              </button>
+            );
           })}
         </div>
 
         <div className={styles.productList}>
-          {filteredProducts
-            .sort((a, b) => {
-              // sorts products asc by name
-              if (a.name > b.name) return 1;
-              if (a.name < b.name) return -1;
-              return 0;
-            })
-            .filter((product) => product.name.match(new RegExp(searchValue, 'i')))
-            .map((product) => {
-              return (
-                <NextLink
-                  href={{
-                    pathname: '/products/ProductPage',
-                    query: { slug: product.slug.current }
-                  }}
-                  as={`/products/${product.slug.current}`}
-                  key={product.slug.current}
-                  tabIndex={0}
-                  className={styles.productLink}
-                >
-                  <div className={styles.productItem}>
-                    <div className={styles.productImageWrapper}>
-                      <div className={styles.imageCenter}>
-                        <img
-                          className={styles.productImage}
-                          src={product.image ? urlFor(product.image) : '../static/logo.png'}
-                        ></img>
+          {filteredProducts > 0
+            ? products
+            : filteredProducts
+                .sort((a, b) => {
+                  // sorts products asc by name
+                  if (a.name > b.name) return 1;
+                  if (a.name < b.name) return -1;
+                  return 0;
+                })
+                .filter((product) => isFromManufacturer(product))
+                .filter((product) => product.name.match(new RegExp(searchValue, 'i')))
+                .map((product) => {
+                  return (
+                    <NextLink
+                      href={{
+                        pathname: '/products/ProductPage',
+                        query: { slug: product.slug.current }
+                      }}
+                      as={`/products/${product.slug.current}`}
+                      key={product.slug.current}
+                      tabIndex={0}
+                      className={styles.productLink}
+                    >
+                      <div className={styles.productItem}>
+                        <div className={styles.productImageWrapper}>
+                          <div className={styles.imageCenter}>
+                            <img
+                              className={styles.productImage}
+                              src={product.image ? urlFor(product.image) : '../static/logo.png'}
+                            ></img>
+                          </div>
+                          <h3 className={styles.productName}>{product.name}</h3>
+                        </div>
                       </div>
-                      <h3 className={styles.productName}>{product.name}</h3>
-                    </div>
-                  </div>
-                </NextLink>
-              );
-            })}
+                    </NextLink>
+                  );
+                })}
         </div>
       </div>
       <div className={styles.rightSidebar}></div>
     </div>
   );
 }
-
-// ProductList.getInitialProps = async ({ props }) => {
-//   console.log('in initial props');
-//   const res = await client.fetch(productQuery);
-//   const json = await res.json();
-//   return { ...json };
-// };
-
-// productList.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   route: PropTypes.shape({
-//     slug: PropTypes.shape({
-//       current: PropTypes.string
-//     })
-//   }),
-//   link: PropTypes.string
-// }
 
 export default ProductList;
