@@ -38,6 +38,24 @@ function ProductList(props) {
 
   const [searchValue, setSearchValue] = useState('');
 
+  const arrayUniqueCategories = [
+    ...new Set(
+      products
+        .filter((product) => product.category.name !== undefined)
+        .map((product) => product.category && product.category.name)
+    )
+  ];
+  console.log('arrayUniqueCategories', arrayUniqueCategories);
+
+  const arrayUniqueManufacturers = [
+    ...new Set(
+      products
+        .filter((product) => product.manufacturer !== undefined)
+        .map((product) => product.manufacturer && product.manufacturer.name)
+    )
+  ];
+  console.log('arrayUniqueManufacturers', arrayUniqueManufacturers);
+
   const handleCategoryToggle = () => {
     categoryList.push(categoryList.shift());
     setCategoryList(categoryList);
@@ -70,92 +88,108 @@ function ProductList(props) {
 
   console.log('categorySelected', categorySelected);
   return (
-    <div className={styles.productListContainer}>
-      <h1>
-        {name} ({products.length})
-      </h1>
-      <div className={styles.filterContainer}>
-        <button
+    <div className={styles.productLayoutWrapper}>
+      <div className={styles.manufacturerFilterContainer}>
+        <h4>Manufacturer</h4>
+        {arrayUniqueManufacturers.map((manufacturer) => {
+          console.log(manufacturer);
+          return (
+            <div className={styles.checkboxWrapper}>
+              <input
+                type="checkbox"
+                id={manufacturer}
+                className="manufacturer-checkbox"
+                name={manufacturer}
+              />
+              <label htmlFor={manufacturer} className="checkboxLabel">
+                {manufacturer}
+              </label>
+            </div>
+          );
+        })}
+      </div>
+      <div className={styles.productListContainer}>
+        <h1>
+          {name} ({products.length})
+        </h1>
+        <div className={styles.filterContainer}>
+          {/* <button
           onClick={handleCategoryToggle}
           className={
             !categorySelected || categorySelected === 'All categories'
               ? styles.filterButton
               : styles.filterButton + ' ' + styles.active
-          }
-        >
-          {categorySelected
+            }
+            >
+            {categorySelected
             ? `${categoryList[0]} (${filteredProducts.length})`
             : `All categories (${categoryList.length - 1})`}
-        </button>
-        {/* <button
-          onClick={filterIndustries}
-          className={
-            !industryButtonText || industryButtonText === 'All industries'
-              ? styles.filterButton
-              : styles.filterButton + ' ' + styles.active
-          }
-        >
-          {industryButtonText
-            ? `${industryButtonText} (${products.length})`
-            : `All industries (${industryList.length - 1})`}
-        </button> */}
-        <button
-          onClick={handleTypeToggle}
-          className={
-            !typeSelected || typeSelected === 'All types'
-              ? styles.filterButton
-              : styles.filterButton + ' ' + styles.active
-          }
-        >
-          {typeSelected
-            ? `${typeList[0]} (${filteredProducts.length})`
-            : `All types (${typeList.length - 1})`}
-        </button>
-        <input
-          className={styles.searchProducts}
-          type="text"
-          name="search"
-          placeholder="Search products..."
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        ></input>
-      </div>
-      <div className={styles.productList}>
-        {filteredProducts
-          .sort((a, b) => {
-            // sorts products asc by name
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
-            return 0;
-          })
-          .filter((product) => product.name.match(new RegExp(searchValue, 'i')))
-          .map((product) => {
-            return (
-              <NextLink
-                href={{
-                  pathname: '/products/ProductPage',
-                  query: { slug: product.slug.current }
-                }}
-                as={`/products/${product.slug.current}`}
-                key={product.slug.current}
-                tabIndex={0}
-                className={styles.productLink}
-              >
-                <div className={styles.productItem}>
-                  <div className={styles.productImageWrapper}>
-                    <div className={styles.imageCenter}>
-                      <img
-                        className={styles.productImage}
-                        src={product.image ? urlFor(product.image) : '../static/logo.png'}
-                      ></img>
-                    </div>
-                    <h3 className={styles.productName}>{product.name}</h3>
-                  </div>
-                </div>
-              </NextLink>
-            );
+          </button> */}
+          <button
+            onClick={handleTypeToggle}
+            className={
+              !typeSelected || typeSelected === 'All types'
+                ? styles.filterButton
+                : styles.filterButton + ' ' + styles.active
+            }
+          >
+            {typeSelected
+              ? `${typeList[0]} (${filteredProducts.length})`
+              : `All types (${typeList.length - 1})`}
+          </button>
+          <input
+            className={styles.searchProducts}
+            type="text"
+            name="search"
+            placeholder="Search products..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          ></input>
+        </div>
+        <div className={styles.categoryFilterContainer}>
+          {arrayUniqueCategories.map((category) => {
+            return <button className={styles.filterButton}>{category}</button>;
           })}
+        </div>
+
+        <div className={styles.productList}>
+          {filteredProducts
+            .sort((a, b) => {
+              // sorts products asc by name
+              if (a.name > b.name) return 1;
+              if (a.name < b.name) return -1;
+              return 0;
+            })
+            .filter((product) => product.name.match(new RegExp(searchValue, 'i')))
+            .map((product) => {
+              return (
+                <NextLink
+                  href={{
+                    pathname: '/products/ProductPage',
+                    query: { slug: product.slug.current }
+                  }}
+                  as={`/products/${product.slug.current}`}
+                  key={product.slug.current}
+                  tabIndex={0}
+                  className={styles.productLink}
+                >
+                  <div className={styles.productItem}>
+                    <div className={styles.productImageWrapper}>
+                      <div className={styles.imageCenter}>
+                        <img
+                          className={styles.productImage}
+                          src={product.image ? urlFor(product.image) : '../static/logo.png'}
+                        ></img>
+                      </div>
+                      <h3 className={styles.productName}>{product.name}</h3>
+                    </div>
+                  </div>
+                </NextLink>
+              );
+            })}
+        </div>
       </div>
+      <div className={styles.rightSidebar}></div>
     </div>
   );
 }

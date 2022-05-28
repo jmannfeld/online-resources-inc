@@ -1,10 +1,15 @@
 @import '../../styles/custom-media.css';
 @import '../../styles/custom-properties.css';
 
+.productLayoutWrapper {
+  display: grid;
+  grid-template-columns: 1fr var(--width-small) 1fr;
+  margin-top: 3.25rem;
+}
+
 .productListContainer {
   max-width: var(--width-small);
   margin: 0 auto;
-  margin-top: 3.25rem;
   padding: 0 2rem;
 }
 
@@ -74,6 +79,37 @@
 
 .searchProducts::placeholder {
   color: #9d9d9d;
+}
+
+.categoryFilterContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.5em;
+}
+
+.manufacturerFilterContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1rem 0.75rem;
+  margin: 13rem 1.5rem 0 auto;
+}
+
+.manufacturerFilterContainer h4 {
+  margin-bottom: 0.5rem;
+}
+
+.checkboxWrapper {
+  padding-left: 0.25rem;
+}
+
+input[type='checkbox'] {
+  transform: scale(1.5);
+  margin: 0 10px 15px 0;
+}
+
+input[type='checkbox']:checked {
+  filter: invert(100%) hue-rotate(70deg) brightness(0.82);
 }
 
 .productList {
