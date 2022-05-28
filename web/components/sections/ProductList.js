@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import groq from 'groq';
 import imageUrlBuilder from '@sanity/image-url';
 
 import client from '../../client';
@@ -25,10 +24,8 @@ function ProductList(props) {
   const [filteredProducts, setFilteredProducts] = useState(products);
 
   const [typeList, setTypeList] = useState(['All types', 'Hardware', 'Software']);
-  const [typeSelected, setTypeSelected] = useState(false);
-
+  const [typeSelected, setTypeSelected] = useState('All types');
   const [categorySelected, setCategorySelected] = useState(false);
-
   const [searchValue, setSearchValue] = useState('');
 
   const arrayUniqueCategories = [
@@ -47,24 +44,23 @@ function ProductList(props) {
     )
   ];
 
-  const manufacturerFilterObj = {};
-  const [manufacturers, setManufacturers] = useState(
+  const [manufacturersChecked, setManufacturersChecked] = useState(
     arrayUniqueManufacturers.reduce((accumulator, value) => {
       return { ...accumulator, [value]: false };
     }, {})
   );
-  // arrayUniqueManufacturers.forEach((manufacturer) => {
-  //   manufacturerFilterObj[manufacturer] = false;
-  // });
-  console.log(manufacturers);
 
   const handleManufacturerChange = (e) => {
     const { name } = e.target;
-    setManufacturers({
-      ...manufacturers,
-      [name]: !manufacturers[name]
+    setManufacturersChecked({
+      ...manufacturersChecked,
+      [name]: !manufacturersChecked[name]
     });
   };
+
+  const checkedManufacturers = Object.entries(manufacturersChecked)
+    .filter((manufacturer) => manufacturer[1])
+    .map((manufacturer) => manufacturer[0]);
 
   const handleCategoryToggle = (newCategory) => {
     if (categorySelected === newCategory) {
@@ -80,61 +76,52 @@ function ProductList(props) {
     setTypeSelected(typeList[0]);
   };
 
-  const checkedManufacturers = Object.entries(manufacturers)
-    .filter((manufacturer) => manufacturer[1])
-    .map((manufacturer) => manufacturer[0]);
-  console.log('checkedManufacturers', checkedManufacturers);
-
-  const isOfType = (product) => {
-    if (product.type === typeList[0]) {
-      console.log('is of type');
-      return true;
+  const filterByTypeSelected = (products) => {
+    if (typeSelected !== 'All types') {
+      return products.filter((product) => product.type === typeSelected);
     } else {
-      return false;
+      return products;
     }
   };
 
-  const isCategory = (product) => {
-    if (product.category.name === categorySelected) {
-      console.log('is in category');
-      return true;
+  const filterByCategorySelected = (products) => {
+    if (categorySelected) {
+      return products.filter((product) => product.category.name === categorySelected);
     } else {
-      return false;
+      return products;
     }
   };
 
-  const isFromManufacturer = (product) => {
-    if (checkedManufacturers.length === 0) return true;
-    if (
-      checkedManufacturers.length > 0 &&
-      product.manufacturer &&
-      checkedManufacturers.includes(product.manufacturer.name)
-    ) {
-      console.log('is from manu');
-      return true;
+  const filterByManufacturersChecked = (products) => {
+    if (checkedManufacturers.length > 0) {
+      return products.filter(
+        (product) =>
+          product.manufacturer && checkedManufacturers.includes(product.manufacturer.name)
+      );
+    } else {
+      return products;
+    }
+  };
+
+  const filterBySearchValue = (products) => {
+    if (searchValue) {
+      return products.filter((product) => product.name.match(new RegExp(searchValue, 'i')));
+    } else {
+      return products;
     }
   };
 
   useEffect(() => {
-    const filteredList = products.filter((product) => {
-      // console.log('product', product);
-      // return isOfType(product) || isCategory(product) || isFromManufacturer(product);
-      return isOfType(product) || isCategory(product);
-    });
-    // } else if (
-    //   checkedManufacturers.length > 0 &&
-    //   product.manufacturer &&
-    //   checkedManufacturers.includes(product.manufacturer.name)
-    // ) {
-    //   return true;
-    // } else if (typeList[0] === 'All types') {
-    // console.log('typeList[0]', typeList[0]);
-    // return true;
-    console.log('filteredList', filteredList);
-    setFilteredProducts(filteredList);
-  }, [products, categorySelected, typeSelected, manufacturers]);
+    // filter option has updated, so apply all filters here
+    let result = products;
+    result = filterByTypeSelected(result);
+    result = filterByCategorySelected(result);
+    result = filterByManufacturersChecked(result);
+    result = filterBySearchValue(result);
 
-  console.log('categorySelected', categorySelected);
+    setFilteredProducts(result);
+  }, [typeSelected, categorySelected, manufacturersChecked, searchValue]);
+
   return (
     <div className={styles.productLayoutWrapper}>
       <div className={styles.manufacturerFilterContainer}>
@@ -161,18 +148,6 @@ function ProductList(props) {
           {name} ({products.length})
         </h1>
         <div className={styles.filterContainer}>
-          {/* <button
-          onClick={handleCategoryToggle}
-          className={
-            !categorySelected || categorySelected === 'All categories'
-              ? styles.filterButton
-              : styles.filterButton + ' ' + styles.active
-            }
-            >
-            {categorySelected
-            ? `${categoryList[0]} (${filteredProducts.length})`
-            : `All categories (${categoryList.length - 1})`}
-          </button> */}
           <button
             onClick={handleTypeToggle}
             className={
@@ -181,9 +156,7 @@ function ProductList(props) {
                 : styles.filterButton + ' ' + styles.active
             }
           >
-            {typeSelected
-              ? `${typeList[0]} (${filteredProducts.length})`
-              : `All types (${typeList.length - 1})`}
+            {`${typeList[0]} (${filteredProducts.length})`}
           </button>
           <input
             className={styles.searchProducts}
@@ -213,43 +186,39 @@ function ProductList(props) {
         </div>
 
         <div className={styles.productList}>
-          {filteredProducts > 0
-            ? products
-            : filteredProducts
-                .sort((a, b) => {
-                  // sorts products asc by name
-                  if (a.name > b.name) return 1;
-                  if (a.name < b.name) return -1;
-                  return 0;
-                })
-                .filter((product) => isFromManufacturer(product))
-                .filter((product) => product.name.match(new RegExp(searchValue, 'i')))
-                .map((product) => {
-                  return (
-                    <NextLink
-                      href={{
-                        pathname: '/products/ProductPage',
-                        query: { slug: product.slug.current }
-                      }}
-                      as={`/products/${product.slug.current}`}
-                      key={product.slug.current}
-                      tabIndex={0}
-                      className={styles.productLink}
-                    >
-                      <div className={styles.productItem}>
-                        <div className={styles.productImageWrapper}>
-                          <div className={styles.imageCenter}>
-                            <img
-                              className={styles.productImage}
-                              src={product.image ? urlFor(product.image) : '../static/logo.png'}
-                            ></img>
-                          </div>
-                          <h3 className={styles.productName}>{product.name}</h3>
-                        </div>
+          {filteredProducts
+            .sort((a, b) => {
+              // sorts products asc by name
+              if (a.name > b.name) return 1;
+              if (a.name < b.name) return -1;
+              return 0;
+            })
+            .map((product) => {
+              return (
+                <NextLink
+                  href={{
+                    pathname: '/products/ProductPage',
+                    query: { slug: product.slug.current }
+                  }}
+                  as={`/products/${product.slug.current}`}
+                  key={product.slug.current}
+                  tabIndex={0}
+                  className={styles.productLink}
+                >
+                  <div className={styles.productItem}>
+                    <div className={styles.productImageWrapper}>
+                      <div className={styles.imageCenter}>
+                        <img
+                          className={styles.productImage}
+                          src={product.image ? urlFor(product.image) : '../static/logo.png'}
+                        ></img>
                       </div>
-                    </NextLink>
-                  );
-                })}
+                      <h3 className={styles.productName}>{product.name}</h3>
+                    </div>
+                  </div>
+                </NextLink>
+              );
+            })}
         </div>
       </div>
       <div className={styles.rightSidebar}></div>
@@ -258,3 +227,8 @@ function ProductList(props) {
 }
 
 export default ProductList;
+
+ProductList.propTypes = {
+  name: PropTypes.string,
+  products: PropTypes.arrayOf(PropTypes.object)
+};
