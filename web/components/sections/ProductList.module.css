@@ -5,6 +5,9 @@
   display: grid;
   grid-template-columns: 1fr var(--width-small) 1fr;
   margin-top: 3.25rem;
+  @media (--media-max-large) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .productListContainer {
@@ -83,9 +86,13 @@
 
 .categoryFilterContainer {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 1.5em;
+  @media (--media-max-medium) {
+    flex-direction: column;
+  }
 }
 
 .manufacturerFilterContainer {
@@ -93,6 +100,16 @@
   flex-direction: column;
   padding: 1rem 1rem 1rem 0.75rem;
   margin: 13rem 1.5rem 0 auto;
+  min-width: 7rem;
+  @media (--media-max-large) {
+    display: none;
+  }
+}
+
+.rightSidebar {
+  @media (--media-max-large) {
+    display: none;
+  }
 }
 
 .manufacturerFilterContainer h4 {

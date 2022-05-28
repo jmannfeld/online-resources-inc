@@ -184,7 +184,6 @@ function ProductList(props) {
             );
           })}
         </div>
-
         <div className={styles.productList}>
           {filteredProducts
             .sort((a, b) => {
