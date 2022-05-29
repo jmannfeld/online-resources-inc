@@ -40,9 +40,10 @@
 
 .benefit {
   border: 1px solid var(--color-dark-gray);
+  border: 2px solid var(--color-accent);
   padding: 1rem;
   color: var(--color-dark-gray);
-  box-shadow: 2px 6px 7px rgb(0 0 0 / 23%);
+  box-shadow: 2px 3px 6px rgb(0 0 0 / 23%);
 }
 
 .benefitTitle {

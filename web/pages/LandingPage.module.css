@@ -228,7 +228,7 @@
   @media (--media-min-large) {
     grid-template-areas:
       'hero hero hero hero hero'
-      'industries industries industries industries industries'
+      'industries industries industries industries industries industries'
       '. . textSection . .'
       'imageSection imageSection imageSection imageSection imageSection'
       'youTube youTube youTube twitter twitter'
