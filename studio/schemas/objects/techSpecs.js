@@ -68,6 +68,16 @@ export default {
       title: 'Laser class',
       name: 'laserClass',
       type: 'string'
+    },
+    {
+      title: 'Certifications',
+      name: 'certifications',
+      type: 'string'
+    },
+    {
+      title: 'Deviation',
+      name: 'deviation',
+      type: 'string'
     }
   ]
 };
