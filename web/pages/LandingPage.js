@@ -194,7 +194,7 @@ class LandingPage extends Component {
                 // ? styles.industry
                 slug === 'robotics'
                 ? styles.robotics
-                : slug === 'about-us'
+                : slug === 'about-us' || slug === 'services'
                 ? styles.about
                 : layout === '2 columns'
                 ? styles.fifty

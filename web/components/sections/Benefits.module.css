@@ -12,7 +12,7 @@
 }
 
 .benefitsPageHeading {
-  max-width: var(--width-small);
+  max-width: var(--width-large);
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   margin-bottom: 1.25rem;
@@ -25,7 +25,6 @@
   justify-content: center;
   gap: 1.5rem;
   max-width: var(--width-large);
-  margin: 0 auto;
   padding-bottom: 4rem;
 
   @media (--media-max-large) {
