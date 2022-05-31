@@ -46,7 +46,7 @@
 }
 
 .productImage {
-  max-width: var(--width-small);
+  max-width: var(--width-x-small);
   margin: 0 auto;
   margin-top: 2em;
   /* border: 2px solid var(--color-accent); */
@@ -62,12 +62,25 @@
   max-width: var(--width-small);
 }
 
-.techSpecsTable th {
-  padding-right: 2em;
+.techSpecsTable {
+  max-width: var(--width-small);
+  padding: 0.25rem 0 1.5rem 0;
+  font-size: var(--font-small-size);
 }
 
 .techSpecsTable tr {
-  text-align-last: left;
+  text-align: left;
+}
+
+.techSpecsTable th {
+  padding-right: 2em;
+  padding-top: 0.15em;
+  vertical-align: top;
+  min-width: 13.5em;
+}
+
+.techSpecsTable td {
+  padding: 0.15em;
 }
 
 .brochureButton {
@@ -78,7 +91,7 @@
   font-family: 'Fjalla One', sans-serif;
   font-family: var(--font-family-sans);
   padding: 0.75em 1.75em;
-  margin-top: 1em;
+  margin-bottom: 2em;
   border: none;
   display: flex;
   align-items: center;
