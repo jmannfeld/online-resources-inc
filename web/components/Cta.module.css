@@ -10,11 +10,7 @@
   max-width: fit-content;
   transition: transform 45ms ease-in-out;
   transform: scale(1);
-  /* font-family: 'futura-pt'; */
-  /* font-family: fairplex-wide, serif; */
-  /* font-weight: 700; */
   font-style: normal;
-  /* font-family: 'Fjalla One', sans-serif; */
   font-family: 'apparat';
 }
 

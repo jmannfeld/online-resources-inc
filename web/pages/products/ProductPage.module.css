@@ -11,18 +11,33 @@
 .productNameWrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .productName {
   margin: 0;
   font-size: 2.5em;
   line-height: 1em;
+  white-space: nowrap;
 }
 
 .manufacturerName {
   margin: 0;
   color: var(--color-gray);
+}
+
+.askAnEngineer a {
+  background-color: #251659;
+  color: var(--color-white);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.askAnEngineer a:hover {
+  background-color: #5a507e;
+  color: var(--color-white);
 }
 
 .productTags {
@@ -46,11 +61,22 @@
 }
 
 .productImage {
-  max-width: var(--width-x-small);
+  max-width: var(--width-smallest);
   margin: 0 auto;
   margin-top: 2em;
-  /* border: 2px solid var(--color-accent); */
   border: 2px solid var(--color-light-gray);
+
+  @media (--media-max-large) {
+    max-width: 30em;
+  }
+
+  @media (--media-max-medium) {
+    max-width: 23em;
+  }
+
+  @media (--media-max-small) {
+    max-width: 100%;
+  }
 }
 
 .productDescription {
@@ -64,12 +90,23 @@
 
 .techSpecsTable {
   max-width: var(--width-small);
-  padding: 0.25rem 0 1.5rem 0;
+  padding: 0.5rem 0 1.5rem 0;
   font-size: var(--font-small-size);
 }
 
 .techSpecsTable tr {
   text-align: left;
+  @media (--media-max-small) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.techSpecsTable tr:last-child {
+  @media (--media-max-small) {
+    margin-bottom: 0;
+  }
 }
 
 .techSpecsTable th {
@@ -94,7 +131,7 @@
   margin-bottom: 2em;
   border: none;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   text-transform: uppercase;
 }

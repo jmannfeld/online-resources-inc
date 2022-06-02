@@ -10,6 +10,7 @@ import Layout from '../../components/Layout';
 import styles from './ProductPage.module.css';
 import client from '../../client';
 import SimpleBlockContent from '../../components/SimpleBlockContent';
+import Cta from '../../components/Cta';
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
@@ -96,7 +97,10 @@ class ProductPage extends React.Component {
               <h1 className={styles.productName}>{name}</h1>
               <p className={styles.manufacturerName}>{manufacturer && manufacturer}</p>
             </div>
-            <div className={styles.productTags}>
+            <div className={styles.askAnEngineer}>
+              <Cta title="Ask an Engineer!" route={{ slug: { current: 'contact-us' } }} />
+            </div>
+            {/* <div className={styles.productTags}>
               {category && (
                 <p>
                   {category.slice(-1) === 's'
@@ -105,7 +109,7 @@ class ProductPage extends React.Component {
                 </p>
               )}
               {type && <p>{type}</p>}
-            </div>
+            </div> */}
           </div>
           {mainImage && (
             <img
