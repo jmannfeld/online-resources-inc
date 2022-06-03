@@ -93,7 +93,8 @@
     font-size: 2.5em;
   }
   @media (--media-max-small) {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    white-space: nowrap;
   }
 }
 

@@ -21,6 +21,9 @@
   font-size: 2.5em;
   line-height: 1em;
   white-space: nowrap;
+  @media (--media-max-large) {
+    white-space: normal;
+  }
 }
 
 .manufacturerName {
@@ -134,10 +137,17 @@
   align-items: baseline;
   justify-content: space-between;
   text-transform: uppercase;
+  @media (--media-max-small) {
+    align-items: center;
+    padding-top: 1rem;
+  }
 }
 
 .brochureButton svg {
   padding-left: 0.5rem;
+  @media (--media-max-small) {
+    padding-bottom: 0.5rem;
+  }
 }
 
 .brochureButton:hover {
