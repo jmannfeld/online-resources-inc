@@ -9,8 +9,19 @@
   @media (--media-max-large) {
     margin: 0 auto;
     border-right: none;
-    padding: 0;
+    padding: 0 2rem;
     max-width: var(--width-small);
+  }
+
+  @media (--media-max-small) {
+    padding: 0;
+  }
+}
+
+.companyContactWrapper iframe {
+  @media (--media-max-large) {
+    max-width: calc(100vw - 1.5em);
+    margin: 0 0.5em;
   }
 }
 
@@ -18,6 +29,7 @@
   margin-top: 0;
   @media (--media-max-large) {
     margin-top: 2.5em;
+    padding-left: 0.5em;
   }
 }
 
@@ -42,12 +54,15 @@
 }
 
 .companyContactContainer p {
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 0 0.75rem;
   font-size: var(--font-base-size);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .companyContactContainer span.companyContactSubHeading {
   margin-right: 0.5rem;
+  white-space: nowrap;
 }
 
 .companyContactContainer a {
