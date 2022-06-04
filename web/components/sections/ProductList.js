@@ -185,7 +185,7 @@ function ProductList(props) {
       </div>
       <div className={styles.productListContainer}>
         <h1>
-          {name} ({products.length})
+          {name} ({filteredProducts.length})
         </h1>
         <div className={styles.filterContainer}>
           <button onClick={handleClearFilters} className={styles.filterButton}>
