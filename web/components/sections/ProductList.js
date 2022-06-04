@@ -184,14 +184,10 @@ function ProductList(props) {
         })}
       </div>
       <div className={styles.productListContainer}>
-        <h1>
-          {name} ({filteredProducts.length})
-        </h1>
-        <div className={styles.filterContainer}>
-          <button onClick={handleClearFilters} className={styles.filterButton}>
-            {/* {`Clear filters ${filterCount > 0 ? `(${filterCount})` : ''} `} */}
-            Clear filters
-          </button>
+        <div className={styles.productListHeading}>
+          <h1>
+            {name} ({filteredProducts.length})
+          </h1>
           <input
             className={styles.searchProducts}
             type="text"
@@ -200,7 +196,15 @@ function ProductList(props) {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
           ></input>
+          <button
+            onClick={handleClearFilters}
+            className={styles.filterButton + ' ' + styles.clearFilter}
+          >
+            {/* {`Clear filters ${filterCount > 0 ? `(${filterCount})` : ''} `} */}
+            Clear filters
+          </button>
         </div>
+        <h4 className={styles.categoryFilterHeading}>Category</h4>
         <div className={styles.categoryFilterContainer}>
           {arrayUniqueCategories.map((category) => {
             return (
