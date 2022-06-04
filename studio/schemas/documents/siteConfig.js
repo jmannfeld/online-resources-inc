@@ -11,7 +11,8 @@ export default {
     { title: 'Site settings', name: 'site-settings' },
     { title: 'Layout', name: 'layout' },
     { title: 'Footer', name: 'footer' },
-    { title: 'Business info', name: 'business-info' }
+    { title: 'Business info', name: 'business-info' },
+    { title: 'Product settings', name: 'product-settings' }
   ],
   fields: [
     {
@@ -128,6 +129,23 @@ export default {
       name: 'footerText',
       type: 'simplePortableText',
       fieldset: 'layout'
+    },
+    {
+      title: 'Product order',
+      name: 'productOrder',
+      type: 'array',
+      description: 'Select products to be displayed at the top of the product list',
+      fieldset: 'product-settings',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'product'
+            }
+          ]
+        }
+      ]
     }
   ]
 };

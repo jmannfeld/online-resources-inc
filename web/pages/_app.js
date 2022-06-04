@@ -25,7 +25,10 @@ const siteConfigQuery = groq`
         "title": page->title
       },
       _type != 'reference' => @,
-    }
+    },
+    "productOrder": productOrder[]-> {
+      name
+    }.name
   }[0]
   `;
 

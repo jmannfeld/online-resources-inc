@@ -20,7 +20,7 @@ function NextLink(props) {
 }
 
 function ProductList(props) {
-  const { name, products } = props;
+  const { config, name, products } = props;
   const [filteredProducts, setFilteredProducts] = useState(products);
 
   const [typeList, setTypeList] = useState(['All types', 'Hardware', 'Software']);
@@ -88,6 +88,27 @@ function ProductList(props) {
     setTypeSelected(typeList[0]);
   };
 
+  const sortByPriority = (products) => {
+    // sort products by priority based on config.productOrder
+    // otherwise, sort by name
+    let prioritizedProducts = [];
+    products.forEach((product) => {
+      if (config.productOrder.includes(product.name)) {
+        prioritizedProducts.push(product);
+      }
+    });
+
+    let remainingProducts = products.filter((product) => !prioritizedProducts.includes(product));
+    remainingProducts.sort((a, b) => {
+      // sorts products asc by name
+      if (a.name > b.name) return 1;
+      if (a.name < b.name) return -1;
+      return 0;
+    });
+    prioritizedProducts = prioritizedProducts.concat(remainingProducts);
+    return prioritizedProducts;
+  };
+
   const filterByTypeSelected = (products) => {
     if (typeSelected !== 'All types') {
       return products.filter((product) => product.type === typeSelected);
@@ -126,6 +147,7 @@ function ProductList(props) {
   useEffect(() => {
     // filter option has updated, so apply all filters here
     let result = products;
+    result = sortByPriority(result);
     result = filterByTypeSelected(result);
     result = filterByCategorySelected(result);
     result = filterByManufacturersChecked(result);
@@ -197,39 +219,32 @@ function ProductList(props) {
           })}
         </div>
         <div className={styles.productList}>
-          {filteredProducts
-            .sort((a, b) => {
-              // sorts products asc by name
-              if (a.name > b.name) return 1;
-              if (a.name < b.name) return -1;
-              return 0;
-            })
-            .map((product) => {
-              return (
-                <NextLink
-                  href={{
-                    pathname: '/products/ProductPage',
-                    query: { slug: product.slug.current }
-                  }}
-                  as={`/products/${product.slug.current}`}
-                  key={product.slug.current}
-                  tabIndex={0}
-                  className={styles.productLink}
-                >
-                  <div className={styles.productItem}>
-                    <div className={styles.productImageWrapper}>
-                      <div className={styles.imageCenter}>
-                        <img
-                          className={styles.productImage}
-                          src={product.image ? urlFor(product.image) : '../static/logo.png'}
-                        ></img>
-                      </div>
-                      <h3 className={styles.productName}>{product.name}</h3>
+          {filteredProducts.map((product) => {
+            return (
+              <NextLink
+                href={{
+                  pathname: '/products/ProductPage',
+                  query: { slug: product.slug.current }
+                }}
+                as={`/products/${product.slug.current}`}
+                key={product.slug.current}
+                tabIndex={0}
+                className={styles.productLink}
+              >
+                <div className={styles.productItem}>
+                  <div className={styles.productImageWrapper}>
+                    <div className={styles.imageCenter}>
+                      <img
+                        className={styles.productImage}
+                        src={product.image ? urlFor(product.image) : '../static/logo.png'}
+                      ></img>
                     </div>
+                    <h3 className={styles.productName}>{product.name}</h3>
                   </div>
-                </NextLink>
-              );
-            })}
+                </div>
+              </NextLink>
+            );
+          })}
         </div>
       </div>
       <div className={styles.rightSidebar}></div>
