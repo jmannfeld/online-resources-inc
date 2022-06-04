@@ -22,9 +22,10 @@ function NextLink(props) {
 function ProductList(props) {
   const { config, name, products } = props;
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filterCount, setFilterCount] = useState(0);
 
-  const [typeList, setTypeList] = useState(['All types', 'Hardware', 'Software']);
-  const [typeSelected, setTypeSelected] = useState('All types');
+  // const [typeList, setTypeList] = useState(['All types', 'Hardware', 'Software']);
+  // const [typeSelected, setTypeSelected] = useState('All types');
   const [categorySelected, setCategorySelected] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
@@ -82,10 +83,15 @@ function ProductList(props) {
     }
   };
 
-  const handleTypeToggle = () => {
-    typeList.push(typeList.shift());
-    setTypeList(typeList);
-    setTypeSelected(typeList[0]);
+  const handleClearFilters = () => {
+    setCategorySelected(false);
+    setSearchValue('');
+    setManufacturersChecked(
+      arrayUniqueManufacturers.reduce((accumulator, value) => {
+        return { ...accumulator, [value]: false };
+      }, {})
+    );
+    setFilterCount(0);
   };
 
   const sortByPriority = (products) => {
@@ -109,13 +115,13 @@ function ProductList(props) {
     return prioritizedProducts;
   };
 
-  const filterByTypeSelected = (products) => {
-    if (typeSelected !== 'All types') {
-      return products.filter((product) => product.type === typeSelected);
-    } else {
-      return products;
-    }
-  };
+  // const filterByTypeSelected = (products) => {
+  //   if (typeSelected !== 'All types') {
+  //     return products.filter((product) => product.type === typeSelected);
+  //   } else {
+  //     return products;
+  //   }
+  // };
 
   const filterByCategorySelected = (products) => {
     if (categorySelected) {
@@ -148,13 +154,12 @@ function ProductList(props) {
     // filter option has updated, so apply all filters here
     let result = products;
     result = sortByPriority(result);
-    result = filterByTypeSelected(result);
     result = filterByCategorySelected(result);
     result = filterByManufacturersChecked(result);
     result = filterBySearchValue(result);
 
     setFilteredProducts(result);
-  }, [typeSelected, categorySelected, manufacturersChecked, searchValue]);
+  }, [categorySelected, manufacturersChecked, searchValue]);
 
   return (
     <div className={styles.productLayoutWrapper}>
@@ -169,6 +174,7 @@ function ProductList(props) {
                 name={manufacturer}
                 className="manufacturer-checkbox"
                 onChange={handleManufacturerChange}
+                checked={manufacturersChecked[manufacturer]}
               />
               <label htmlFor={manufacturer} className="checkboxLabel">
                 {manufacturer}
@@ -182,15 +188,9 @@ function ProductList(props) {
           {name} ({products.length})
         </h1>
         <div className={styles.filterContainer}>
-          <button
-            onClick={handleTypeToggle}
-            className={
-              !typeSelected || typeSelected === 'All types'
-                ? styles.filterButton
-                : styles.filterButton + ' ' + styles.active
-            }
-          >
-            {`${typeList[0]} (${filteredProducts.length})`}
+          <button onClick={handleClearFilters} className={styles.filterButton}>
+            {/* {`Clear filters ${filterCount > 0 ? `(${filterCount})` : ''} `} */}
+            Clear filters
           </button>
           <input
             className={styles.searchProducts}
