@@ -88,9 +88,9 @@
 
 .homepageBanner h1 {
   white-space: nowrap;
-  font-size: 3.75em;
+  font-size: 3.75rem;
   @media (--media-max-medium) {
-    font-size: 2.5em;
+    font-size: 2.25rem;
   }
   @media (--media-max-small) {
     font-size: 1.8rem;

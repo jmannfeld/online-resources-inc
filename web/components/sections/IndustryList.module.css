@@ -3,7 +3,6 @@
 
 .industryListContainer {
   grid-area: industries;
-  margin: 0 auto;
 }
 
 .industryListContainer h2 {
