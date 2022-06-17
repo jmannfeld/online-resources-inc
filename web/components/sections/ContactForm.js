@@ -16,6 +16,7 @@ function ContactForm(props) {
         action="/"
         className={styles.submissionFormContainer}
       >
+        <input type="hidden" name="subject" value="Sales inquiry from onlineresourcesinc.com" />
         <h2>{formTitle}</h2>
         <input type="hidden" name="form-name" value="Contact Form" />
         <p>
