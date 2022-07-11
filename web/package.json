@@ -22,7 +22,7 @@
     "next": "^8.1.0",
     "next-images": "^1.8.2",
     "next-seo": "^1.11.2",
-    "npm": "^8.7.0",
+    "npm": "^8.13.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
@@ -30,9 +30,9 @@
     "react-inlinesvg": "^2.3.0",
     "react-mailchimp-form": "^1.0.1",
     "react-mailchimp-subscribe": "^2.1.0",
+    "react-social-icons": "^5.14.0",
     "react-youtube": "^7.13.1",
-    "slugify": "^1.6.5",
-    "social-media-icons-react": "^1.1.10"
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
