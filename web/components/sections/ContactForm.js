@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './SubmissionForm.module.css';
 import { FiSend } from 'react-icons/fi';
 import CompanyContact from './CompanyContact';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 function ContactForm(props) {
   const { name: formTitle, config } = props;
@@ -55,7 +56,7 @@ function ContactForm(props) {
             I am a current customer <input type="checkbox" name="current-customer" />
           </label>
         </p>
-        <div data-netlify-recaptcha="true"></div>
+        <ReCAPTCHA sitekey="6LfNb94gAAAAAHFFYPcMAI1AMzZU_nJktsG_7I4p" />
         <p>
           <button type="submit">
             <span>Send</span>

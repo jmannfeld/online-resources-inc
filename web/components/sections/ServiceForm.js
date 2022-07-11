@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './SubmissionForm.module.css';
 import { FiSend } from 'react-icons/fi';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 function ServiceForm(props) {
   const { heading, subheading } = props;
@@ -125,7 +126,7 @@ function ServiceForm(props) {
               <textarea name="notes" rows="4"></textarea>
             </label>
           </p>
-          <div data-netlify-recaptcha="true"></div>
+          <ReCAPTCHA sitekey="6LfNb94gAAAAAHFFYPcMAI1AMzZU_nJktsG_7I4p" />
           <p>
             <button type="submit">
               <span>Send</span>
