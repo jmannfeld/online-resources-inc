@@ -12,6 +12,7 @@ function ServiceForm(props) {
         name="Service Form"
         method="POST"
         data-netlify="true"
+        data-netlify-recaptcha="true"
         netlify-honeypot="bot-field"
         action="/"
         className={styles.submissionFormContainer}
@@ -21,6 +22,11 @@ function ServiceForm(props) {
         <p className={styles.subheading}>{subheading}</p>
         <input type="hidden" name="form-name" value="Service Form" />
         <div className={styles.serviceFormInputs}>
+          <p className={styles.hiddenInput}>
+            <label>
+              Don’t fill this out if you’re human: <input name="bot-field" />
+            </label>
+          </p>
           <p>
             <label>
               Name <input type="text" name="name" />
@@ -119,6 +125,7 @@ function ServiceForm(props) {
               <textarea name="notes" rows="4"></textarea>
             </label>
           </p>
+          <div data-netlify-recaptcha="true"></div>
           <p>
             <button type="submit">
               <span>Send</span>

@@ -12,6 +12,7 @@ function ContactForm(props) {
         name="Contact Form"
         method="POST"
         data-netlify="true"
+        data-netlify-recaptcha="true"
         netlify-honeypot="bot-field"
         action="/"
         className={styles.submissionFormContainer}
@@ -19,6 +20,11 @@ function ContactForm(props) {
         <input type="hidden" name="subject" value="Sales inquiry from onlineresourcesinc.com" />
         <h2>{formTitle}</h2>
         <input type="hidden" name="form-name" value="Contact Form" />
+        <p className={styles.hiddenInput}>
+          <label>
+            Don’t fill this out if you’re human: <input name="bot-field" />
+          </label>
+        </p>
         <p>
           <label>
             Name <input type="text" name="name" />
@@ -49,6 +55,7 @@ function ContactForm(props) {
             I am a current customer <input type="checkbox" name="current-customer" />
           </label>
         </p>
+        <div data-netlify-recaptcha="true"></div>
         <p>
           <button type="submit">
             <span>Send</span>
