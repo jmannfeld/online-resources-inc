@@ -8,6 +8,17 @@ import '../styles/layout.css';
 // import '../styles/image-gallery.css';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
+// you can import these packages anywhere
+const LogRocket = require('logrocket');
+const setupLogRocketReact = require('logrocket-react');
+
+// only initialize when in the browser
+if (typeof window !== 'undefined') {
+  LogRocket.init('online-resources-inc/website');
+  // plugins should also only be initialized when in the browser
+  setupLogRocketReact(LogRocket);
+}
+
 const siteConfigQuery = groq`
   *[_id == "global-config"] {
     ...,
