@@ -17,6 +17,11 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            type="text/javascript"
+            src="https://apiv2.popupsmart.com/api/Bundle/389631"
+            async
+          ></script>
         </body>
       </Html>
     );
