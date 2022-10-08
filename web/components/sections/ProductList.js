@@ -96,14 +96,17 @@ function ProductList(props) {
 
   const sortByPriority = (products) => {
     // sort products by priority based on config.productOrder
-    // otherwise, sort by name
+    const priorityOrder = config.productOrder;
     let prioritizedProducts = [];
-    products.forEach((product) => {
-      if (config.productOrder.includes(product.name)) {
-        prioritizedProducts.push(product);
-      }
+    priorityOrder.forEach((orderedProductName) => {
+      products.forEach((productObject) => {
+        if (productObject.name === orderedProductName) {
+          prioritizedProducts.push(productObject);
+        }
+      });
     });
 
+    // otherwise, sort by name
     let remainingProducts = products.filter((product) => !prioritizedProducts.includes(product));
     remainingProducts.sort((a, b) => {
       // sorts products asc by name
