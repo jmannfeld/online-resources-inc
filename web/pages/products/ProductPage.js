@@ -11,6 +11,8 @@ import styles from './ProductPage.module.css';
 import client from '../../client';
 import SimpleBlockContent from '../../components/SimpleBlockContent';
 import Cta from '../../components/Cta';
+import PaypalCheckoutButton from '../../components/PayPalCheckoutButton';
+import product from 'next-seo/dist/jsonld/product';
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
@@ -63,8 +65,17 @@ class ProductPage extends React.Component {
       techSpecs = {},
       config,
       slug,
-      brochure
+      brochure,
+      acceptPaypal,
+      price
     } = this.props;
+
+    console.log('Product props', this.props);
+
+    const paypalProduct = {
+      description: name,
+      price
+    };
 
     let listForGallery;
     if (galleryImages) {
@@ -74,9 +85,9 @@ class ProductPage extends React.Component {
         originalHeight: '200px',
         thumbnailHeight: '200px'
       }));
-      console.log('listForGallery', listForGallery);
+      // console.log('listForGallery', listForGallery);
     }
-    console.log('PROPS in render', this.props);
+
     return (
       <Layout config={config}>
         <NextSeo
@@ -147,6 +158,12 @@ class ProductPage extends React.Component {
           {description && (
             <div className={styles.productDescription}>
               <SimpleBlockContent blocks={description} />
+            </div>
+          )}
+          {acceptPaypal && (
+            <div className={styles.paypalButtonContainer}>
+              <h2>{`Purchase your own ${name}`}</h2>
+              <PaypalCheckoutButton product={paypalProduct} />
             </div>
           )}
         </div>

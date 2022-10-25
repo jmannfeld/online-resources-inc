@@ -1,4 +1,5 @@
 import { BiBarcode } from 'react-icons/bi';
+import PriceInput from '../custom-inputs/PriceInput';
 
 export default {
   title: 'Product',
@@ -90,6 +91,7 @@ export default {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
+      description: 'This is the URL for the product',
       options: {
         source: 'name',
         slugify: input =>
@@ -100,10 +102,39 @@ export default {
       }
     },
     {
-      title: 'Public',
+      title: 'Make public',
       name: 'public',
       type: 'boolean',
-      description: 'Display this product on the public website'
+      description: 'Display this product on the public website',
+      initialValue: false
+    },
+    {
+      title: 'Sell on PayPal',
+      name: 'acceptPaypal',
+      type: 'boolean',
+      description: 'Sell this product on the public website and accept payments via PayPal',
+      initialValue: false
+    },
+    {
+      title: 'Price',
+      name: 'price',
+      type: 'string',
+      description: 'Price of the product in USD',
+      inputComponent: PriceInput,
+      hidden: ({ document }) => !document.acceptPaypal,
+      validation: Rule =>
+        Rule.custom((price, context) => {
+          console.log('proioce', price);
+          const priceIsRequired = context.document.acceptPaypal;
+          if (
+            priceIsRequired &&
+            (context.document.price === '' || context.document.price === undefined)
+          ) {
+            return 'A price is required if you want to sell this product on the public website';
+          }
+
+          return true;
+        })
     }
   ],
   preview: {

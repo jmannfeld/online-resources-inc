@@ -5,7 +5,6 @@ import styles from './TextSectionSplit.module.css';
 
 function TextSectionSplit(props) {
   const { heading1, label1, text1, heading2, label2, text2 } = props;
-  console.log('in TextSectionSplit');
   return (
     <div className={styles.root}>
       <section className={styles.article}>

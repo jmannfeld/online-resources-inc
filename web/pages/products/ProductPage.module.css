@@ -87,6 +87,26 @@
   margin: 0 auto;
 }
 
+.productDescription h1,
+.productDescription h2,
+.productDescription h3,
+.productDescription h4,
+.productDescription h5,
+.productDescription h6 {
+  margin-bottom: 0.25rem;
+  margin-top: 1.75rem;
+}
+
+.productDescription > div > p {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.productDescription > div > p > strong {
+  margin-top: 2em;
+  display: block;
+}
+
 .imageGallery {
   max-width: var(--width-small);
 }
@@ -157,4 +177,22 @@
 
 .brochureButton:active {
   transform: scale(0.99);
+}
+
+.paypalButtonContainer {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 4rem;
+
+  @media (--media-max-large) {
+    width: 100%;
+  }
+}
+
+.paypalButtonContainer h2 {
+  margin-bottom: 0.75rem;
+}
+
+.paypalButtonContainer iframe {
+  z-index: 99 !important;
 }
