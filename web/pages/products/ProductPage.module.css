@@ -8,6 +8,30 @@
   padding: 0 2rem;
 }
 
+.productDescription h1,
+.productDescription h2,
+.productDescription h3,
+.productDescription h4,
+.productDescription h5,
+.productDescription h6 {
+  margin-bottom: 0.25rem;
+  margin-top: 1.75rem;
+}
+
+.productDescription h2 {
+  margin-top: 3rem;
+}
+
+.productDescription > div > p {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.productDescription > div > p > strong {
+  margin-top: 2em;
+  display: block;
+}
+
 .productNameWrapper {
   display: flex;
   flex-direction: row;
