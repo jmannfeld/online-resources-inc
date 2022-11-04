@@ -133,7 +133,11 @@ export default {
       fieldset: 'price-information',
       validation: Rule =>
         Rule.custom((price, context) => {
-          if (context.document.price === '' || context.document.price === undefined) {
+          const priceIsRequired = context.document.acceptPaypal;
+          if (
+            priceIsRequired &&
+            (context.document.price === '' || context.document.price === undefined)
+          ) {
             return 'A price is required if you want to sell this product on the public website';
           }
           return true;
@@ -148,7 +152,11 @@ export default {
       fieldset: 'price-information',
       validation: Rule =>
         Rule.custom((price, context) => {
-          if (context.document.shipping === '' || context.document.shipping === undefined) {
+          const priceIsRequired = context.document.acceptPaypal;
+          if (
+            priceIsRequired &&
+            (context.document.shipping === '' || context.document.shipping === undefined)
+          ) {
             return 'A shipping price is required if you want to sell this product on the public website';
           }
           return true;
@@ -163,7 +171,11 @@ export default {
       fieldset: 'price-information',
       validation: Rule =>
         Rule.custom((price, context) => {
-          if (context.document.tax === '' || context.document.tax === undefined) {
+          const priceIsRequired = context.document.acceptPaypal;
+          if (
+            priceIsRequired &&
+            (context.document.tax === '' || context.document.tax === undefined)
+          ) {
             return 'A tax amount is required if you want to sell this product on the public website';
           }
           return true;
