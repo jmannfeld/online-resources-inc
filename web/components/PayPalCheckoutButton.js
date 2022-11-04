@@ -37,7 +37,27 @@ const PaypalCheckoutButton = (props) => {
             {
               description: product.description,
               amount: {
-                value: product.price
+                // the amount equals item_total plus tax_total plus shipping plus handling plus insurance minus shipping_discount minus discount.
+                currency_code: 'USD',
+                value: (
+                  parseFloat(product.price) +
+                  parseFloat(product.shipping) +
+                  parseFloat(product.tax)
+                ).toString(),
+                breakdown: {
+                  item_total: {
+                    value: product.price,
+                    currency_code: 'USD'
+                  },
+                  tax_total: {
+                    value: product.tax,
+                    currency_code: 'USD'
+                  },
+                  shipping: {
+                    value: product.shipping,
+                    currency_code: 'USD'
+                  }
+                }
               }
             }
           ]

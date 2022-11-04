@@ -16,6 +16,15 @@ export default {
         columns: 2
       },
       description: 'Select a category to enter specifications'
+    },
+    {
+      title: 'Price information',
+      name: 'price-information',
+      options: {
+        columns: 2
+      },
+      description: 'All price information is required to sell this product',
+      hidden: ({ document }) => !document.acceptPaypal
     }
   ],
   fields: [
@@ -29,12 +38,12 @@ export default {
       name: 'image',
       type: 'image'
     },
-    {
-      title: 'Image gallery',
-      name: 'gallery',
-      type: 'array',
-      of: [{ type: 'galleryImage' }]
-    },
+    // {
+    //   title: 'Image gallery',
+    //   name: 'gallery',
+    //   type: 'array',
+    //   of: [{ type: 'galleryImage' }]
+    // },
     {
       title: 'Type',
       name: 'type',
@@ -116,23 +125,47 @@ export default {
       initialValue: false
     },
     {
-      title: 'Price',
+      title: 'Item price',
       name: 'price',
       type: 'string',
       description: 'Price of the product in USD',
       inputComponent: PriceInput,
-      hidden: ({ document }) => !document.acceptPaypal,
+      fieldset: 'price-information',
       validation: Rule =>
         Rule.custom((price, context) => {
-          console.log('proioce', price);
-          const priceIsRequired = context.document.acceptPaypal;
-          if (
-            priceIsRequired &&
-            (context.document.price === '' || context.document.price === undefined)
-          ) {
+          if (context.document.price === '' || context.document.price === undefined) {
             return 'A price is required if you want to sell this product on the public website';
           }
-
+          return true;
+        })
+    },
+    {
+      title: 'Shipping',
+      name: 'shipping',
+      type: 'string',
+      description: 'Cost of shipping the product in USD',
+      inputComponent: PriceInput,
+      fieldset: 'price-information',
+      validation: Rule =>
+        Rule.custom((price, context) => {
+          if (context.document.shipping === '' || context.document.shipping === undefined) {
+            return 'A shipping price is required if you want to sell this product on the public website';
+          }
+          return true;
+        })
+    },
+    {
+      title: 'Tax',
+      name: 'tax',
+      type: 'string',
+      description: 'Tax price for the product in USD',
+      inputComponent: PriceInput,
+      fieldset: 'price-information',
+      validation: Rule =>
+        Rule.custom((price, context) => {
+          if (context.document.tax === '' || context.document.tax === undefined) {
+            return 'A tax amount is required if you want to sell this product on the public website';
+          }
           return true;
         })
     }
