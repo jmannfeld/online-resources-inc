@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
+import Router, { useRouter } from 'next/router';
 import { PayPalButtons } from '@paypal/react-paypal-js';
+
+function ShowPaymentSuccessPage(productDetails) {
+  if (process.browser) {
+    Router.push(
+      {
+        pathname: '/PaymentSuccessPage',
+        query: { product: JSON.stringify(productDetails) }
+      },
+      '/payment-success'
+    );
+  }
+}
 
 const PaypalCheckoutButton = (props) => {
   const { product } = props;
@@ -20,7 +33,7 @@ const PaypalCheckoutButton = (props) => {
 
   if (paidFor) {
     // Display a success message, modal to the buyer or take them to a success page
-    alert('Thank you for your purchase!');
+    ShowPaymentSuccessPage(product);
   }
 
   if (error) {
