@@ -18,10 +18,10 @@ function PaymentSuccessPage(props) {
     <Layout config={config}>
       <NextSeo
         config={{
-          title: 'Online Resources, Inc. | Payment Successful',
+          title: 'Payment Successful',
           titleTemplate: `${config.title} | %s`,
           description: 'Thank you for your purchase!',
-          canonical: config.url && `${config.url}payment-success`,
+          canonical: config.url && `${config.url}/payment-success`,
           noindex: true
         }}
       />

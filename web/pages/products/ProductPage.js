@@ -11,6 +11,8 @@ import Cta from '../../components/Cta';
 import PaypalCheckoutButton from '../../components/PayPalCheckoutButton';
 import EmbedHTML from '../../components/EmbedHTML';
 
+const builder = imageUrlBuilder(client);
+
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
 }
@@ -78,16 +80,43 @@ class ProductPage extends React.Component {
       tax
     };
 
+    const openGraphImages = mainImage
+      ? [
+          {
+            url: builder.image(mainImage).width(800).height(600).url(),
+            width: 800,
+            height: 600,
+            alt: name
+          },
+          {
+            // Facebook recommended size
+            url: builder.image(mainImage).width(1200).height(630).url(),
+            width: 1200,
+            height: 630,
+            alt: name
+          },
+          {
+            // Square 1:1
+            url: builder.image(mainImage).width(600).height(600).url(),
+            width: 600,
+            height: 600,
+            alt: name
+          }
+        ]
+      : [];
+
     return (
       <Layout config={config}>
         <NextSeo
           config={{
             title: name,
             titleTemplate: `${config.title} | %s`,
-            description,
+            description: `${category} Products | Learn more about${
+              category.includes('Scanning') ? ' the' : ''
+            } ${name}`,
             canonical: config.url && `${config.url}/${slug}`,
             openGraph: {
-              images: mainImage
+              images: openGraphImages
             },
             noindex: false
           }}

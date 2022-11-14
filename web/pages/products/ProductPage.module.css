@@ -128,8 +128,12 @@
   margin-top: 1.75rem;
 }
 
+.productDescription h2 {
+  margin-top: 3rem;
+}
+
 .productDescription > div > p {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   margin-top: 0;
 }
 
