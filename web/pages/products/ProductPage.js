@@ -9,6 +9,7 @@ import client from '../../client';
 import SimpleBlockContent from '../../components/SimpleBlockContent';
 import Cta from '../../components/Cta';
 import PaypalCheckoutButton from '../../components/PayPalCheckoutButton';
+import EmbedHTML from '../../components/EmbedHTML';
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
@@ -58,6 +59,7 @@ class ProductPage extends React.Component {
       manufacturer: { name: manufacturer } = '',
       category: { name: category } = '',
       techSpecs = {},
+      embed3dModel,
       config,
       slug,
       brochure,
@@ -110,7 +112,12 @@ class ProductPage extends React.Component {
               {type && <p>{type}</p>}
             </div> */}
           </div>
-          {mainImage && (
+          {embed3dModel && (
+            <div className={styles.embed3dModelWrapper}>
+              <EmbedHTML node={embed3dModel} />
+            </div>
+          )}
+          {mainImage && !embed3dModel && (
             <img
               className={styles.productImage}
               src={mainImage ? urlFor(mainImage) : '../static/logo.png'}

@@ -97,6 +97,12 @@ export default {
       type: 'techSpecs'
     },
     {
+      title: '3D model embed',
+      name: 'embed3dModel',
+      type: 'embedHTML',
+      description: 'This will display in place of the main product image'
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',

@@ -82,6 +82,13 @@
   }
 }
 
+.embed3dModelWrapper iframe {
+  margin-top: 1em;
+  width: 100%;
+  height: 450px;
+  border: 2px solid var(--color-light-gray);
+}
+
 .productDescription {
   max-width: var(--width-small);
   margin: 0 auto;
