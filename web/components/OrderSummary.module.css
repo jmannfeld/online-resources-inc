@@ -1,0 +1,70 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+.orderSummaryContainer h2 {
+  margin-bottom: 0.15em;
+}
+
+table.orderSummary {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 0px;
+  border-color: #ffffff;
+  border-style: solid;
+  color: var(--color-black);
+}
+
+table.orderSummary th {
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  text-align: right;
+  padding: 1.25em 0.75em;
+}
+
+table.orderSummary td {
+  border-width: 0px;
+  text-align: right;
+  padding: 0.75em 0.75em;
+}
+
+table.orderSummary thead > tr > th:nth-child(1),
+table.orderSummary tbody > tr > td:nth-child(1) {
+  text-align: left;
+}
+
+table.orderSummary tbody > tr:nth-child(1) {
+  border-bottom: 1px solid var(--color-accent);
+}
+
+table.orderSummary thead {
+  background-color: var(--color-accent-light);
+}
+
+.priceBreakdownContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+table.priceBreakdown {
+  width: 50%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 0px;
+  border-color: #ffffff;
+  border-style: solid;
+  color: var(--color-black);
+  text-align: right;
+  margin-top: 1em;
+}
+
+table.priceBreakdown td {
+  border-width: 0px;
+  text-align: right;
+  padding: 0.15em 0.75em;
+}
+
+table.priceBreakdown > tr:nth-child(2) > th,
+table.priceBreakdown > tr:nth-child(3) > th {
+  font-weight: normal;
+}

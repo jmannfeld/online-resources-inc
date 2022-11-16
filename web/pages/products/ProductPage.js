@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import NextSeo from 'next-seo';
 import groq from 'groq';
-import { useRouter } from 'next/router';
 import { FiExternalLink } from 'react-icons/fi';
-// import ImageGallery from 'react-image-gallery';
 import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../../components/Layout';
 import styles from './ProductPage.module.css';
 import client from '../../client';
 import SimpleBlockContent from '../../components/SimpleBlockContent';
 import Cta from '../../components/Cta';
+import PaypalCheckoutButton from '../../components/PayPalCheckoutButton';
+import EmbedHTML from '../../components/EmbedHTML';
+
+const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
@@ -57,36 +58,65 @@ class ProductPage extends React.Component {
       type,
       description,
       mainImage,
-      galleryImages,
       manufacturer: { name: manufacturer } = '',
       category: { name: category } = '',
       techSpecs = {},
+      embed3dModel,
       config,
       slug,
-      brochure
+      brochure,
+      acceptPaypal,
+      price,
+      shipping,
+      tax
     } = this.props;
 
-    let listForGallery;
-    if (galleryImages) {
-      listForGallery = galleryImages.map((image) => ({
-        original: image,
-        thumbnail: image,
-        originalHeight: '200px',
-        thumbnailHeight: '200px'
-      }));
-      console.log('listForGallery', listForGallery);
-    }
-    console.log('PROPS in render', this.props);
+    console.log('Product props', this.props);
+
+    const paypalProduct = {
+      description: name,
+      price,
+      shipping,
+      tax
+    };
+
+    const openGraphImages = mainImage
+      ? [
+          {
+            url: builder.image(mainImage).width(800).height(600).url(),
+            width: 800,
+            height: 600,
+            alt: name
+          },
+          {
+            // Facebook recommended size
+            url: builder.image(mainImage).width(1200).height(630).url(),
+            width: 1200,
+            height: 630,
+            alt: name
+          },
+          {
+            // Square 1:1
+            url: builder.image(mainImage).width(600).height(600).url(),
+            width: 600,
+            height: 600,
+            alt: name
+          }
+        ]
+      : [];
+
     return (
       <Layout config={config}>
         <NextSeo
           config={{
             title: name,
             titleTemplate: `${config.title} | %s`,
-            description,
+            description: `${category} Products | Learn more about${
+              category.includes('Scanning') ? ' the' : ''
+            } ${name}`,
             canonical: config.url && `${config.url}/${slug}`,
             openGraph: {
-              images: mainImage
+              images: openGraphImages
             },
             noindex: false
           }}
@@ -111,7 +141,12 @@ class ProductPage extends React.Component {
               {type && <p>{type}</p>}
             </div> */}
           </div>
-          {mainImage && (
+          {embed3dModel && (
+            <div className={styles.embed3dModelWrapper}>
+              <EmbedHTML node={embed3dModel} />
+            </div>
+          )}
+          {mainImage && !embed3dModel && (
             <img
               className={styles.productImage}
               src={mainImage ? urlFor(mainImage) : '../static/logo.png'}
@@ -143,6 +178,12 @@ class ProductPage extends React.Component {
               <span>Tech Specs Brochure</span>
               <FiExternalLink />
             </button>
+          )}
+          {acceptPaypal && (
+            <div className={styles.paypalButtonContainer}>
+              <h2>Purchase Here</h2>
+              <PaypalCheckoutButton product={paypalProduct} />
+            </div>
           )}
           {description && (
             <div className={styles.productDescription}>

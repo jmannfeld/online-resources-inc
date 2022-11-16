@@ -170,7 +170,6 @@ class LandingPage extends Component {
         ]
       : [];
 
-    console.log('LandingPage layout: ', layout);
     return (
       <Layout config={config}>
         <NextSeo

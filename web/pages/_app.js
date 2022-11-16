@@ -1,12 +1,10 @@
 import React from 'react';
 import BaseApp from 'next/app';
 import client from '../client';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import groq from 'groq';
-// import 'normalize.css'
 import '../styles/shared.module.css';
 import '../styles/layout.css';
-// import '../styles/image-gallery.css';
-import 'react-image-gallery/styles/css/image-gallery.css';
 
 // you can import these packages anywhere
 const LogRocket = require('logrocket');
@@ -79,7 +77,18 @@ class App extends BaseApp {
 
   render() {
     const { Component, pageProps } = this.props;
-    return <Component {...pageProps} />;
+
+    return (
+      <PayPalScriptProvider
+        options={{
+          'client-id': process.env.PAYPAY_CLIENT_ID,
+          'enable-funding': 'venmo',
+          debug: true
+        }}
+      >
+        <Component {...pageProps} />
+      </PayPalScriptProvider>
+    );
   }
 }
 

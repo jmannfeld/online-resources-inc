@@ -1,0 +1,17 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+.successPageContainer {
+  max-width: var(--width-small);
+  margin: 0 auto;
+  margin-top: 11em;
+  padding: 0 2rem;
+}
+
+.successPageContainer h1 {
+  margin-bottom: 0em;
+}
+
+.successPageContainer p {
+  margin: 0;
+}

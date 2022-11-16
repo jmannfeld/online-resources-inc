@@ -1,4 +1,5 @@
 import { BiBarcode } from 'react-icons/bi';
+import PriceInput from '../custom-inputs/PriceInput';
 
 export default {
   title: 'Product',
@@ -15,6 +16,15 @@ export default {
         columns: 2
       },
       description: 'Select a category to enter specifications'
+    },
+    {
+      title: 'Price information',
+      name: 'price-information',
+      options: {
+        columns: 2
+      },
+      description: 'All price information is required to sell this product',
+      hidden: ({ document }) => !document.acceptPaypal
     }
   ],
   fields: [
@@ -28,12 +38,12 @@ export default {
       name: 'image',
       type: 'image'
     },
-    {
-      title: 'Image gallery',
-      name: 'gallery',
-      type: 'array',
-      of: [{ type: 'galleryImage' }]
-    },
+    // {
+    //   title: 'Image gallery',
+    //   name: 'gallery',
+    //   type: 'array',
+    //   of: [{ type: 'galleryImage' }]
+    // },
     {
       title: 'Type',
       name: 'type',
@@ -87,9 +97,16 @@ export default {
       type: 'techSpecs'
     },
     {
+      title: '3D model embed',
+      name: 'embed3dModel',
+      type: 'embedHTML',
+      description: 'This will display in place of the main product image'
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
+      description: 'This is the URL for the product',
       options: {
         source: 'name',
         slugify: input =>
@@ -100,10 +117,75 @@ export default {
       }
     },
     {
-      title: 'Public',
+      title: 'Make public',
       name: 'public',
       type: 'boolean',
-      description: 'Display this product on the public website'
+      description: 'Display this product on the public website',
+      initialValue: false
+    },
+    {
+      title: 'Sell on PayPal',
+      name: 'acceptPaypal',
+      type: 'boolean',
+      description: 'Sell this product on the public website and accept payments via PayPal',
+      initialValue: false
+    },
+    {
+      title: 'Item price',
+      name: 'price',
+      type: 'string',
+      description: 'Price of the product in USD',
+      inputComponent: PriceInput,
+      fieldset: 'price-information',
+      validation: Rule =>
+        Rule.custom((price, context) => {
+          const priceIsRequired = context.document.acceptPaypal;
+          if (
+            priceIsRequired &&
+            (context.document.price === '' || context.document.price === undefined)
+          ) {
+            return 'A price is required if you want to sell this product on the public website';
+          }
+          return true;
+        })
+    },
+    {
+      title: 'Shipping',
+      name: 'shipping',
+      type: 'string',
+      description: 'Cost of shipping the product in USD',
+      inputComponent: PriceInput,
+      fieldset: 'price-information',
+      validation: Rule =>
+        Rule.custom((price, context) => {
+          const priceIsRequired = context.document.acceptPaypal;
+          if (
+            priceIsRequired &&
+            (context.document.shipping === '' || context.document.shipping === undefined)
+          ) {
+            return 'A shipping price is required if you want to sell this product on the public website';
+          }
+          return true;
+        })
+    },
+    {
+      title: 'Tax',
+      name: 'tax',
+      type: 'string',
+      description: 'Tax price for the product in USD',
+      inputComponent: PriceInput,
+      fieldset: 'price-information',
+      validation: Rule =>
+        Rule.custom((price, context) => {
+          const priceIsRequired = context.document.acceptPaypal;
+          if (
+            priceIsRequired &&
+            (context.document.tax === '' || context.document.tax === undefined)
+          ) {
+            return 'A tax amount is required if you want to sell this product on the public website';
+          }
+          return true;
+        })
     }
   ],
   preview: {

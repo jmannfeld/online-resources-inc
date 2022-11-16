@@ -11,9 +11,9 @@ function urlFor(source) {
 }
 
 function NextLink(props) {
-  const { href, as, linkKey, className, children, ...rest } = props;
+  const { href, as, className, children, ...rest } = props;
   return (
-    <Link href={href} as={as} key={linkKey}>
+    <Link href={href} as={as}>
       <a {...rest}>{children}</a>
     </Link>
   );
@@ -170,7 +170,7 @@ function ProductList(props) {
         <h4>Manufacturer</h4>
         {arrayUniqueManufacturers.map((manufacturer) => {
           return (
-            <div className={styles.checkboxWrapper}>
+            <div className={styles.checkboxWrapper} key={manufacturer}>
               <input
                 type="checkbox"
                 id={manufacturer}
@@ -219,6 +219,7 @@ function ProductList(props) {
                 }
                 value={category}
                 onClick={(e) => handleCategoryToggle(category)}
+                key={category}
               >
                 {category}
               </button>

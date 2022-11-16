@@ -3,7 +3,7 @@
 
 .youtubeEmbedContainer {
   grid-area: youTube;
-  padding: 2rem 0;
+  padding: 2rem 0.5rem;
   max-width: var(--width-small);
   width: 100%;
   margin: 0 auto;
@@ -20,6 +20,7 @@ h2.youtubeHeading {
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   padding: 0 1.5rem;
+  margin-bottom: 0rem;
 }
 
 .youtubeFlex {
@@ -30,6 +31,7 @@ h2.youtubeHeading {
   width: 100%;
   margin: 0 auto;
   margin-top: calc(var(--font-title3-size) - 0.5rem);
+  margin-top: 0.75rem;
 
   @media (--media-max-small) {
     flex-direction: column;

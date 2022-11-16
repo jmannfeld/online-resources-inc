@@ -186,7 +186,7 @@ input[type='checkbox']:checked {
 .productItem {
   color: var(--dark-gray);
   background-color: white;
-  background-color: #04a55114;
+  background-color: var(--color-accent-light);
   border: 2px solid #efefef;
   transition: transform 45ms ease-in-out;
   transform: scale(1);
