@@ -130,6 +130,12 @@
 
 .productDescription h2 {
   margin-top: 3rem;
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
+}
+.productDescription h3 {
+  font-size: var(--font-title3-size);
+  line-height: var(--font-title3-line-height);
 }
 
 .productDescription > div > p {
@@ -216,7 +222,7 @@
 
 .paypalButtonContainer {
   width: 70%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 4rem;
 
   @media (--media-max-large) {
@@ -226,6 +232,8 @@
 
 .paypalButtonContainer h2 {
   margin-bottom: 0.75rem;
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
 }
 
 .paypalButtonContainer iframe {
