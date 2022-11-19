@@ -1,4 +1,13 @@
-import { BiNote } from 'react-icons/bi';
+import {
+  BiIdCard,
+  BiGridHorizontal,
+  BiGridVertical,
+  BiImage,
+  BiListOl,
+  BiMovie,
+  BiNote,
+  BiText
+} from 'react-icons/bi';
 
 export default {
   title: 'Page',
@@ -22,18 +31,19 @@ export default {
       name: 'content',
       type: 'array',
       of: [
-        { type: 'hero' },
-        { type: 'textSection' },
-        { type: 'textSectionSplit' },
-        { type: 'imageSection' },
-        { type: 'youtubeEmbed' },
-        { type: 'productList' },
-        { type: 'industryList' },
-        { type: 'benefits' },
-        { type: 'teamList' },
-        { type: 'serviceForm' },
-        { type: 'contactForm' },
-        { type: 'companyContact' }
+        { type: 'hero', icon: BiImage },
+        { type: 'textSection', icon: BiText },
+        { type: 'textSectionSplit', icon: BiText },
+        { type: 'imageSection', icon: BiImage },
+        { type: 'youtubeEmbed', icon: BiMovie },
+        { type: 'productList', icon: BiGridVertical },
+        { type: 'industryList', icon: BiGridHorizontal },
+        { type: 'benefits', icon: BiGridHorizontal },
+        { type: 'teamList', icon: BiGridVertical },
+        { type: 'contactForm', icon: BiListOl },
+        { type: 'serviceForm', icon: BiListOl },
+        { type: 'signupForm', icon: BiListOl },
+        { type: 'companyContact', icon: BiIdCard }
       ]
     },
     {

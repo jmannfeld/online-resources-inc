@@ -31,6 +31,7 @@ import logoImageBlock from './objects/logoImageBlock';
 import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import serviceForm from './objects/serviceForm';
+import signupForm from './objects/signupForm';
 import socialMedia from './objects/socialMedia';
 import techSpecs from './objects/techSpecs';
 
@@ -71,6 +72,7 @@ export default createSchema({
     portableText,
     productList,
     serviceForm,
+    signupForm,
     simplePortableText,
     siteConfig,
     socialMedia,

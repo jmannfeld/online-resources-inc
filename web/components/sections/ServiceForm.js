@@ -5,7 +5,6 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 function ServiceForm(props) {
   const { heading, subheading } = props;
-  const options = ['.0005”', '.001”', '.002”', '.003”', '.005” or greater'];
 
   return (
     <div className={styles.serviceFormWrapper}>
