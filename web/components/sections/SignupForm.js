@@ -11,7 +11,6 @@ function SignupForm(props) {
         name={name}
         method="POST"
         data-netlify="true"
-        data-netlify-recaptcha="true"
         netlify-honeypot="bot-field"
         action="/"
         className={styles.submissionFormContainer}
