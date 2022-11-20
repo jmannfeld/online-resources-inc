@@ -16,10 +16,10 @@
   max-width: var(--width-small);
   margin: 0 auto;
   white-space: pre-wrap;
-  background-color: var(--color-accent-light);
 }
 
 .signupFormWrapper {
+  background-color: var(--color-accent-light);
   margin-bottom: 2rem;
 }
 
