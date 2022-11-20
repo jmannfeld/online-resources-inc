@@ -18,11 +18,11 @@ function SignupForm(props) {
         <input
           type="hidden"
           name="subject"
-          value={`${name} submission received on onlineresourcesinc.com`}
+          value={`${name} submission from onlineresourcesinc.com`}
         />
+        <input type="hidden" name="form-name" value={name} />
         <h2 id="signup-form">{heading}</h2>
         <p className={styles.description}>{description}</p>
-        <input type="hidden" name="form-name" value={name} />
         <div className={styles.signupFormInputs}>
           <p className={styles.hiddenInput}>
             <label>

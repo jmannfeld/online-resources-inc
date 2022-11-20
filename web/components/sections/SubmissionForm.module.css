@@ -16,6 +16,11 @@
   max-width: var(--width-small);
   margin: 0 auto;
   white-space: pre-wrap;
+  background-color: var(--color-accent-light);
+}
+
+.signupFormWrapper {
+  margin-bottom: 2rem;
 }
 
 .submissionFormContainer {
@@ -70,7 +75,7 @@
 
 .submissionFormContainer select {
   box-sizing: content-box;
-  background-color: transparent;
+  background-color: white;
 }
 
 .submissionFormContainer input,
