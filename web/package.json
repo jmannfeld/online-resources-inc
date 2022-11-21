@@ -18,7 +18,6 @@
     "@zeit/next-css": "^1.0.1",
     "get-youtube-id": "^1.0.1",
     "groq": "^0.140.0",
-    "i": "^0.3.7",
     "lodash": "^4.17.11",
     "logrocket": "^3.0.1",
     "logrocket-react": "^5.0.1",

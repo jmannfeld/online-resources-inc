@@ -10,7 +10,7 @@ function resolveSections(section) {
     return Section;
   }
 
-  console.error('Cant find section', section); // eslint-disable-line no-console
+  console.error('Cant find section', upperFirst(section)); // eslint-disable-line no-console
   return null;
 }
 

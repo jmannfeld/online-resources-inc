@@ -179,12 +179,12 @@ class ProductPage extends React.Component {
               <FiExternalLink />
             </button>
           )}
-          {acceptPaypal && (
+          {/* {acceptPaypal && (
             <div className={styles.paypalButtonContainer}>
               <h2>Purchase Here</h2>
               <PaypalCheckoutButton product={paypalProduct} />
             </div>
-          )}
+          )} */}
           {description && (
             <div className={styles.productDescription}>
               <SimpleBlockContent blocks={description} />
