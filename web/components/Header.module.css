@@ -96,6 +96,7 @@
 }
 
 .nav {
+  display: flex;
   @media (--media-min-large) {
     flex: 1;
   }
@@ -183,7 +184,8 @@
   }
 }
 
-.showNavButton {
+.showNavButton,
+.showCartButton {
   appearance: none;
   border: none;
   font: inherit;
@@ -192,7 +194,9 @@
   margin: 0;
   padding: 1.5rem;
   outline: none;
+}
 
+.showNavButton {
   @media (--media-min-large) {
     display: none;
   }
@@ -201,8 +205,23 @@
 .hamburgerIcon {
   font-size: calc(var(--font-base-line-height) * 1.5rem);
   display: block;
+  cursor: pointer;
 
   @media (--media-min-large) {
     display: none;
+  }
+}
+
+.showCartButton {
+  display: block;
+  cursor: pointer;
+  @media (--media-min-large) {
+    display: inline-block;
+    position: absolute;
+    padding: 1.5rem 0.5rem;
+    right: 3rem;
+    top: 0.65em;
+    /* justify-self: flex-end; */
+    /* margin-left: auto; */
   }
 }

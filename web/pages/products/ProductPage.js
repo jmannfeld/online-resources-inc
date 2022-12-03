@@ -1,7 +1,7 @@
 import React from 'react';
 import NextSeo from 'next-seo';
 import groq from 'groq';
-import { FiExternalLink } from 'react-icons/fi';
+import { FiExternalLink, FiShoppingCart } from 'react-icons/fi';
 import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../../components/Layout';
 import styles from './ProductPage.module.css';
@@ -35,14 +35,14 @@ const productQuery = groq`
     "mainImage": image {
       asset->
     },
-    "galleryImages": gallery[] {
-    "image": asset-> {
-        url
-      }
-    }.image.url,
     "industries": industries[]-> {
       name
-    }.name
+    }.name,
+    "accessories": accessories[]-> {
+      name,
+      price,
+      shipping
+    }
   }
 `;
 
@@ -68,17 +68,19 @@ class ProductPage extends React.Component {
       acceptPaypal,
       price,
       shipping,
-      tax
+      tax,
+      accessories = []
     } = this.props;
 
     console.log('Product props', this.props);
 
     const paypalProduct = {
-      description: name,
+      name,
       price,
-      shipping,
-      tax
+      shipping
     };
+
+    const productsForSale = [paypalProduct, ...accessories];
 
     const openGraphImages = mainImage
       ? [
@@ -179,12 +181,28 @@ class ProductPage extends React.Component {
               <FiExternalLink />
             </button>
           )}
-          {/* {acceptPaypal && (
+          {acceptPaypal && (
             <div className={styles.paypalButtonContainer}>
               <h2>Purchase Here</h2>
-              <PaypalCheckoutButton product={paypalProduct} />
+              <div className={styles.productsForSale}>
+                {productsForSale.map((productToSell) => (
+                  <div className={styles.productToSell}>
+                    <div className={styles.productToSellDetails}>
+                      <p className={styles.productToSellName}>{`${productToSell.name}`}</p>
+                      <p className={styles.productToSellPrice}>{`$${productToSell.price}`}</p>
+                    </div>
+                    <div className={styles.accessoryCounter}>
+                      <button className={styles.addToCart} type="button">
+                        <span>Add to Cart</span>
+                        <FiShoppingCart />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* <PaypalCheckoutButton product={paypalProduct} /> */}
             </div>
-          )} */}
+          )}
           {description && (
             <div className={styles.productDescription}>
               <SimpleBlockContent blocks={description} />

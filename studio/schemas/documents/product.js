@@ -186,6 +186,21 @@ export default {
           }
           return true;
         })
+    },
+    {
+      title: 'Accessories for sale',
+      name: 'accessories',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'product-accessory'
+            }
+          ]
+        }
+      ]
     }
   ],
   preview: {

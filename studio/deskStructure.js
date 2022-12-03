@@ -10,6 +10,7 @@ const hiddenDocTypes = listItem =>
     'manufacturer',
     'page',
     'product',
+    'product-accessory',
     'product-category',
     'route',
     'site-config',
@@ -41,6 +42,10 @@ export default () =>
         .title('Products')
         .schemaType('product')
         .child(S.documentTypeList('product').title('Products')),
+      S.listItem()
+        .title('Accessories')
+        .schemaType('product-accessory')
+        .child(S.documentTypeList('product-accessory').title('Accessories')),
       S.listItem()
         .title('Product Categories')
         .schemaType('product-category')

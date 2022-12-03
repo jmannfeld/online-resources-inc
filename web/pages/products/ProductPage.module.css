@@ -92,6 +92,7 @@
   margin: 0 auto;
   margin-top: 2em;
   border: 2px solid var(--color-light-gray);
+  background: var(--color-accent-light);
 
   @media (--media-max-large) {
     max-width: 30em;
@@ -184,40 +185,62 @@
   padding: 0.15em;
 }
 
-.brochureButton {
+.brochureButton,
+.addToCart {
   background-color: var(--color-accent);
   color: var(--color-dark-gray);
   font-size: var(--font-title3-size);
   font-size: var(--font-base-size);
   font-family: 'Fjalla One', sans-serif;
   font-family: var(--font-family-sans);
-  padding: 0.75em 1.75em;
-  margin-bottom: 2em;
+  padding: 0.75rem 1.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
   border: none;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   @media (--media-max-small) {
     align-items: center;
     padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
 
-.brochureButton svg {
-  padding-left: 0.5rem;
-  @media (--media-max-small) {
-    padding-bottom: 0.5rem;
+.addToCart {
+  transform: scale(0.85);
+  margin-top: 0.3em;
+
+  @media (--media-max-medium) {
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 }
 
-.brochureButton:hover {
+.brochureButton svg,
+.addToCart svg {
+  padding-left: 0.75rem;
+}
+
+.brochureButton:hover,
+.addToCart:hover {
   cursor: pointer;
   transform: scale(1.025);
 }
 
-.brochureButton:active {
+.brochureButton:active,
+.addToCart:active {
   transform: scale(0.99);
+}
+
+.addToCart:hover {
+  transform: scale(0.9);
+}
+
+.addToCart:active {
+  transform: scale(0.84);
 }
 
 .paypalButtonContainer {
@@ -238,4 +261,46 @@
 
 .paypalButtonContainer iframe {
   z-index: 99 !important;
+}
+
+.productToSell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  background-color: var(--color-accent-light);
+  border: 2px solid var(--color-light-gray);
+  padding: 1.25rem;
+  @media (--media-max-medium) {
+    flex-direction: column;
+    padding: 0.85rem;
+  }
+}
+
+.productToSellDetails {
+  @media (--media-max-medium) {
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.accessoryCounter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.productToSell p {
+  font-family: var(--font-family-sans);
+  margin: 0;
+}
+
+.productToSellName {
+  font-size: 1.25rem;
+}
+
+.productToSellPrice {
+  font-size: 1.15rem;
+  font-weight: bold;
 }
