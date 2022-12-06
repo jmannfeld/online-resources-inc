@@ -83,7 +83,7 @@ module.exports = withImages(
 
         // '/admin': { page: '/AdminPage' }
 
-        console.log('nextRoutes', nextRoutes);
+        // console.log('nextRoutes', nextRoutes);
 
         return nextRoutes;
       });

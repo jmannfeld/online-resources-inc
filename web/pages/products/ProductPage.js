@@ -10,6 +10,8 @@ import SimpleBlockContent from '../../components/SimpleBlockContent';
 import Cta from '../../components/Cta';
 import PaypalCheckoutButton from '../../components/PayPalCheckoutButton';
 import EmbedHTML from '../../components/EmbedHTML';
+import { CartContext } from '../../components/CartContext';
+import ProductListing from '../../components/ProductListing';
 
 const builder = imageUrlBuilder(client);
 
@@ -52,6 +54,12 @@ class ProductPage extends React.Component {
     return await client.fetch(productQuery, { slug }).then((res) => ({ ...res, slug }));
   }
 
+  static contextType = CartContext;
+
+  componentDidMount() {
+    const [cart, setCart] = this.context;
+  }
+
   render() {
     const {
       name,
@@ -72,7 +80,7 @@ class ProductPage extends React.Component {
       accessories = []
     } = this.props;
 
-    console.log('Product props', this.props);
+    // console.log('Product props', this.props);
 
     const paypalProduct = {
       name,
@@ -186,18 +194,7 @@ class ProductPage extends React.Component {
               <h2>Purchase Here</h2>
               <div className={styles.productsForSale}>
                 {productsForSale.map((productToSell) => (
-                  <div className={styles.productToSell}>
-                    <div className={styles.productToSellDetails}>
-                      <p className={styles.productToSellName}>{`${productToSell.name}`}</p>
-                      <p className={styles.productToSellPrice}>{`$${productToSell.price}`}</p>
-                    </div>
-                    <div className={styles.accessoryCounter}>
-                      <button className={styles.addToCart} type="button">
-                        <span>Add to Cart</span>
-                        <FiShoppingCart />
-                      </button>
-                    </div>
-                  </div>
+                  <ProductListing productToSell={productToSell} />
                 ))}
               </div>
               {/* <PaypalCheckoutButton product={paypalProduct} /> */}

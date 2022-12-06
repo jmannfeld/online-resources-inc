@@ -1,56 +1,61 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FiTrash, FiShoppingCart } from 'react-icons/fi';
+import Link from 'next/link';
 import styles from './ShoppingCart.module.css';
 import PaypalCheckoutButton from './PayPalCheckoutButton';
+import { CartContext } from './CartContext';
+import ShoppingCartItem from './ShoppingCartItem';
 
-export default function ShoppingCart({
-  items = [
-    {
-      name: 'Peel 3',
-      quantity: '1',
-      description: '',
-      unit_amount: {
-        value: '66.00',
-        currency_code: 'USD'
-      },
-      image: 'url'
-    },
-    {
-      name: 'Rugged case',
-      quantity: '1',
-      description: 'Case for your peel 3',
-      unit_amount: {
-        value: '33.00',
-        currency_code: 'USD'
-      }
-    }
-  ]
-}) {
+export default function ShoppingCart() {
+  const [cart, setCart] = useContext(CartContext);
+  console.log('ShoppingCart', cart);
+
+  const totalQty = cart.reduce((acc, curr) => acc + curr.qty, 0);
+  const totalShipping = cart.reduce((acc, curr) => acc + curr.shipping * curr.qty, 0);
+  const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+  const subtotal = totalShipping + totalPrice;
+
+  const emptyCart = () => {
+    setCart([]);
+  };
+
   return (
     <div className={styles.shoppingCartContainer}>
-      <h1>{`Shopping Cart (${items.length})`}</h1>
-      <div className={styles.cartItems}>
-        {items.map((item) => (
-          <div className={styles.cartItem}>
-            <div className={styles.cartItemHeading}>
-              <p className={styles.cartItemName}>{item.name}</p>
-              <p className={styles.cartItemPrice}>${item.unit_amount.value}</p>
-            </div>
-            <div className={styles.cartItemCounter}>
-              <button>-</button>
-              <p>0</p>
-              <button>+</button>
-            </div>
+      <h1>{`Shopping Cart (${totalQty})`}</h1>
+      <FiTrash className={styles.trashCart} onClick={emptyCart} title="Empty cart" />
+      {cart.length > 0 ? (
+        <>
+          <div className={styles.cartItems}>
+            {cart.map((cartItem, ix) => (
+              <ShoppingCartItem item={cartItem} key={`${cartItem.name}-${ix}`} />
+            ))}
           </div>
-        ))}
-      </div>
-      <div className={styles.cartSubtotal}>
-        <p>Estimated Shipping: $233</p>
-        <p>
-          Subtotal ({items.length} items): <b>$60.43</b>
-        </p>
-        {/* <p>Proceed to checkout</p> */}
-      </div>
-      <PaypalCheckoutButton />
+          <div className={styles.cartSubtotal}>
+            <p>Estimated Shipping: ${parseFloat(totalShipping).toFixed(2)}</p>
+            <p>
+              Subtotal ({totalQty} item{totalQty > 1 ? 's' : ''}):{' '}
+              <b>${parseFloat(subtotal).toFixed(2)}</b>
+            </p>
+            {/* <p>Proceed to checkout</p> */}
+          </div>
+          <PaypalCheckoutButton />
+        </>
+      ) : (
+        <div className={styles.emptyCartPlaceholder}>
+          <FiShoppingCart size="2rem" className={styles.cartIcon} />
+          <p className={styles.emptyCartHeading}>Your Cart is Empty</p>
+          <p className={styles.emptyCartSubheading}>Shop for products to add them to your cart</p>
+          <Link
+            href={{
+              pathname: '/LandingPage',
+              query: { slug: 'products' }
+            }}
+            as={`/products`}
+          >
+            <a className={styles.cartProductButton}>View our Products</a>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

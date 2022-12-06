@@ -6,11 +6,12 @@ import SVG from 'react-inlinesvg';
 import styles from './Header.module.css';
 import HamburgerIcon from './icons/Hamburger';
 import ShoppingCart from './ShoppingCart';
+import { CartContext } from './CartContext';
 import Badge from './Badge';
 import { FiExternalLink, FiShoppingCart } from 'react-icons/fi';
 
 class Header extends Component {
-  state = { showNav: false, showCart: false };
+  state = { showNav: false, showCart: false, numInCart: 0 };
 
   static propTypes = {
     router: PropTypes.shape({
@@ -37,10 +38,22 @@ class Header extends Component {
     })
   };
 
+  static contextType = CartContext;
+
   componentDidMount() {
     const { router } = this.props;
+    const [cart] = this.context;
     router.events.on('routeChangeComplete', this.hideMenu);
     router.events.on('routeChangeComplete', this.hideCart);
+    this.setState({ numInCart: cart.length });
+  }
+
+  componentDidUpdate() {
+    const [cart] = this.context;
+    const totalQty = cart.reduce((acc, curr) => acc + curr.qty, 0);
+    if (totalQty !== this.state.numInCart) {
+      this.setState({ numInCart: totalQty });
+    }
   }
 
   componentWillUnmount() {
@@ -97,7 +110,7 @@ class Header extends Component {
 
   render() {
     const { title = 'Missing title', navItems, router, logo } = this.props;
-    const { showNav, showCart } = this.state;
+    const { showNav, showCart, numInCart } = this.state;
 
     return (
       <>
@@ -162,7 +175,7 @@ class Header extends Component {
                 title="Open cart"
               >
                 <FiShoppingCart className={styles.shoppingCart} />
-                <Badge count={7} />
+                <Badge count={numInCart} />
               </button>
               <button
                 className={styles.showNavButton}

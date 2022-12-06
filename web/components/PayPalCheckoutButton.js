@@ -48,7 +48,27 @@ const PaypalCheckoutButton = (props) => {
         return actions.order.create({
           purchase_units: [
             {
-              description: product.description,
+              description: product.name,
+              items: [
+                {
+                  name: 'Peel 3',
+                  quantity: '1',
+                  description: product.description,
+                  unit_amount: {
+                    value: '66.00',
+                    currency_code: 'USD'
+                  }
+                },
+                {
+                  name: 'Rugged case',
+                  quantity: '1',
+                  description: 'Case for your peel 3',
+                  unit_amount: {
+                    value: '33.00',
+                    currency_code: 'USD'
+                  }
+                }
+              ],
               amount: {
                 // the amount equals item_total plus tax_total plus shipping plus handling plus insurance minus shipping_discount minus discount.
                 currency_code: 'USD',

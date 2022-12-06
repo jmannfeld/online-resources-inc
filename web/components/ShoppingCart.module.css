@@ -12,70 +12,91 @@
   height: 60vh;
   max-width: 300px;
   z-index: 90 !important;
-  /* transform: translateX(-100%); */
   transform: translateX(0);
   transition: transform 0.3s ease-out;
   padding: 1.25rem;
-  @media (--media-min-large) {
-    top: 8em;
-    /* height: calc(100vh - 10em); */
-  }
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  @media (--media-min-x-large) {
+    top: 8em;
+  }
+
+  @media (--media-max-x-large) {
+    height: calc(100vh - 10em);
+  }
+}
+
+.trashCart {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.trashCart:hover {
+  background: var(--color-danger);
+}
+
+.trashCart:active {
+  background: white;
 }
 
 .cartItems {
   flex: 1;
 }
 
-.cartItem {
-  border-top: 1px solid var(--color-light-gray);
-  padding: 0.75rem 0;
-}
-
-.cartItem:last-of-type {
-  border-bottom: 1px solid var(--color-light-gray);
-}
-
-.cartItemHeading {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cartItemName {
-  margin: 0;
-}
-
-.cartItemPrice {
-  font-weight: bold;
-  margin: 0;
-}
-
-.cartItem button {
-  background-color: var(--color-accent);
-  width: 2rem;
-  height: 2rem;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-}
-
-.cartItemCounter {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.cartItemCounter p {
-  margin: 0;
-}
-
 .cartSubtotal {
   align-self: flex-end;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .cartSubtotal p {
   margin: 0;
+}
+
+.emptyCartPlaceholder {
+  padding: 2rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--color-very-light-gray);
+  height: 100%;
+  text-align: center;
+}
+
+.cartIcon {
+  margin-top: 1.5rem;
+}
+
+.emptyCartHeading {
+  font-weight: bold;
+  font-size: var(--font-title4-size);
+}
+
+.emptyCartSubheading {
+  line-height: 1.25rem;
+}
+
+.cartProductButton {
+  background-color: var(--color-accent);
+  color: var(--color-dark-gray);
+  font-size: var(--font-base-size);
+  font-family: 'Fjalla One', sans-serif;
+  padding: 1rem 1.75rem;
+  margin-top: 2rem;
+  border: none;
+  display: block;
+  @media (--media-max-small) {
+    align-items: center;
+  }
+}
+
+.cartProductButton:hover {
+  cursor: pointer;
+  transform: scale(1.025);
+}
+
+.cartProductButton:active {
+  transform: scale(0.99);
 }

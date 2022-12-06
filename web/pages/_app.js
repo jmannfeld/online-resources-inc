@@ -3,6 +3,7 @@ import BaseApp from 'next/app';
 import client from '../client';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import groq from 'groq';
+import { CartProvider } from '../components/CartContext';
 import '../styles/shared.module.css';
 import '../styles/layout.css';
 
@@ -79,15 +80,17 @@ class App extends BaseApp {
     const { Component, pageProps } = this.props;
 
     return (
-      <PayPalScriptProvider
-        options={{
-          'client-id': process.env.PAYPAY_CLIENT_ID,
-          'enable-funding': 'venmo',
-          debug: true
-        }}
-      >
-        <Component {...pageProps} />
-      </PayPalScriptProvider>
+      <CartProvider>
+        <PayPalScriptProvider
+          options={{
+            'client-id': process.env.PAYPAY_CLIENT_ID,
+            'enable-funding': 'venmo',
+            debug: false
+          }}
+        >
+          <Component {...pageProps} />
+        </PayPalScriptProvider>
+      </CartProvider>
     );
   }
 }
