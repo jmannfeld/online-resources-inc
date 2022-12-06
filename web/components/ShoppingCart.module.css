@@ -22,6 +22,12 @@
   @media (--media-min-x-large) {
     top: 8em;
   }
+  @media (--media-min-large) {
+    top: 8em;
+  }
+  @media (--media-max-header) {
+    top: 7.3em;
+  }
 
   @media (--media-max-x-large) {
     height: calc(100vh - 10em);
@@ -63,10 +69,10 @@
   background-color: var(--color-very-light-gray);
   height: 100%;
   text-align: center;
-}
-
-.cartIcon {
-  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .emptyCartHeading {
@@ -84,7 +90,7 @@
   font-size: var(--font-base-size);
   font-family: 'Fjalla One', sans-serif;
   padding: 1rem 1.75rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
   border: none;
   display: block;
   @media (--media-max-small) {
