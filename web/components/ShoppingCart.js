@@ -44,7 +44,7 @@ export default function ShoppingCart() {
         <div className={styles.emptyCartPlaceholder}>
           <FiShoppingCart size="2rem" className={styles.cartIcon} />
           <p className={styles.emptyCartHeading}>Your Cart is Empty</p>
-          <p className={styles.emptyCartSubheading}>Shop for products to add them to your cart</p>
+          <p className={styles.emptyCartSubheading}>Shop for products to add to your cart</p>
           <Link
             href={{
               pathname: '/LandingPage',

@@ -36,8 +36,8 @@
 
 .trashCart {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0.75rem;
+  right: 1.25rem;
   padding: 0.5rem;
   cursor: pointer;
 }

@@ -193,8 +193,8 @@ class ProductPage extends React.Component {
             <div className={styles.paypalButtonContainer}>
               <h2>Purchase Here</h2>
               <div className={styles.productsForSale}>
-                {productsForSale.map((productToSell) => (
-                  <ProductListing productToSell={productToSell} />
+                {productsForSale.map((productToSell, ix) => (
+                  <ProductListing productToSell={productToSell} key={`${productToSell}-${ix}`} />
                 ))}
               </div>
               {/* <PaypalCheckoutButton product={paypalProduct} /> */}

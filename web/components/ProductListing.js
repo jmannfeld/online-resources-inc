@@ -4,7 +4,7 @@ import { CartContext } from './CartContext';
 import { FiShoppingCart } from 'react-icons/fi';
 
 export default function ProductListing({ productToSell }) {
-  const [cart, setCart] = useContext(CartContext);
+  const [cart, setCart, showCart, setShowCart] = useContext(CartContext);
 
   const addToCart = () => {
     const exist = cart.find((x) => x.name === productToSell.name);
@@ -23,6 +23,7 @@ export default function ProductListing({ productToSell }) {
         }
       ]);
     }
+    setShowCart(true);
   };
 
   return (

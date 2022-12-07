@@ -11,7 +11,7 @@ import Badge from './Badge';
 import { FiExternalLink, FiShoppingCart } from 'react-icons/fi';
 
 class Header extends Component {
-  state = { showNav: false, showCart: false, numInCart: 0 };
+  state = { showNav: false, showCart: false, numInCart: 0, showCart: null, setShowCart: null };
 
   static propTypes = {
     router: PropTypes.shape({
@@ -49,10 +49,10 @@ class Header extends Component {
   }
 
   componentDidUpdate() {
-    const [cart] = this.context;
+    const [cart, setCart, showCart, setShowCart] = this.context;
     const totalQty = cart.reduce((acc, curr) => acc + curr.qty, 0);
     if (totalQty !== this.state.numInCart) {
-      this.setState({ numInCart: totalQty });
+      this.setState({ numInCart: totalQty, showCart, setShowCart });
     }
   }
 
