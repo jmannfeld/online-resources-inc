@@ -63,6 +63,11 @@
   margin: 0;
 }
 
+.shippingPriceOfAccessories {
+  color: red;
+  font-weight: bold;
+}
+
 .emptyCartPlaceholder {
   padding: 2rem;
   margin-bottom: 0.75rem;

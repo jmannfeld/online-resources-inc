@@ -84,7 +84,8 @@ class ProductPage extends React.Component {
       price,
       shipping,
       tax,
-      accessories = []
+      accessories = [],
+      removeShipping
     } = this.props;
 
     // console.log('ProductPage props', this.props);
@@ -92,7 +93,8 @@ class ProductPage extends React.Component {
     const paypalProduct = {
       name,
       price,
-      shipping
+      shipping,
+      removeShipping
     };
 
     const openGraphImages = mainImage
@@ -199,8 +201,17 @@ class ProductPage extends React.Component {
           {acceptPaypal && (
             <div className={styles.paypalButtonContainer}>
               <h2>Purchase Here</h2>
+              {paypalProduct.removeShipping && (
+                <p className={styles.accessoryInformationText}>
+                  Free shipping on all accessories purchased with the {paypalProduct.name}!
+                </p>
+              )}
               <div className={styles.productsForSale}>
-                <ProductListing productToSell={paypalProduct} key={`${paypalProduct}-listing`} />
+                <ProductListing
+                  productToSell={paypalProduct}
+                  removeShippingFromAccessories={paypalProduct.removeShipping}
+                  key={`${paypalProduct}-listing`}
+                />
                 <h3 className={styles.accessoryHeading}>{`${paypalProduct.name} Accessories`}</h3>
                 {accessories.map((accessory, ix) => {
                   if (accessory._type === 'product-accessory-group') {

@@ -22,8 +22,12 @@ function PaypalCheckoutButton() {
   const [paypalOrder, setPaypalOrder] = useState(null);
 
   const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
-  const totalShipping = cart.reduce((acc, curr) => acc + curr.shipping * curr.qty, 0);
   const totalTax = Number((totalPrice + totalShipping) * 0.07).toFixed(2);
+  const removeShipping = cart.find((x) => x.removeShipping === true);
+  const totalShipping = removeShipping
+    ? removeShipping.shipping
+    : cart.reduce((acc, curr) => acc + curr.shipping * curr.qty, 0);
+  console.log('totalShipping', totalShipping);
 
   const handleApproval = (data, actions) => {
     // Call backend to fulfill the order
