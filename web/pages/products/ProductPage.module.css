@@ -262,3 +262,18 @@
 .paypalButtonContainer iframe {
   z-index: 99 !important;
 }
+
+.accessoryHeading {
+  margin-top: 3.5rem;
+  margin-bottom: 0.5rem;
+  font-size: var(--font-title2-size);
+}
+
+.accessoryInformationText {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.accessoryGroup {
+  margin-bottom: 1rem;
+}

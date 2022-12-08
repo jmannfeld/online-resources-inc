@@ -169,36 +169,13 @@ export default {
         })
     },
     {
-      title: 'Tax',
-      name: 'tax',
-      type: 'string',
-      description: 'Tax price for the product in USD',
-      inputComponent: PriceInput,
-      fieldset: 'price-information',
-      validation: Rule =>
-        Rule.custom((price, context) => {
-          const priceIsRequired = context.document.acceptPaypal;
-          if (
-            priceIsRequired &&
-            (context.document.tax === '' || context.document.tax === undefined)
-          ) {
-            return 'A tax amount is required if you want to sell this product on the public website';
-          }
-          return true;
-        })
-    },
-    {
       title: 'Accessories for sale',
       name: 'accessories',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: [
-            {
-              type: 'product-accessory'
-            }
-          ]
+          to: [{ type: 'product-accessory' }, { type: 'product-accessory-group' }]
         }
       ]
     }

@@ -47,6 +47,10 @@ export default () =>
         .schemaType('product-accessory')
         .child(S.documentTypeList('product-accessory').title('Accessories')),
       S.listItem()
+        .title('Accessory Groups')
+        .schemaType('product-accessory-group')
+        .child(S.documentTypeList('product-accessory-group').title('Accessory Groups')),
+      S.listItem()
         .title('Product Categories')
         .schemaType('product-category')
         .child(S.documentTypeList('product-category').title('Product Categories')),

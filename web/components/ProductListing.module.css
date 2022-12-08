@@ -98,3 +98,8 @@
 .addToCart:active {
   transform: scale(0.84);
 }
+
+.addToCart[disabled] {
+  background-color: var(--color-light-gray);
+  cursor: not-allowed;
+}

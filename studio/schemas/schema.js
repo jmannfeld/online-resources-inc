@@ -11,6 +11,7 @@ import manufacturer from './documents/manufacturer';
 import page from './documents/page';
 import product from './documents/product';
 import productAccessory from './documents/productAccessory';
+import productAccessoryGroup from './documents/productAccessoryGroup';
 import productCategory from './documents/productCategory';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
@@ -89,6 +90,7 @@ export default createSchema({
     route,
     product,
     productAccessory,
+    productAccessoryGroup,
     productCategory,
     manufacturer,
     industry,

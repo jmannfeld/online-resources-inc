@@ -3,7 +3,7 @@ import styles from './ProductListing.module.css';
 import { CartContext } from './CartContext';
 import { FiShoppingCart } from 'react-icons/fi';
 
-export default function ProductListing({ productToSell }) {
+export default function ProductListing({ productToSell, disabled }) {
   const [cart, setCart, showCart, setShowCart] = useContext(CartContext);
 
   const addToCart = () => {
@@ -33,7 +33,7 @@ export default function ProductListing({ productToSell }) {
         <p className={styles.productToSellPrice}>{`$${productToSell.price}`}</p>
       </div>
       <div className={styles.accessoryCounter}>
-        <button className={styles.addToCart} type="button" onClick={addToCart}>
+        <button className={styles.addToCart} type="button" onClick={addToCart} disabled={disabled}>
           <span>Add to Cart</span>
           <FiShoppingCart />
         </button>

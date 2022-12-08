@@ -43,7 +43,14 @@ const productQuery = groq`
     "accessories": accessories[]-> {
       name,
       price,
-      shipping
+      shipping,
+      _type,
+      informationText,
+      relatedAccessories[]-> {
+        name,
+        price,
+        shipping,
+      }
     }
   }
 `;
@@ -80,15 +87,13 @@ class ProductPage extends React.Component {
       accessories = []
     } = this.props;
 
-    // console.log('Product props', this.props);
+    // console.log('ProductPage props', this.props);
 
     const paypalProduct = {
       name,
       price,
       shipping
     };
-
-    const productsForSale = [paypalProduct, ...accessories];
 
     const openGraphImages = mainImage
       ? [
@@ -115,6 +120,19 @@ class ProductPage extends React.Component {
         ]
       : [];
 
+    const relatedAccessoryIsInCart = (relatedAccessory, accessories) => {
+      const [cart] = this.context;
+      let accessoryInCart = false;
+      accessories.forEach((accessory) => {
+        if (
+          cart.find((item) => item.name === accessory.name && item.name !== relatedAccessory.name)
+        ) {
+          accessoryInCart = true;
+        }
+      });
+      return accessoryInCart;
+    };
+
     return (
       <Layout config={config}>
         <NextSeo
@@ -140,16 +158,6 @@ class ProductPage extends React.Component {
             <div className={styles.askAnEngineer}>
               <Cta title="Ask an Engineer!" route={{ slug: { current: 'contact-us' } }} />
             </div>
-            {/* <div className={styles.productTags}>
-              {category && (
-                <p>
-                  {category.slice(-1) === 's'
-                    ? category.substring(0, category.length - 1)
-                    : category}
-                </p>
-              )}
-              {type && <p>{type}</p>}
-            </div> */}
           </div>
           {embed3dModel && (
             <div className={styles.embed3dModelWrapper}>
@@ -162,7 +170,6 @@ class ProductPage extends React.Component {
               src={mainImage ? urlFor(mainImage) : '../static/logo.png'}
             ></img>
           )}
-          {/* {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />} */}
           <table className={styles.techSpecsTable}>
             <tbody>
               {techSpecs &&
@@ -193,11 +200,43 @@ class ProductPage extends React.Component {
             <div className={styles.paypalButtonContainer}>
               <h2>Purchase Here</h2>
               <div className={styles.productsForSale}>
-                {productsForSale.map((productToSell, ix) => (
-                  <ProductListing productToSell={productToSell} key={`${productToSell}-${ix}`} />
-                ))}
+                <ProductListing productToSell={paypalProduct} key={`${paypalProduct}-listing`} />
+                <h3 className={styles.accessoryHeading}>{`${paypalProduct.name} Accessories`}</h3>
+                {accessories.map((accessory, ix) => {
+                  if (accessory._type === 'product-accessory-group') {
+                    return (
+                      <div className={styles.accessoryGroup} key={`${accessory.name}-${ix}`}>
+                        <h3 className={styles.accessoryHeading}>{accessory.name}</h3>
+                        {accessory.informationText && (
+                          <p className={styles.accessoryInformationText}>
+                            {accessory.informationText}
+                          </p>
+                        )}
+                        <div className={styles.accessoryGroupProducts}>
+                          {accessory.relatedAccessories.map((relatedAccessory, aix) => (
+                            <ProductListing
+                              productToSell={relatedAccessory}
+                              key={`${relatedAccessory.name}-${aix}`}
+                              disabled={
+                                relatedAccessoryIsInCart(
+                                  relatedAccessory,
+                                  accessory.relatedAccessories
+                                )
+                                  ? true
+                                  : false
+                              }
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <ProductListing productToSell={accessory} key={`${accessory.name}-${ix}`} />
+                    );
+                  }
+                })}
               </div>
-              {/* <PaypalCheckoutButton product={paypalProduct} /> */}
             </div>
           )}
           {description && (
