@@ -169,9 +169,18 @@ export default {
         })
     },
     {
+      title: 'Remove shipping from accessories',
+      name: 'removeShipping',
+      type: 'boolean',
+      description:
+        'If checked, the shipping cost of accessories will not be added to the total price',
+      fieldset: 'price-information'
+    },
+    {
       title: 'Accessories for sale',
       name: 'accessories',
       type: 'array',
+      hidden: ({ document }) => !document.acceptPaypal,
       of: [
         {
           type: 'reference',

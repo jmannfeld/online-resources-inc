@@ -34,7 +34,7 @@ export default function ShoppingCart() {
             <p>Estimated Shipping: ${parseFloat(totalShipping).toFixed(2)}</p>
             <p>
               Subtotal ({totalQty} item{totalQty > 1 ? 's' : ''}):{' '}
-              <b>${parseFloat(subtotal).toFixed(2)}</b>
+              <b>${parseFloat(totalPrice).toFixed(2)}</b>
             </p>
             {/* <p>Proceed to checkout</p> */}
           </div>

@@ -16,8 +16,8 @@ export default function ShoppingCartItem({ item }) {
         {
           ...item,
           qty: 1,
-          price: Number(productToSell.price),
-          shipping: Number(productToSell.shipping)
+          price: Number(item.price),
+          shipping: Number(item.shipping)
         }
       ]);
     }
