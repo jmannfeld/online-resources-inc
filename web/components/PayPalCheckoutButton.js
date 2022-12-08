@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import Router, { useRouter } from 'next/router';
+import React, { useState, useContext, useCallback } from 'react';
+import Router from 'next/router';
 import { PayPalButtons } from '@paypal/react-paypal-js';
+import { CartContext } from './CartContext';
 
 function ShowPaymentSuccessPage(productDetails) {
   if (process.browser) {
@@ -14,10 +15,15 @@ function ShowPaymentSuccessPage(productDetails) {
   }
 }
 
-const PaypalCheckoutButton = (props) => {
-  const { product } = props;
+function PaypalCheckoutButton() {
+  const [cart, setCart] = useContext(CartContext);
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
+  const [paypalOrder, setPaypalOrder] = useState(null);
+
+  const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+  const totalShipping = cart.reduce((acc, curr) => acc + curr.shipping * curr.qty, 0);
+  const totalTax = Number((totalPrice + totalShipping) * 0.07).toFixed(2);
 
   const handleApproval = (data, actions) => {
     // Call backend to fulfill the order
@@ -33,7 +39,8 @@ const PaypalCheckoutButton = (props) => {
 
   if (paidFor) {
     // Display a success message, modal to the buyer or take them to a success page
-    ShowPaymentSuccessPage(product);
+    ShowPaymentSuccessPage(cart);
+    setCart([]);
   }
 
   if (error) {
@@ -41,64 +48,79 @@ const PaypalCheckoutButton = (props) => {
     alert(error);
   }
 
+  const generatePaypalAmount = () => {
+    const orderObject = {
+      // the amount.value equals item_total plus tax_total plus shipping plus handling plus insurance minus shipping_discount minus discount.
+      currency_code: 'USD',
+      value: (
+        parseFloat(totalPrice) +
+        parseFloat(totalShipping) +
+        Number((totalPrice + totalShipping) * 0.07)
+      ).toString(),
+      breakdown: {
+        item_total: {
+          value: totalPrice,
+          currency_code: 'USD'
+        },
+        tax_total: {
+          value: totalTax,
+          currency_code: 'USD'
+        },
+        shipping: {
+          value: totalShipping,
+          currency_code: 'USD'
+        }
+      }
+    };
+    return orderObject;
+  };
+
+  const generatePaypalOrderObject = () => {
+    const order = {
+      description: 'Online Resources, Inc. Purchase',
+      items: cart.map((item) => ({
+        name: item.name,
+        quantity: item.qty,
+        description: '3D Scanning',
+        unit_amount: {
+          value: item.price,
+          currency_code: 'USD'
+        }
+      })),
+      amount: generatePaypalAmount()
+    };
+    console.log('generatePaypalOrderObject', order);
+    setPaypalOrder(order);
+    return order;
+  };
+
+  const [orderID, setOrderID] = useState(false);
+
+  // use useCallback to only update the value of `createOrder` when the `amount` changes
+  const createOrder = useCallback(
+    (data, actions) => {
+      const newOrder = generatePaypalOrderObject();
+      console.log('createOrder order', newOrder);
+
+      return actions.order
+        .create({
+          purchase_units: [newOrder]
+        })
+        .then((orderID) => {
+          setOrderID(orderID);
+          return orderID;
+        });
+    },
+    [cart]
+  );
+
   return (
     <PayPalButtons
-      onClick={(data, actions) => {}}
-      createOrder={(data, actions) => {
-        return actions.order.create({
-          purchase_units: [
-            {
-              description: product.name,
-              items: [
-                {
-                  name: 'Peel 3',
-                  quantity: '1',
-                  description: product.description,
-                  unit_amount: {
-                    value: '66.00',
-                    currency_code: 'USD'
-                  }
-                },
-                {
-                  name: 'Rugged case',
-                  quantity: '1',
-                  description: 'Case for your peel 3',
-                  unit_amount: {
-                    value: '33.00',
-                    currency_code: 'USD'
-                  }
-                }
-              ],
-              amount: {
-                // the amount equals item_total plus tax_total plus shipping plus handling plus insurance minus shipping_discount minus discount.
-                currency_code: 'USD',
-                value: (
-                  parseFloat(product.price) +
-                  parseFloat(product.shipping) +
-                  parseFloat(product.tax)
-                ).toString(),
-                breakdown: {
-                  item_total: {
-                    value: product.price,
-                    currency_code: 'USD'
-                  },
-                  tax_total: {
-                    value: product.tax,
-                    currency_code: 'USD'
-                  },
-                  shipping: {
-                    value: product.shipping,
-                    currency_code: 'USD'
-                  }
-                }
-              }
-            }
-          ]
-        });
-      }}
+      createOrder={createOrder}
+      forceReRender={[cart]}
       onApprove={async (data, actions) => {
         const order = await actions.order.capture();
-        console.log('order', order);
+        console.log('Order summary', order);
         handleApproval(data.orderID);
       }}
       onCancel={() => {
@@ -110,6 +132,6 @@ const PaypalCheckoutButton = (props) => {
       }}
     />
   );
-};
+}
 
 export default PaypalCheckoutButton;

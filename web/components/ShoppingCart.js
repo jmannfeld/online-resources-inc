@@ -36,7 +36,6 @@ export default function ShoppingCart() {
               Subtotal ({totalQty} item{totalQty > 1 ? 's' : ''}):{' '}
               <b>${parseFloat(totalPrice).toFixed(2)}</b>
             </p>
-            {/* <p>Proceed to checkout</p> */}
           </div>
           <PaypalCheckoutButton />
         </>
