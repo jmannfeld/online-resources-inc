@@ -1,7 +1,7 @@
 import React from 'react';
 import NextSeo from 'next-seo';
 import groq from 'groq';
-import { FiExternalLink } from 'react-icons/fi';
+import { FiExternalLink, FiShoppingCart } from 'react-icons/fi';
 import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../../components/Layout';
 import styles from './ProductPage.module.css';
@@ -10,6 +10,8 @@ import SimpleBlockContent from '../../components/SimpleBlockContent';
 import Cta from '../../components/Cta';
 import PaypalCheckoutButton from '../../components/PayPalCheckoutButton';
 import EmbedHTML from '../../components/EmbedHTML';
+import { CartContext } from '../../components/CartContext';
+import ProductListing from '../../components/ProductListing';
 
 const builder = imageUrlBuilder(client);
 
@@ -35,14 +37,21 @@ const productQuery = groq`
     "mainImage": image {
       asset->
     },
-    "galleryImages": gallery[] {
-    "image": asset-> {
-        url
-      }
-    }.image.url,
     "industries": industries[]-> {
       name
-    }.name
+    }.name,
+    "accessories": accessories[]-> {
+      name,
+      price,
+      shipping,
+      _type,
+      informationText,
+      relatedAccessories[]-> {
+        name,
+        price,
+        shipping,
+      }
+    }
   }
 `;
 
@@ -50,6 +59,12 @@ class ProductPage extends React.Component {
   static async getInitialProps({ query }) {
     const { slug } = query;
     return await client.fetch(productQuery, { slug }).then((res) => ({ ...res, slug }));
+  }
+
+  static contextType = CartContext;
+
+  componentDidMount() {
+    const [cart, setCart] = this.context;
   }
 
   render() {
@@ -68,16 +83,18 @@ class ProductPage extends React.Component {
       acceptPaypal,
       price,
       shipping,
-      tax
+      tax,
+      accessories = [],
+      removeShipping
     } = this.props;
 
-    console.log('Product props', this.props);
+    // console.log('ProductPage props', this.props);
 
     const paypalProduct = {
-      description: name,
+      name,
       price,
       shipping,
-      tax
+      removeShipping
     };
 
     const openGraphImages = mainImage
@@ -105,6 +122,19 @@ class ProductPage extends React.Component {
         ]
       : [];
 
+    const relatedAccessoryIsInCart = (relatedAccessory, accessories) => {
+      const [cart] = this.context;
+      let accessoryInCart = false;
+      accessories.forEach((accessory) => {
+        if (
+          cart.find((item) => item.name === accessory.name && item.name !== relatedAccessory.name)
+        ) {
+          accessoryInCart = true;
+        }
+      });
+      return accessoryInCart;
+    };
+
     return (
       <Layout config={config}>
         <NextSeo
@@ -130,16 +160,6 @@ class ProductPage extends React.Component {
             <div className={styles.askAnEngineer}>
               <Cta title="Ask an Engineer!" route={{ slug: { current: 'contact-us' } }} />
             </div>
-            {/* <div className={styles.productTags}>
-              {category && (
-                <p>
-                  {category.slice(-1) === 's'
-                    ? category.substring(0, category.length - 1)
-                    : category}
-                </p>
-              )}
-              {type && <p>{type}</p>}
-            </div> */}
           </div>
           {embed3dModel && (
             <div className={styles.embed3dModelWrapper}>
@@ -152,7 +172,6 @@ class ProductPage extends React.Component {
               src={mainImage ? urlFor(mainImage) : '../static/logo.png'}
             ></img>
           )}
-          {/* {galleryImages && <ImageGallery className={styles.imageGallery} items={listForGallery} />} */}
           <table className={styles.techSpecsTable}>
             <tbody>
               {techSpecs &&
@@ -179,12 +198,58 @@ class ProductPage extends React.Component {
               <FiExternalLink />
             </button>
           )}
-          {/* {acceptPaypal && (
+          {acceptPaypal && (
             <div className={styles.paypalButtonContainer}>
               <h2>Purchase Here</h2>
-              <PaypalCheckoutButton product={paypalProduct} />
+              {paypalProduct.removeShipping && (
+                <p className={styles.accessoryInformationText}>
+                  Free shipping on all accessories purchased with the {paypalProduct.name}!
+                </p>
+              )}
+              <div className={styles.productsForSale}>
+                <ProductListing
+                  productToSell={paypalProduct}
+                  removeShippingFromAccessories={paypalProduct.removeShipping}
+                  key={`${paypalProduct}-listing`}
+                />
+                <h3 className={styles.accessoryHeading}>{`${paypalProduct.name} Accessories`}</h3>
+                {accessories.map((accessory, ix) => {
+                  if (accessory._type === 'product-accessory-group') {
+                    return (
+                      <div className={styles.accessoryGroup} key={`${accessory.name}-${ix}`}>
+                        <h3 className={styles.accessoryHeading}>{accessory.name}</h3>
+                        {accessory.informationText && (
+                          <p className={styles.accessoryInformationText}>
+                            {accessory.informationText}
+                          </p>
+                        )}
+                        <div className={styles.accessoryGroupProducts}>
+                          {accessory.relatedAccessories.map((relatedAccessory, aix) => (
+                            <ProductListing
+                              productToSell={relatedAccessory}
+                              key={`${relatedAccessory.name}-${aix}`}
+                              disabled={
+                                relatedAccessoryIsInCart(
+                                  relatedAccessory,
+                                  accessory.relatedAccessories
+                                )
+                                  ? true
+                                  : false
+                              }
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <ProductListing productToSell={accessory} key={`${accessory.name}-${ix}`} />
+                    );
+                  }
+                })}
+              </div>
             </div>
-          )} */}
+          )}
           {description && (
             <div className={styles.productDescription}>
               <SimpleBlockContent blocks={description} />

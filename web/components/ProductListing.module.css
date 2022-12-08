@@ -1,0 +1,105 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+.productToSell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  background-color: var(--color-very-light-gray);
+  border: 2px solid var(--color-light-gray);
+  padding: 1.25rem;
+  @media (--media-max-medium) {
+    flex-direction: column;
+    padding: 0.85rem;
+  }
+}
+
+.productToSellDetails {
+  width: 50%;
+  @media (--media-max-medium) {
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.accessoryCounter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.productToSell p {
+  font-family: var(--font-family-sans);
+  margin: 0;
+}
+
+.productToSellName {
+  font-size: 1.25rem;
+}
+
+.productToSellPrice {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.addToCart {
+  background-color: var(--color-accent);
+  color: var(--color-dark-gray);
+  font-size: var(--font-title3-size);
+  font-size: var(--font-base-size);
+  font-family: 'Fjalla One', sans-serif;
+  font-family: var(--font-family-sans);
+  padding: 1rem 1.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  border: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  @media (--media-max-small) {
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.addToCart {
+  transform: scale(0.85);
+  margin-top: 0.3em;
+
+  @media (--media-max-medium) {
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 1rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.addToCart svg {
+  padding-left: 0.75rem;
+}
+
+.addToCart:hover {
+  cursor: pointer;
+  transform: scale(1.025);
+}
+
+.addToCart:active {
+  transform: scale(0.99);
+}
+
+.addToCart:hover {
+  transform: scale(0.9);
+}
+
+.addToCart:active {
+  transform: scale(0.84);
+}
+
+.addToCart[disabled] {
+  background-color: var(--color-light-gray);
+  cursor: not-allowed;
+}

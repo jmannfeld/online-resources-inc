@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
 import client from '../../client';
 import styles from './IndustryList.module.css';
-import SimpleBlockContent from '../SimpleBlockContent';
 import Link from 'next/link';
 import slugify from 'slugify';
 

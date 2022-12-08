@@ -7,13 +7,15 @@ function SocialMedia(props) {
   return (
     <div className={styles.socialWrapper}>
       <h3>Follow ORI on Social Media</h3>
-      <div className={styles.socialContainer}>
-        {links.facebookUrl ? <SocialIcon url={links.facebookUrl} /> : ''}
-        {links.twitterUrl ? <SocialIcon url={links.twitterUrl} /> : ''}
-        {links.youtubeUrl ? <SocialIcon url={links.youtubeUrl} /> : ''}
-        {links.instagramUrl ? <SocialIcon url={links.instagramUrl} bgColor="#F77737" /> : ''}
-        {links.linkedinUrl ? <SocialIcon url={links.linkedinUrl} /> : ''}
-      </div>
+      {links && (
+        <div className={styles.socialContainer}>
+          {links.facebookUrl ? <SocialIcon url={links.facebookUrl} /> : ''}
+          {links.twitterUrl ? <SocialIcon url={links.twitterUrl} /> : ''}
+          {links.youtubeUrl ? <SocialIcon url={links.youtubeUrl} /> : ''}
+          {links.instagramUrl ? <SocialIcon url={links.instagramUrl} bgColor="#F77737" /> : ''}
+          {links.linkedinUrl ? <SocialIcon url={links.linkedinUrl} /> : ''}
+        </div>
+      )}
     </div>
   );
 }

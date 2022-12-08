@@ -10,6 +10,8 @@ import industry from './documents/industry';
 import manufacturer from './documents/manufacturer';
 import page from './documents/page';
 import product from './documents/product';
+import productAccessory from './documents/productAccessory';
+import productAccessoryGroup from './documents/productAccessoryGroup';
 import productCategory from './documents/productCategory';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
@@ -29,6 +31,7 @@ import internalLink from './objects/internalLink';
 import link from './objects/link';
 import logoImageBlock from './objects/logoImageBlock';
 import portableText from './objects/portableText';
+import priceBreakdown from './objects/priceBreakdown';
 import simplePortableText from './objects/simplePortableText';
 import serviceForm from './objects/serviceForm';
 import signupForm from './objects/signupForm';
@@ -70,6 +73,7 @@ export default createSchema({
     logoImageBlock,
     mailchimp,
     portableText,
+    priceBreakdown,
     productList,
     serviceForm,
     signupForm,
@@ -85,6 +89,8 @@ export default createSchema({
     page,
     route,
     product,
+    productAccessory,
+    productAccessoryGroup,
     productCategory,
     manufacturer,
     industry,

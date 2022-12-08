@@ -169,23 +169,24 @@ export default {
         })
     },
     {
-      title: 'Tax',
-      name: 'tax',
-      type: 'string',
-      description: 'Tax price for the product in USD',
-      inputComponent: PriceInput,
-      fieldset: 'price-information',
-      validation: Rule =>
-        Rule.custom((price, context) => {
-          const priceIsRequired = context.document.acceptPaypal;
-          if (
-            priceIsRequired &&
-            (context.document.tax === '' || context.document.tax === undefined)
-          ) {
-            return 'A tax amount is required if you want to sell this product on the public website';
-          }
-          return true;
-        })
+      title: 'Remove shipping from accessories',
+      name: 'removeShipping',
+      type: 'boolean',
+      description:
+        'If checked, the shipping cost of accessories will not be added to the total price',
+      fieldset: 'price-information'
+    },
+    {
+      title: 'Accessories for sale',
+      name: 'accessories',
+      type: 'array',
+      hidden: ({ document }) => !document.acceptPaypal,
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'product-accessory' }, { type: 'product-accessory-group' }]
+        }
+      ]
     }
   ],
   preview: {

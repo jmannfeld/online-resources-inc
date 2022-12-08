@@ -1,0 +1,113 @@
+@import '../styles/custom-media.css';
+@import '../styles/custom-properties.css';
+
+.shoppingCartContainer {
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  box-shadow: 1px 7px 7px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 7.3em;
+  right: 0;
+  width: 70%;
+  height: 60vh;
+  max-width: 300px;
+  z-index: 90 !important;
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+
+  @media (--media-min-x-large) {
+    top: 8em;
+  }
+  @media (--media-min-large) {
+    top: 8em;
+  }
+  @media (--media-max-header) {
+    top: 7.3em;
+  }
+
+  @media (--media-max-x-large) {
+    height: calc(100vh - 10em);
+  }
+}
+
+.trashCart {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.trashCart:hover {
+  background: var(--color-danger);
+}
+
+.trashCart:active {
+  background: white;
+}
+
+.cartItems {
+  flex: 1;
+}
+
+.cartSubtotal {
+  align-self: flex-end;
+  margin: 1rem 0;
+}
+
+.cartSubtotal p {
+  margin: 0;
+}
+
+.shippingPriceOfAccessories {
+  color: red;
+  font-weight: bold;
+}
+
+.emptyCartPlaceholder {
+  padding: 2rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--color-very-light-gray);
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyCartHeading {
+  font-weight: bold;
+  font-size: var(--font-title4-size);
+}
+
+.emptyCartSubheading {
+  line-height: 1.25rem;
+}
+
+.cartProductButton {
+  background-color: var(--color-accent);
+  color: var(--color-dark-gray);
+  font-size: var(--font-base-size);
+  font-family: 'Fjalla One', sans-serif;
+  padding: 1rem 1.75rem;
+  margin: 2rem 0;
+  border: none;
+  display: block;
+  @media (--media-max-small) {
+    align-items: center;
+  }
+}
+
+.cartProductButton:hover {
+  cursor: pointer;
+  transform: scale(1.025);
+}
+
+.cartProductButton:active {
+  transform: scale(0.99);
+}

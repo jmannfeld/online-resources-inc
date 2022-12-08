@@ -5,10 +5,13 @@ import { withRouter } from 'next/router';
 import SVG from 'react-inlinesvg';
 import styles from './Header.module.css';
 import HamburgerIcon from './icons/Hamburger';
-import { FiExternalLink } from 'react-icons/fi';
+import ShoppingCart from './ShoppingCart';
+import { CartContext } from './CartContext';
+import Badge from './Badge';
+import { FiExternalLink, FiShoppingCart } from 'react-icons/fi';
 
 class Header extends Component {
-  state = { showNav: false };
+  state = { showNav: false, showCart: false, numInCart: 0, showCart: null, setShowCart: null };
 
   static propTypes = {
     router: PropTypes.shape({
@@ -35,24 +38,49 @@ class Header extends Component {
     })
   };
 
+  static contextType = CartContext;
+
   componentDidMount() {
     const { router } = this.props;
+    const [cart] = this.context;
     router.events.on('routeChangeComplete', this.hideMenu);
+    router.events.on('routeChangeComplete', this.hideCart);
+    this.setState({ numInCart: cart.length });
+  }
+
+  componentDidUpdate() {
+    const [cart, setCart, showCart, setShowCart] = this.context;
+    const totalQty = cart.reduce((acc, curr) => acc + curr.qty, 0);
+    if (totalQty !== this.state.numInCart) {
+      this.setState({ numInCart: totalQty, showCart, setShowCart });
+    }
   }
 
   componentWillUnmount() {
     const { router } = this.props;
     router.events.off('routeChangeComplete', this.hideMenu);
+    router.events.off('routeChangeComplete', this.hideCart);
   }
 
   hideMenu = () => {
     this.setState({ showNav: false });
   };
 
+  hideCart = () => {
+    this.setState({ showCart: false });
+  };
+
   handleMenuToggle = () => {
     const { showNav } = this.state;
     this.setState({
       showNav: !showNav
+    });
+  };
+
+  handleCartToggle = () => {
+    const { showCart } = this.state;
+    this.setState({
+      showCart: !showCart
     });
   };
 
@@ -82,14 +110,14 @@ class Header extends Component {
 
   render() {
     const { title = 'Missing title', navItems, router, logo } = this.props;
-    const { showNav } = this.state;
+    const { showNav, showCart, numInCart } = this.state;
 
     return (
       <>
         <p className={styles.phoneNumberBar}>
           Contact a Team Member: <span className={styles.phoneNumber}>765-482-9700</span>
         </p>
-        <div className={styles.root} data-show-nav={showNav}>
+        <div className={styles.root} data-show-nav={showNav} data-show-cart={showCart}>
           <div className={styles.innerNav}>
             <h1 className={styles.branding}>
               <Link
@@ -140,6 +168,15 @@ class Header extends Component {
                     );
                   })}
               </ul>
+              {showCart && <ShoppingCart count={7} />}
+              <button
+                className={styles.showCartButton}
+                onClick={this.handleCartToggle}
+                title="Open cart"
+              >
+                <FiShoppingCart className={styles.shoppingCart} />
+                <Badge count={numInCart} />
+              </button>
               <button
                 className={styles.showNavButton}
                 onClick={this.handleMenuToggle}
