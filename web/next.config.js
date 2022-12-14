@@ -54,7 +54,8 @@ module.exports = withImages(
     trailingSlash: false,
     env: {
       PAYPAY_CLIENT_ID:
-        'AcoQY9r_eNBjFdZWad-rc_vb5ONIPF2t_RZq-vyPUPCGOSLZB86U6HkmQijvmNOuA63YcOglicQ7lEdi' // - ori-sandbox
+        'ASgD93qif29TsDct6zvdEJmi_OGYtJt-76UL6QOh5JuUyP5Rt8SYdF0gEjH-I0M1iMuSSCpBO3Vi2QJG' // LIVE
+      // 'AcoQY9r_eNBjFdZWad-rc_vb5ONIPF2t_RZq-vyPUPCGOSLZB86U6HkmQijvmNOuA63YcOglicQ7lEdi' // - ori-sandbox
       // 'Aft-cGY_q99PXLiKu8lBifK5eAHKQun-xFEpO4GJD0YHabzdIbxPUJzo-PszxaaX1Q4mA5qrBte9gs26', // - yahoo
     },
     exportPathMap: async () => {
