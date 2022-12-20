@@ -50,7 +50,12 @@ const productQuery = groq`
         name,
         price,
         shipping,
-      }
+      },
+      addDiscount,
+      discount,
+      "discountedProducts": discountedProducts[]-> {
+        name,
+      }.name
     }
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FiTrash, FiShoppingCart } from 'react-icons/fi';
 import Link from 'next/link';
 import styles from './ShoppingCart.module.css';
@@ -11,7 +11,10 @@ export default function ShoppingCart() {
   console.log('ShoppingCart', cart);
 
   const totalQty = cart.reduce((acc, curr) => acc + curr.qty, 0);
-  const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+  const totalPrice = cart.reduce((acc, curr) => acc + curr.discountedPrice * curr.qty, 0);
+  console.log('totalPrice', totalPrice);
+
+  // remove shipping from accessories if applicable
   const removeShipping = cart.find((x) => x.removeShipping === true) || null;
   const totalShipping = removeShipping
     ? removeShipping.shipping
@@ -23,7 +26,35 @@ export default function ShoppingCart() {
       shippingPriceOfAccessories - removeShipping.shipping * removeShipping.qty;
   }
   console.log('shippingPriceOfAccessories', shippingPriceOfAccessories);
-  const subtotal = totalShipping + totalPrice;
+
+  // apply discounts if applicable
+  const addDiscount = cart.find((x) => x.addDiscount === true) || null;
+  let discount;
+  let discountedItems = [];
+  console.log('addDiscount', addDiscount);
+
+  if (addDiscount) {
+    discount = Number(addDiscount.discount);
+    discountedItems = [...addDiscount.discountedProducts];
+    console.log('discountedItems', discountedItems);
+  }
+
+  useEffect(() => {
+    // localStorage.setItem('cart', JSON.stringify(cart));
+    if (discount && discountedItems.length > 0) {
+      setCart(
+        cart.map((x) =>
+          discountedItems.includes(x.name)
+            ? {
+                ...x,
+                discountedPrice:
+                  x.price * x.qty - (Number(x.price * x.qty) * Number(discount)) / 100
+              }
+            : x
+        )
+      );
+    }
+  }, [discount]);
 
   const emptyCart = () => {
     setCart([]);
@@ -37,7 +68,11 @@ export default function ShoppingCart() {
         <>
           <div className={styles.cartItems}>
             {cart.map((cartItem, ix) => (
-              <ShoppingCartItem item={cartItem} key={`${cartItem.name}-${ix}`} />
+              <ShoppingCartItem
+                item={cartItem}
+                discount={discountedItems.includes(cartItem.name) ? discount : null}
+                key={`${cartItem.name}-${ix}`}
+              />
             ))}
           </div>
           <div className={styles.cartSubtotal}>

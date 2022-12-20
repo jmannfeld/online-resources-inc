@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { CartContext } from './CartContext';
 import styles from './ShoppingCartItem.module.css';
 
-export default function ShoppingCartItem({ item }) {
+export default function ShoppingCartItem({ item, discount }) {
   const [cart, setCart] = useContext(CartContext);
+  const itemTotalPrice = item.price * item.qty;
+  const discountedPrice = discount
+    ? itemTotalPrice - (Number(itemTotalPrice) * Number(discount)) / 100
+    : null;
 
   const addToCart = () => {
     const exist = cart.find((x) => x.name === item.name);
@@ -17,6 +21,7 @@ export default function ShoppingCartItem({ item }) {
           ...item,
           qty: 1,
           price: Number(item.price),
+          discountedPrice: Number(discountedPrice),
           shipping: Number(item.shipping)
         }
       ]);
@@ -36,7 +41,18 @@ export default function ShoppingCartItem({ item }) {
     <div className={styles.cartItem}>
       <div className={styles.cartItemHeading}>
         <p className={styles.cartItemName}>{`${item.name} - $${item.price}`}</p>
-        <p className={styles.cartItemPrice}>${item.price * item.qty}</p>
+        {discount ? (
+          <div className={styles.discountedPriceBlock}>
+            <span className={styles.cartItemPrice}>
+              <s>{`$${itemTotalPrice}`}</s>
+            </span>
+            <span className={styles.cartItemDiscountPrice}>{`$${parseFloat(discountedPrice).toFixed(
+              2
+            )}`}</span>
+          </div>
+        ) : (
+          <p className={styles.cartItemPrice}>{`$${itemTotalPrice}`}</p>
+        )}
       </div>
       <div className={styles.cartItemCounter}>
         <button onClick={removeFromCart}>

@@ -19,7 +19,8 @@ export default function ProductListing({ productToSell, disabled }) {
           ...productToSell,
           qty: 1,
           price: Number(productToSell.price),
-          shipping: Number(productToSell.shipping)
+          shipping: Number(productToSell.shipping),
+          discountedPrice: Number(productToSell.price)
         }
       ]);
     }
@@ -32,12 +33,10 @@ export default function ProductListing({ productToSell, disabled }) {
         <p className={styles.productToSellName}>{`${productToSell.name}`}</p>
         <p className={styles.productToSellPrice}>{`$${productToSell.price}`}</p>
       </div>
-      <div className={styles.accessoryCounter}>
-        <button className={styles.addToCart} type="button" onClick={addToCart} disabled={disabled}>
-          <span>Add to Cart</span>
-          <FiShoppingCart />
-        </button>
-      </div>
+      <button className={styles.addToCart} type="button" onClick={addToCart} disabled={disabled}>
+        <span>Add to Cart</span>
+        <FiShoppingCart />
+      </button>
     </div>
   );
 }

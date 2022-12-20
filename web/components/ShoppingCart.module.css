@@ -64,7 +64,7 @@
 }
 
 .shippingPriceOfAccessories {
-  color: red;
+  color: var(--color-danger);
   font-weight: bold;
 }
 

@@ -27,7 +27,15 @@ function PaypalCheckoutButton() {
     ? removeShipping.shipping
     : cart.reduce((acc, curr) => acc + curr.shipping * curr.qty, 0);
   const totalTax = Number((totalPrice + totalShipping) * 0.07).toFixed(2);
+  console.log('totalTax', totalTax);
   console.log('totalShipping', totalShipping);
+  const totalDiscounts = cart.reduce(
+    (acc, curr) => acc + (curr.price - curr.discountedPrice) * curr.qty,
+    0
+  );
+  console.log('totalDiscounts', totalDiscounts);
+  const totalPriceWithDiscounts = Number(totalPrice - totalDiscounts).toFixed(2);
+  console.log('totalPriceWithDiscounts', totalPriceWithDiscounts);
 
   const handleApproval = (data, actions) => {
     // Call backend to fulfill the order
@@ -52,18 +60,28 @@ function PaypalCheckoutButton() {
     alert(error);
   }
 
+  console.log(
+    (
+      parseFloat(totalPrice) +
+      parseFloat(totalTax) +
+      parseFloat(totalShipping) -
+      parseFloat(totalDiscounts)
+    ).toFixed(2)
+  );
+
   const generatePaypalAmount = () => {
     const orderObject = {
       // the amount.value equals item_total plus tax_total plus shipping plus handling plus insurance minus shipping_discount minus discount.
       currency_code: 'USD',
       value: (
         parseFloat(totalPrice) +
-        parseFloat(totalShipping) +
-        Number((totalPrice + totalShipping) * 0.07)
-      ).toString(),
+        parseFloat(totalTax) +
+        parseFloat(totalShipping) -
+        parseFloat(totalDiscounts)
+      ).toFixed(2),
       breakdown: {
         item_total: {
-          value: totalPrice,
+          value: totalPriceWithDiscounts,
           currency_code: 'USD'
         },
         tax_total: {
@@ -72,6 +90,10 @@ function PaypalCheckoutButton() {
         },
         shipping: {
           value: totalShipping,
+          currency_code: 'USD'
+        },
+        dicount: {
+          value: totalDiscounts,
           currency_code: 'USD'
         }
       }
@@ -87,7 +109,7 @@ function PaypalCheckoutButton() {
         quantity: item.qty,
         description: '3D Scanning',
         unit_amount: {
-          value: item.price,
+          value: item.discountedPrice,
           currency_code: 'USD'
         }
       })),

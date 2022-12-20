@@ -19,6 +19,8 @@
 .cartItemHeading {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 0.5rem;
 }
 
 .cartItemName {
@@ -28,6 +30,45 @@
 .cartItemPrice {
   font-weight: bold;
   margin: 0;
+}
+
+.discountedPriceBlock {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+s,
+strike {
+  text-decoration: none;
+  position: relative;
+}
+s::before,
+strike::before {
+  top: 50%; /*tweak this to adjust the vertical position if it's off a bit due to your font family */
+  background: var(--color-danger); /*this is the color of the line*/
+  opacity: 0.8;
+  content: '';
+  width: 110%;
+  position: absolute;
+  height: 0.1em;
+  border-radius: 0.1em;
+  left: -5%;
+  white-space: nowrap;
+  display: block;
+  transform: rotate(-15deg);
+}
+s.straight::before,
+strike.straight::before {
+  transform: rotate(0deg);
+  left: -1%;
+  width: 102%;
+}
+
+.cartItemDiscountPrice {
+  font-weight: bold;
+  margin: 0;
+  color: var(--color-danger);
 }
 
 .cartItem button {
