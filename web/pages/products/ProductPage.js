@@ -218,6 +218,9 @@ class ProductPage extends React.Component {
                   key={`${paypalProduct}-listing`}
                 />
                 <h3 className={styles.accessoryHeading}>{`${paypalProduct.name} Accessories`}</h3>
+                <p className={styles.accessoryInformationText}>
+                  Get 25% off all accessories purchased with the V.I.P Warranty!
+                </p>
                 {accessories.map((accessory, ix) => {
                   if (accessory._type === 'product-accessory-group') {
                     return (
