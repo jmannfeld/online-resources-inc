@@ -8,4 +8,4 @@
 [[redirects]]
   from = "/foundry"
   to = "/industries/casting-and-foundry"
-  status = 200
+  status = 302
