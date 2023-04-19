@@ -52,7 +52,7 @@ function Benefits(props) {
           <h3 className={styles.benefitTitle}>22</h3>
           <h4 className={styles.benefitSubtitle}>microns accuracy</h4>
           <p className={styles.benefitText}>
-            Digitally capture auto parts, assemblies, and components with up to 0.0009 Inch (or 22
+            Digitally capture parts, assemblies, and components with up to 0.0009 Inch (or 22
             microns) in accuracy.
           </p>
         </div>
