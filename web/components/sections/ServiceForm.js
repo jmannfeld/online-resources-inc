@@ -15,6 +15,7 @@ function ServiceForm(props) {
         data-netlify-recaptcha="true"
         netlify-honeypot="bot-field"
         action="/"
+        enctype="multipart/form-data"
         className={styles.submissionFormContainer}
       >
         <input
