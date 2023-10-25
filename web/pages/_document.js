@@ -17,11 +17,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            type="text/javascript"
-            src="https://apiv2.popupsmart.com/api/Bundle/389631"
-            async
-          ></script>
+          <script src="https://cdn.popupsmart.com/bundle.js" data-id="69303" async defer></script>
         </body>
       </Html>
     );
