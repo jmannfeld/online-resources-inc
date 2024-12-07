@@ -30,7 +30,7 @@ function ImageSection(props) {
                 <div className={styles.label}>{label}</div>
                 <h2 className={styles.title}>{heading}</h2>
                 {text && <SimpleBlockContent blocks={text} />}
-                {cta && cta.route && <Cta {...cta} />}
+                {cta && (cta.route || cta.link) && <Cta {...cta} />}
               </div>
             </div>
           </figcaption>
