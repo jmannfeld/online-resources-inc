@@ -21,7 +21,7 @@ export default {
       name: 'route',
       description: 'Use this to link between pages on the website',
       type: 'reference',
-      to: [{ type: 'route' }],
+      to: [{ type: 'route' }, { type: 'product' }],
       fieldset: 'link'
     },
     {

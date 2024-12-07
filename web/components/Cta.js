@@ -7,6 +7,22 @@ import { FiExternalLink } from 'react-icons/fi';
 function cta(props) {
   const { title, route, link } = props;
 
+  // If the route is a product, link to the product page
+  if (route._type === 'product') {
+    return (
+      <Link
+        href={{
+          pathname: '/products/ProductPage',
+          query: { slug: route.slug.current }
+        }}
+        as={`/products/${route.slug.current}`}
+      >
+        <a className={styles.button}>{title}</a>
+      </Link>
+    );
+  }
+
+  // If the route is a page, link to the page
   if (route && route.slug && route.slug.current) {
     const isServiceForm = route.slug.current.toLowerCase() === 'services';
     return (
@@ -22,6 +38,7 @@ function cta(props) {
     );
   }
 
+  // If there is a link provided, it should be an external link
   if (link) {
     return (
       <a className={styles.button} href={link} target="_blank">
