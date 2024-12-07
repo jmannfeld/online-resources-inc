@@ -8,7 +8,7 @@ function cta(props) {
   const { title, route, link } = props;
 
   // If the route is a product, link to the product page
-  if (route._type === 'product') {
+  if (route && route._type === 'product') {
     return (
       <Link
         href={{
