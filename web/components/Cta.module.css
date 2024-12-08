@@ -17,6 +17,7 @@
 .button:hover {
   background-color: #ffffff1a;
   transform: scale(1.02);
+  cursor: pointer;
 }
 
 .button:active {
@@ -24,4 +25,16 @@
   color: #ffffffc9;
   transform: scale(0.99);
   background-color: #ffffff1a;
+}
+
+.button.black {
+  color: var(--color-white);
+  background-color: #262626;
+  border: none;
+}
+
+.button.green {
+  color: #262626;
+  background-color: var(--color-accent);
+  border: none;
 }

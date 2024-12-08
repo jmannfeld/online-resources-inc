@@ -29,6 +29,17 @@ export default {
       name: 'link',
       type: 'url',
       fieldset: 'link'
+    },
+    {
+      title: 'Color',
+      name: 'color',
+      type: 'string',
+      options: {
+        list: ['White', 'Black', 'Green'],
+        layout: 'radio',
+        direction: 'horizontal',
+        default: 'White'
+      }
     }
   ],
   preview: {

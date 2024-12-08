@@ -5,7 +5,17 @@ import styles from './Cta.module.css';
 import { FiExternalLink } from 'react-icons/fi';
 
 function cta(props) {
-  const { title, route, link } = props;
+  let { title, route, link, color = 'white' } = props;
+
+  console.log('CTA', props);
+
+  // Handle CTAs within portableText
+  if (props.node) {
+    console.log('Portable CTA', props.node);
+    link = props.node.link;
+    title = props.node.title;
+    color = props.node.color.toLowerCase();
+  }
 
   // If the route is a product, link to the product page
   if (route && route._type === 'product') {
@@ -17,7 +27,7 @@ function cta(props) {
         }}
         as={`/products/${route.slug.current}`}
       >
-        <a className={styles.button}>{title}</a>
+        <a className={`${styles.button} ${styles[color]}`}>{title}</a>
       </Link>
     );
   }
@@ -33,7 +43,7 @@ function cta(props) {
         }}
         as={isServiceForm ? `/${route.slug.current}#service-form` : `/${route.slug.current}`}
       >
-        <a className={styles.button}>{title}</a>
+        <a className={`${styles.button} ${styles[color]}`}>{title}</a>
       </Link>
     );
   }
@@ -41,17 +51,17 @@ function cta(props) {
   // If there is a link provided, it should be an external link
   if (link) {
     return (
-      <a className={styles.button} href={link} target="_blank">
+      <a className={`${styles.button} ${styles[color]}`} href={link} target="_blank">
         {title} <FiExternalLink />
       </a>
     );
   }
 
-  return <a className={styles.button}>{title}</a>;
+  return <a className={`${styles.button} ${styles[color]}`}>{title}</a>;
 }
 
 cta.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   route: PropTypes.shape({
     slug: PropTypes.shape({
       current: PropTypes.string

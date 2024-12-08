@@ -25,6 +25,7 @@ export default {
       }
     },
     { type: 'figure' },
+    { type: 'cta', title: 'Call to action (Button)' },
     { type: 'embedHTML' }
   ]
 };
