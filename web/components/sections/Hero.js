@@ -15,6 +15,7 @@ function Hero(props) {
   const { heading, subheading, backgroundImage, tagline, ctas } = props;
   const router = useRouter();
   const isHomepage = router.asPath === '/';
+  const isPri = router.asPath === '/pri';
 
   const style = backgroundImage
     ? {
@@ -23,7 +24,7 @@ function Hero(props) {
     : {};
 
   return (
-    <div className={styles.root} style={style}>
+    <div className={isPri ? styles.root + ' ' + styles.tall : styles.root} style={style}>
       <div className={isHomepage ? styles.content + ' ' + styles.homepageBanner : styles.content}>
         <h1 className={styles.title}>{heading}</h1>
         {subheading && <h2 className={styles.subtitle}>{subheading}</h2>}

@@ -55,6 +55,14 @@
   }
 }
 
+.tall {
+  padding-top: 5rem;
+
+  @media (--media-min-medium) {
+    padding-top: 5rem;
+  }
+}
+
 .tagline {
   position: relative;
   padding: 0;
