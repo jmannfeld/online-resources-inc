@@ -15,7 +15,7 @@ function Hero(props) {
   const { heading, subheading, backgroundImage, tagline, ctas } = props;
   const router = useRouter();
   const isHomepage = router.asPath === '/';
-  const isPri = router.asPath === '/pri';
+  const isPri = router.asPath === '/pri' || router.asPath === '/pri/';
 
   const style = backgroundImage
     ? {
