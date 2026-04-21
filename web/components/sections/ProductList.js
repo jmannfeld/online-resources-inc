@@ -164,6 +164,8 @@ function ProductList(props) {
     setFilteredProducts(result);
   }, [categorySelected, manufacturersChecked, searchValue]);
 
+  console.log(filteredProducts.filter((p) => !p?.slug?.current));
+
   return (
     <div className={styles.productLayoutWrapper}>
       <div className={styles.manufacturerFilterContainer}>
@@ -227,32 +229,35 @@ function ProductList(props) {
           })}
         </div>
         <div className={styles.productList}>
-          {filteredProducts.map((product) => {
-            return (
-              <NextLink
-                href={{
-                  pathname: '/products/ProductPage',
-                  query: { slug: product.slug.current }
-                }}
-                as={`/products/${product.slug.current}`}
-                key={product.slug.current}
-                tabIndex={0}
-                className={styles.productLink}
-              >
-                <div className={styles.productItem}>
-                  <div className={styles.productImageWrapper}>
-                    <div className={styles.imageCenter}>
-                      <img
-                        className={styles.productImage}
-                        src={product.image ? urlFor(product.image) : '../static/logo.png'}
-                      ></img>
+          {filteredProducts
+            .filter((product) => product?.slug?.current)
+            .map((product) => {
+              return (
+                <NextLink
+                  href={{
+                    pathname: '/products/ProductPage',
+                    query: { slug: product.slug.current }
+                  }}
+                  as={`/products/${product.slug.current}`}
+                  key={product.slug.current}
+                  tabIndex={0}
+                  className={styles.productLink}
+                >
+                  <div className={styles.productItem}>
+                    <div className={styles.productImageWrapper}>
+                      <div className={styles.imageCenter}>
+                        <img
+                          className={styles.productImage}
+                          src={product.image ? urlFor(product.image) : '../static/logo.png'}
+                          alt={product.name || 'Product image'}
+                        />
+                      </div>
+                      <h3 className={styles.productName}>{product.name}</h3>
                     </div>
-                    <h3 className={styles.productName}>{product.name}</h3>
                   </div>
-                </div>
-              </NextLink>
-            );
-          })}
+                </NextLink>
+              );
+            })}
         </div>
       </div>
       <div className={styles.rightSidebar}></div>
