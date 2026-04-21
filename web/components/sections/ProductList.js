@@ -164,7 +164,11 @@ function ProductList(props) {
     setFilteredProducts(result);
   }, [categorySelected, manufacturersChecked, searchValue]);
 
-  console.log(filteredProducts.filter((p) => !p?.slug?.current));
+  console.log(
+    filteredProducts.filter(function (p) {
+      return !p || !p.slug || !p.slug.current;
+    })
+  );
 
   return (
     <div className={styles.productLayoutWrapper}>
@@ -230,15 +234,17 @@ function ProductList(props) {
         </div>
         <div className={styles.productList}>
           {filteredProducts
-            .filter((product) => product?.slug?.current)
-            .map((product) => {
+            .filter(function (product) {
+              return product && product.slug && product.slug.current;
+            })
+            .map(function (product) {
               return (
                 <NextLink
                   href={{
                     pathname: '/products/ProductPage',
                     query: { slug: product.slug.current }
                   }}
-                  as={`/products/${product.slug.current}`}
+                  as={'/products/' + product.slug.current}
                   key={product.slug.current}
                   tabIndex={0}
                   className={styles.productLink}
