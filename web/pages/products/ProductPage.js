@@ -78,8 +78,8 @@ class ProductPage extends React.Component {
       type,
       description,
       mainImage,
-      manufacturer: { name: manufacturer } = '',
-      category: { name: category } = '',
+      manufacturer: { name: manufacturer } = { name: '' },
+      category: { name: category } = { name: '' },
       techSpecs = {},
       embed3dModel,
       config,
@@ -147,7 +147,7 @@ class ProductPage extends React.Component {
             title: name,
             titleTemplate: `${config.title} | %s`,
             description: `${category} Products | Learn more about${
-              category.includes('Scanning') ? ' the' : ''
+              category && category.includes('Scanning') ? ' the' : ''
             } ${name}`,
             canonical: config.url && `${config.url}/${slug}`,
             openGraph: {

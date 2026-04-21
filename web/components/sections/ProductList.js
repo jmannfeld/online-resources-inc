@@ -242,10 +242,10 @@ function ProductList(props) {
                 <NextLink
                   href={{
                     pathname: '/products/ProductPage',
-                    query: { slug: product.slug.current }
+                    query: { slug: product.slug && product.slug.current }
                   }}
-                  as={'/products/' + product.slug.current}
-                  key={product.slug.current}
+                  as={'/products/' + (product.slug && product.slug.current)}
+                  key={product.slug && product.slug.current}
                   tabIndex={0}
                   className={styles.productLink}
                 >
