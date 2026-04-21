@@ -147,7 +147,9 @@ function ProductList(props) {
 
   const filterBySearchValue = (products) => {
     if (searchValue) {
-      return products.filter((product) => product.name.match(new RegExp(searchValue, 'i')));
+      // Escape special regex characters
+      const escapedSearchValue = searchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return products.filter((product) => product.name.match(new RegExp(escapedSearchValue, 'i')));
     } else {
       return products;
     }
